@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import LogInForm from './logIn';
+import GoogleAuth from './components/GoogleAuth/GoogleAuth';
+import logo from './logo.svg';
+import './App.css';
 
 class App extends Component {
   constructor(){
@@ -8,10 +10,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <h2>Galvanize-Connect 1</h2>
-          <LogInForm/>
-        </div>
+        <h2>Galvanize-Connect 1</h2>
+        <GoogleAuth />
       </div>
     );
   }
