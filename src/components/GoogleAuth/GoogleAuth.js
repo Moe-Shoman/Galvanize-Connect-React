@@ -18,6 +18,7 @@ class GoogleAuthentication extends Component {
     render() {
       console.log('this.props in auth', this.props);
       if (this.props.GoogleAuth) {
+        // firebase.database().ref('users/'+nextMessage.id).set(nextMessage)
         return (<Redirect to='/Home'/>);
       }
       return (

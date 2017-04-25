@@ -1,0 +1,29 @@
+
+.userPro {
+    text-align: center;
+    height: 400px;
+    background-image: url("macbook.jpeg");
+    background-size: cover;
+    position: relative;
+    margin-bottom: 200px;
+    font-style: oblique;
+    font-size: 4em;
+}
+h1 {
+  font-size: 6rem;
+  color: white;
+   align: center;
+   padding-top: 50px;
+}
+.imgPro.ui {
+    width: 250px;
+    height: 250px;
+    font-size: 1em;
+    background-image: url("ivo.jpeg");
+    background-size: cover;
+    border: 5px solid;
+    border-color: white;
+    position: absolute;
+    bottom: -125px;
+    left: calc(50% - 75px);
+}

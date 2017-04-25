@@ -8,6 +8,7 @@ const loginRequest = () => {
     return firebase.auth().signInWithPopup(provider).then((res) => {
         // const {idToken, accessToken} = res.credential
         let user = res.user;
+        // firebase.database().ref('users/'+nextMessage.id).set(nextMessage)
         return user
     }).catch((err) => {
         console.error(err);

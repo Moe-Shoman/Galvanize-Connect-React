@@ -8,6 +8,9 @@ import Home from './components/Home/Home';
 import './App.css';
 import firebase from 'firebase';
 import { connect } from 'react-redux';
+
+import LogInForm from './components/logIn';
+
 class App extends Component {
   constructor(props){
     super(props)
@@ -27,7 +30,11 @@ class App extends Component {
     const { userData, GoogleAuth } = this.props;
     console.log(GoogleAuth, 'GoogleAuth');
     return (
-     <Router>
+    <div class="ui five item menu">
+      {/* <div>
+      <LogInForm / >
+      </div> */}
+     <Router class="ui five item menu">
       <div>
        <SideNav/>
        <Route path='/Home' component={Home} />
@@ -37,6 +44,7 @@ class App extends Component {
        <Route path='/Profile' component={Profile}/>
       </div>
      </Router>
+    </div>
     );
   }
 }
@@ -46,3 +54,10 @@ const mapStateToProps = ({ GoogleAuth }) => {
   }
 }
 export default connect(mapStateToProps)(App);
+{/* <div class="ui five item menu">
+      <a class="item" [routerLink]="['/home']">Home</a>
+      <a class="item" [routerLink]="['/login']">LogIn</a>
+      <a class="item" [routerLink]="['/register']">Register</a>
+      <a class="item" [routerLink]="['/mainsearch']">Search Ingredients</a>
+      <a class="item" [routerLink]="['/talkapi']">HTTP-Example</a>
+    </div> */}
