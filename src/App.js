@@ -5,7 +5,7 @@ import SideNav from './components/SideNav/SideNav';
 import Cohort from './components/Cohort/Cohort';
 import Profile from './components/Profile/Profile';
 import Home from './components/Home/Home';
-import logo from './logo.svg';
+const firebase = require('firebase');
 import './App.css';
 import firebase from 'firebase';
 import { connect } from 'react-redux';
@@ -14,6 +14,18 @@ class App extends Component {
     super(props)
   }
   componentWillMount(){
+    let config = {
+        apiKey: "AIzaSyBcZY-ngAyYe9-gw5z_A0_k6so4BPsJ8V0",
+        authDomain: "galvanize-connect-cfd11.firebaseapp.com",
+        databaseURL: "https://galvanize-connect-cfd11.firebaseio.com",
+        projectId: "galvanize-connect-cfd11",
+        storageBucket: "galvanize-connect-cfd11.appspot.com",
+        messagingSenderId: "836129324682"
+    }
+    firebase.initializeApp(config)
+  }
+  componentWillMount(){
+   console.log('componentWillMount');
     let config = {
         apiKey: "AIzaSyBcZY-ngAyYe9-gw5z_A0_k6so4BPsJ8V0",
         authDomain: "galvanize-connect-cfd11.firebaseapp.com",
