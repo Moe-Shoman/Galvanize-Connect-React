@@ -36,11 +36,12 @@ class Home extends Component {
     id: this.state.messages.length,
     text: this.state.message
    }
-   let list = Object.assign([], this.state.messages)
-   list.push(nextMessage)
-   this.setState({
-    messages: list
-   })
+      firebase.database().ref('messages/'+nextMessage.id).set(nextMessage)
+   // let list = Object.assign([], this.state.messages)
+   // list.push(nextMessage)
+   // this.setState({
+   //  messages: list
+   // })
  }
 
  render() {
