@@ -39,7 +39,7 @@ class App extends Component {
        <SideNav/>
        <Route path='/Home' component={Home} />
        <Route path='/Login' component={GoogleAuthentication} />
-       <Route path='/' render={() => ( GoogleAuth ? (<Redirect to="/Home" />): (<Redirect to="/Login" />))} />
+       <Route exact path='/' render={() => ( GoogleAuth ? (<Redirect to="/Home" />): (<Redirect to="/Login" />))} />
        <Route path='/Cohort' component={Cohort}/>
        <Route path='/Profile' component={Profile}/>
       </div>
@@ -54,10 +54,3 @@ const mapStateToProps = ({ GoogleAuth }) => {
   }
 }
 export default connect(mapStateToProps)(App);
-{/* <div class="ui five item menu">
-      <a class="item" [routerLink]="['/home']">Home</a>
-      <a class="item" [routerLink]="['/login']">LogIn</a>
-      <a class="item" [routerLink]="['/register']">Register</a>
-      <a class="item" [routerLink]="['/mainsearch']">Search Ingredients</a>
-      <a class="item" [routerLink]="['/talkapi']">HTTP-Example</a>
-    </div> */}
