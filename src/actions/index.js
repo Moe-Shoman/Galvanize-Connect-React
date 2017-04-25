@@ -4,6 +4,7 @@ const loginRequest = () => {
     let provider = new firebase.auth.GoogleAuthProvider();
     provider.addScope('profile');
     provider.addScope('email');
+    provider.addScope('https://www.googleapis.com/auth/plus.login')
     return firebase.auth().signInWithPopup(provider).then((res) => {
         // const {idToken, accessToken} = res.credential
         let user = res.user;
