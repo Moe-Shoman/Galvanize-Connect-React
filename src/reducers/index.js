@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import GoogleAuth from './reducer_login';
+import GoogleAuthReducer from './reducer_login';
 
 const rootReducer = combineReducers({
   GoogleAuth: GoogleAuthReducer

@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
-import GoogleAuth from './components/GoogleAuth/GoogleAuth';
-// import logo from './logo.svg';
+import GoogleAuthentication from './components/GoogleAuth/GoogleAuth';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
+import SideNav from './components/SideNav/SideNav';
+import Cohort from './components/Cohort/Cohort';
+import Profile from './components/Profile/Profile';
+import Home from './components/Home/Home';
+import logo from './logo.svg';
 import './App.css';
 import firebase from 'firebase';
+import { connect } from 'react-redux';
 class App extends Component {
   constructor(props){
     super(props)
@@ -19,13 +25,26 @@ class App extends Component {
     firebase.initializeApp(config)
   }
   render() {
+    const { userData, GoogleAuth } = this.props;
+    console.log(GoogleAuth, 'GoogleAuth');
     return (
-      <div className="App">
-        <h2>Galvanize-Connect 1</h2>
-        <GoogleAuth />
+     <Router>
+      <div>
+       <SideNav/>
+       <Route path='/Home' component={Home} />
+       <Route path='/Login' component={GoogleAuthentication} />
+       <Route path='/' render={() => ( GoogleAuth ? (<Redirect to="/Home" />): (<Redirect to="/Login" />))} />
+       <Route path='/Cohort' component={Cohort}/>
+       <Route path='/Profile' component={Profile}/>
       </div>
+     </Router>
     );
   }
 }
-
-export default App;
+const mapStateToProps = ({userData, GoogleAuth}) => {
+  console.log('state userData', userData, GoogleAuth, 'GoogleAuth');
+  return {
+    GoogleAuth
+  }
+}
+export default connect(mapStateToProps)(App);

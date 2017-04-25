@@ -1,6 +1,19 @@
+//Helper functions
+import firebase from 'firebase';
+const loginRequest = () => {
+    let provider = new firebase.auth.GoogleAuthProvider();
+    provider.addScope('profile');
+    provider.addScope('email');
+    return firebase.auth().signInWithPopup(provider).then((res) => {
+        // const {idToken, accessToken} = res.credential
+        let user = res.user;
+        return user
+    }).catch((err) => {
+        console.error(err);
+    })
+}
+
+//ACTION CREATORS
 export const login = (props) => {
-  return {
-    type: 'LOGIN',
-    payload: loginRequest(props)
-  }
+    return {type: 'LOGIN', payload: loginRequest()}
 }
