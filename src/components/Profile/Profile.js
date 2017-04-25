@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
-import semantic from 'semantic-ui-react';
+// import semantic from 'semantic-ui-react';
 import './profile.css';
-import Skill from '../Skills/skills_list_item';
+// import Skill from '../Skills/skills_list_item';
+import ProjectsList from '../Projects/projects_list';
+import SkillsList from '../Skills/skills_list';
 
 export default class Profile extends Component {
 
@@ -14,12 +16,15 @@ export default class Profile extends Component {
             <img className="ui circular image imgPro" src="/images/wireframe/square-image.png"></img>
         </div>
 
-        <div>
+        {/* <div>
           <h2>Project Title</h2>
           <p>Here we will find the description of the projects that the users will enter into our database</p>
-        </div>
+        </div> */}
         <div>
-          <Skill />
+          <ProjectsList />
+          {/* <Skill /> */}
+          <SkillsList />
+
         </div>
       </div>
       )
