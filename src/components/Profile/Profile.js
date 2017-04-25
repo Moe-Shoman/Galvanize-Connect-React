@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import semantic from 'semantic-ui-react';
 import './profile.css';
+import Skill from '../Skills/skills_list_item';
 
 export default class Profile extends Component {
 
@@ -18,6 +19,7 @@ export default class Profile extends Component {
           <p>Here we will find the description of the projects that the users will enter into our database</p>
         </div>
         <div>
+          <Skill />
         </div>
       </div>
       )
