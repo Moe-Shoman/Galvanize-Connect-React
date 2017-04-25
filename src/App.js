@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
-import GoogleAuth from './components/GoogleAuth/GoogleAuth';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import GoogleAuthentication from './components/GoogleAuth/GoogleAuth';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 import SideNav from './components/SideNav/SideNav';
 import Cohort from './components/Cohort/Cohort';
 import Profile from './components/Profile/Profile';
 import Home from './components/Home/Home';
-const firebase = require('firebase');
 import './App.css';
+import firebase from 'firebase';
+import { connect } from 'react-redux';
 
 import LogInForm from './components/logIn';
 
 class App extends Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
   }
   componentWillMount(){
-   console.log('componentWillMount');
     let config = {
         apiKey: "AIzaSyBcZY-ngAyYe9-gw5z_A0_k6so4BPsJ8V0",
         authDomain: "galvanize-connect-cfd11.firebaseapp.com",
@@ -27,6 +27,8 @@ class App extends Component {
     firebase.initializeApp(config)
   }
   render() {
+    const { userData, GoogleAuth } = this.props;
+    console.log(GoogleAuth, 'GoogleAuth');
     return (
     <div class="ui five item menu">
       {/* <div>
@@ -35,16 +37,23 @@ class App extends Component {
      <Router class="ui five item menu">
       <div>
        <SideNav/>
-       <Route  class="item" path='/Home' component={Home}/>
-       <Route class="item" path='/sign-in' component={GoogleAuth}/>
-       <Route class="item" path='/Cohort' component={Cohort}/>
-       <Route class="item" path='/Profile' component={Profile}/>
+       <Route path='/Home' component={Home} />
+       <Route path='/Login' component={GoogleAuthentication} />
+       <Route path='/' render={() => ( GoogleAuth ? (<Redirect to="/Home" />): (<Redirect to="/Login" />))} />
+       <Route path='/Cohort' component={Cohort}/>
+       <Route path='/Profile' component={Profile}/>
       </div>
      </Router>
     </div>
     );
   }
 }
+const mapStateToProps = ({ GoogleAuth }) => {
+  return {
+    GoogleAuth
+  }
+}
+export default connect(mapStateToProps)(App);
 {/* <div class="ui five item menu">
       <a class="item" [routerLink]="['/home']">Home</a>
       <a class="item" [routerLink]="['/login']">LogIn</a>
@@ -52,5 +61,3 @@ class App extends Component {
       <a class="item" [routerLink]="['/mainsearch']">Search Ingredients</a>
       <a class="item" [routerLink]="['/talkapi']">HTTP-Example</a>
     </div> */}
-
-export default App;
