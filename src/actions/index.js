@@ -1,14 +1,24 @@
 //Helper functions
 import firebase from 'firebase';
+
+const addNonExistingUsers = (userObject) => {
+  const {displayName, email, photoURL} = userObject;
+    let userInFireBase = firebase.database().ref(`users/${displayName}`);
+    userInFireBase.once("value").then((snapshot) => {
+        if (!snapshot.exists()) {
+            userInFireBase.set({name: displayName, email, profilePic: photoURL})
+        }
+    })
+}
+
 const loginRequest = () => {
     let provider = new firebase.auth.GoogleAuthProvider();
     provider.addScope('profile');
     provider.addScope('email');
     provider.addScope('https://www.googleapis.com/auth/plus.login')
     return firebase.auth().signInWithPopup(provider).then((res) => {
-        // const {idToken, accessToken} = res.credential
-        let user = res.user;
-        // firebase.database().ref('users/'+nextMessage.id).set(nextMessage)
+        const user = res.user;
+        addNonExistingUsers(user);
         return user
     }).catch((err) => {
         console.error(err);
