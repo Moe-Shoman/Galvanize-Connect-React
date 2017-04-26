@@ -1,3 +1,4 @@
 export default {
-  GoogleAuth: null
+  GoogleAuth: null,
+  projectList: []
 }
