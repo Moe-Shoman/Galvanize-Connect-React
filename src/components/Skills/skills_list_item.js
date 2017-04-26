@@ -1,5 +1,5 @@
 import React from 'react';
-import semantic from 'semantic-ui-react';
+// import semantic from 'semantic-ui-react';
 import './skill.css';
 
 const Skill = () => {
