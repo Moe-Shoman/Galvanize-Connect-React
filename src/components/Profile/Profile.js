@@ -4,6 +4,7 @@ import './profile.css';
 // import Skill from '../Skills/skills_list_item';
 import ProjectsList from '../Projects/projects_list';
 import SkillsList from '../Skills/skills_list';
+import AddProject from '../AddProject/add_project_form';
 
 export default class Profile extends Component {
 
@@ -15,18 +16,12 @@ export default class Profile extends Component {
 
             <img className="ui circular image imgPro" src="/images/wireframe/square-image.png"></img>
         </div>
-
-        {/* <div>
-          <h2>Project Title</h2>
-          <p>Here we will find the description of the projects that the users will enter into our database</p>
-        </div> */}
         <div>
           <ProjectsList />
-          {/* <Skill /> */}
           <SkillsList />
-
+          <AddProject />
         </div>
       </div>
-      )
+    );
     }
 }
