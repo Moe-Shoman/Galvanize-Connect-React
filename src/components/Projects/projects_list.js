@@ -16,10 +16,10 @@ class ProjectsList extends Component {
   // const projectItems = props.projects.map((project)=> {
   //   return <Project/>
   // });
-function mapStateToProps({ projectList }){
-
+function mapStateToProps({ projects }){
+  console.log(projects);
   return {
-    projectList
+    projects
   }
 }
 
