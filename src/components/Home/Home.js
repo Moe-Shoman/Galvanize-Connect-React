@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Article from '../Article/Article'
 var firebase = require('firebase');
 
 
@@ -37,11 +38,6 @@ class Home extends Component {
     text: this.state.message
    }
       firebase.database().ref('messages/'+nextMessage.id).set(nextMessage)
-   // let list = Object.assign([], this.state.messages)
-   // list.push(nextMessage)
-   // this.setState({
-   //  messages: list
-   // })
  }
 
  render() {
@@ -52,6 +48,7 @@ class Home extends Component {
   })
   return (
    <div>
+    <div><Article/></div>
     <ol>
      {currentMessage}
     </ol>
