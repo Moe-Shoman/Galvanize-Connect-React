@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Article from '../Article/Article'
+import ReplyToPost from '../ReplyToPost/ReplyToPost'
 var firebase = require('firebase');
 
 
@@ -43,15 +43,15 @@ class Home extends Component {
  render() {
   const currentMessage = this.state.messages.map((message, i) => {
    return (
-    <li key={message.id}>{message.text}</li>
+    <div>
+     <li key={message.id}>{message.text}</li>
+     <ReplyToPost/>
+    </div>
    )
   })
   return (
    <div>
-    <div><Article/></div>
-    <ol>
      {currentMessage}
-    </ol>
     <input onChange={this.updateMessage} type="text" placeholder="Message" />
     <br/>
     <button onClick={this.submitMessage}>Subtmit Message</button>
