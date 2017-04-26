@@ -4,7 +4,7 @@ import './profile.css';
 // import Skill from '../Skills/skills_list_item';
 import ProjectsList from '../Projects/projects_list';
 import SkillsList from '../Skills/skills_list';
-import AddProject from '../AddProject/add_project_form';
+import AddProjectForm from '../AddProject/add_project_form';
 
 export default class Profile extends Component {
 
@@ -19,7 +19,7 @@ export default class Profile extends Component {
         <div>
           <ProjectsList />
           <SkillsList />
-          <AddProject />
+          <AddProjectForm />
         </div>
       </div>
     );
