@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import JobList from './'
 var firebase = require('firebase');
 
 
