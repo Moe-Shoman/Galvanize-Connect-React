@@ -5,7 +5,6 @@ import { bindActionCreators } from 'redux';
 import { addMessage } from '../../actions'
 import { Redirect} from 'react-router-dom';
 import Feed from './Feed'
-import Post from './Post'
 import Jobs from './Jobs';
 
 
@@ -57,15 +56,14 @@ class Home extends Component {
    )
   })
   return (
-   <div>
-    <Feed/>
+
    <div>
      {currentMessage}
     <input onChange={this.updateMessage} type="text" placeholder="Message" />
     <br/>
 
     <button onClick={this.submitMessage}>Subtmit Post</button>
-   </div>
+
 
     <Jobs />
     {/* <MuiThemeProvider>

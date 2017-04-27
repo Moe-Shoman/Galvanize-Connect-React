@@ -1,9 +1,12 @@
 import React, {Component} from 'react'
+import Comments from './Comments'
 
 export default class Post extends Component {
  render () {
   return (
-   <h2> Post is on board! </h2>
+   <div>
+    <Comments/>
+  </div>
   )
  }
 }

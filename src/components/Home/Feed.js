@@ -1,9 +1,13 @@
 import React, {Component} from 'react'
+import Posts from './Posts'
 
-export default class FeedHeader extends Component {
+
+export default class Feed extends Component {
  render () {
   return (
-   <h2> Feed </h2>
+   <div>
+   <Posts/>
+   </div>
   )
  }
 }
