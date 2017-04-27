@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Job from './Job';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {getJobs} from '../../actions';
