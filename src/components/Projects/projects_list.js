@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 class ProjectsList extends Component {
   render(){
-    console.log('the props in side project lis', this.props)
+    console.log(this.props.projects, 'this.props in project list');
     return (
       <ul className="col-md-4 list-group">
         <Project/>
@@ -17,10 +17,8 @@ class ProjectsList extends Component {
   //   return <Project/>
   // });
 function mapStateToProps({ projects }){
-  console.log(projects);
   return {
     projects
   }
 }
-
 export default connect(mapStateToProps)(ProjectsList);

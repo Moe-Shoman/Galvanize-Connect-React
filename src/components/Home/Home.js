@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import JobList from './'
+import Jobs from './Jobs';
 var firebase = require('firebase');
 
 
@@ -59,6 +59,7 @@ class Home extends Component {
     <input onChange={this.updateMessage} type="text" placeholder="Message" />
     <br/>
     <button onClick={this.submitMessage}>Subtmit Message</button>
+    <Jobs />
    </div>
   )
  }
