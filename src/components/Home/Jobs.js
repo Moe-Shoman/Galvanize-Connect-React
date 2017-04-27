@@ -33,7 +33,8 @@ class Jobs extends Component {
     render() {
         const {jobs} = this.props
         return (
-            <div>{renderJobs(jobs)}</div>
+            <div>{renderJobs(jobs)}
+            </div>
         )
     }
 }
