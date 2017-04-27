@@ -25,6 +25,11 @@ const loginRequest = () => {
     })
 }
 
+
+const addNewMessage = () => {
+ console.log('============== inside addNewMessage');
+}
+
 //ACTION CREATORS
 export const login = (props) => {
     return {type: 'LOGIN', payload: loginRequest()}
@@ -33,3 +38,9 @@ export const addProject = (project) => {
   console.log('project', project);
   return {type: 'ADD_PROJECT', payload: project}
 }
+
+
+//add message
+export const addMessage = (props) => new Promise((resolve, reject) => {
+ return {type: 'ADD_MESSAGE', payload: addNewMessage()}
+})

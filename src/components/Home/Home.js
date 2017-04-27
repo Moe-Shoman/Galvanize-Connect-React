@@ -1,6 +1,18 @@
 import React, { Component } from 'react';
 import ReplyToPost from '../ReplyToPost/ReplyToPost'
-var firebase = require('firebase');
+import firebase from 'firebase'
+import { bindActionCreators } from 'redux';
+import { addMessage } from '../../actions'
+import { Redirect} from 'react-router-dom';
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ addMessage }, dispatch)
+}
+function mapStateToProps({userData, newMessage}) { //userData should be message data?
+  return {
+    newMessage
+  }
+}
 
 
 class Home extends Component {
@@ -60,4 +72,4 @@ class Home extends Component {
  }
 }
 
-export default Home;
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
