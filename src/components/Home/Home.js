@@ -6,15 +6,7 @@ import { addMessage } from '../../actions'
 import { Redirect} from 'react-router-dom';
 import Feed from './Feed'
 import Post from './Post'
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ addMessage }, dispatch)
-}
-function mapStateToProps({userData, newMessage}) { //userData should be message data?
-  return {
-    newMessage
-  }
-}
+import Jobs from './Jobs';
 
 
 
@@ -71,8 +63,14 @@ class Home extends Component {
      {currentMessage}
     <input onChange={this.updateMessage} type="text" placeholder="Message" />
     <br/>
+
     <button onClick={this.submitMessage}>Subtmit Post</button>
    </div>
+
+    <Jobs />
+    {/* <MuiThemeProvider>
+      <ListExampleSelectable />
+    </MuiThemeProvider> */}
    </div>
   )
  }

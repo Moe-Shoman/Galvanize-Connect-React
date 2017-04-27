@@ -1,5 +1,6 @@
 export default {
   GoogleAuth: null,
   projectList: [],
-  projects: []
+  projects: [],
+  jobs: []
 }
