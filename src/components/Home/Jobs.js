@@ -17,7 +17,7 @@ function mapDispatchToProps(dispatch) {
 const renderJobs = (jobs) => {
     return jobs.map((job) => (
         <div>
-            <div>{job.jobTitle}</div>
+            <a href={job.detailUrl}>{job.jobTitle}</a>
             <div>{job.company}</div>
             <div>{job.location}</div>
         </div>
