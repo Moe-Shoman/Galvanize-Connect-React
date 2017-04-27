@@ -4,6 +4,8 @@ import firebase from 'firebase'
 import { bindActionCreators } from 'redux';
 import { addMessage } from '../../actions'
 import { Redirect} from 'react-router-dom';
+import Feed from './Feed'
+import Post from './Post'
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ addMessage }, dispatch)
@@ -64,10 +66,13 @@ class Home extends Component {
   })
   return (
    <div>
+    <Feed/>
+   <div>
      {currentMessage}
     <input onChange={this.updateMessage} type="text" placeholder="Message" />
     <br/>
-    <button onClick={this.submitMessage}>Subtmit Message</button>
+    <button onClick={this.submitMessage}>Subtmit Post</button>
+   </div>
    </div>
   )
  }
