@@ -11,8 +11,6 @@ function mapStateToProps({ projects }){
 }
 
 const _renderProject = (projects) => {
-  console.log("projects here ", projects);
-  console.log();
     if(projects.length === 0){
       return (
         <div>
