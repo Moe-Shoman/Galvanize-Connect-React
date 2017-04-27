@@ -9,9 +9,9 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators( { addProject } ,dispatch)
 }
 
-function mapStateToProps({projectList}){
+function mapStateToProps({projects}){
   return {
-    projectList
+    projects
   }
 }
 

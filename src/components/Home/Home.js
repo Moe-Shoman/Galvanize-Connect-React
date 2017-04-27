@@ -15,6 +15,7 @@ function mapStateToProps({userData, newMessage}) { //userData should be message 
 }
 
 
+
 class Home extends Component {
  constructor(props, context) {
   super(props, context)
@@ -72,4 +73,5 @@ class Home extends Component {
  }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default Home;
+// export default connect(mapStateToProps, mapDispatchToProps)(Home);
