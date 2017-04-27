@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import ReplyToPost from '../ReplyToPost/ReplyToPost'
-import firebase from 'firebase'
 import { bindActionCreators } from 'redux';
 import { addMessage } from '../../actions'
 import { Redirect} from 'react-router-dom';
-import Feed from './Feed'
 import Jobs from './Jobs';
-
-
+import firebase from 'firebase'
+import Feed from './Feed';
+// import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+// import ListExampleSelectable from './List';
 
 class Home extends Component {
  constructor(props, context) {
@@ -43,6 +43,7 @@ class Home extends Component {
     id: this.state.messages.length,
     text: this.state.message
    }
+   console.log('this.state before', this.state);
       firebase.database().ref('messages/'+nextMessage.id).set(nextMessage)
  }
 
@@ -64,7 +65,8 @@ class Home extends Component {
 
     <button onClick={this.submitMessage}>Subtmit Post</button>
 
-
+    <button onClick={this.submitMessage}>Subtmit Message</button>
+    <Feed/>
     <Jobs />
     {/* <MuiThemeProvider>
       <ListExampleSelectable />
