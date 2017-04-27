@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Jobs from './Jobs';
-var firebase = require('firebase');
+import firebase from 'firebase'
+import Feed from './Feed';
 // import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 // import ListExampleSelectable from './List';
 class Home extends Component {
@@ -37,7 +38,9 @@ class Home extends Component {
     id: this.state.messages.length,
     text: this.state.message
    }
+   console.log('this.state before', this.state);
       firebase.database().ref('messages/'+nextMessage.id).set(nextMessage)
+      console.log('this.state after', this.state);
    // let list = Object.assign([], this.state.messages)
    // list.push(nextMessage)
    // this.setState({
@@ -59,6 +62,7 @@ class Home extends Component {
     <input onChange={this.updateMessage} type="text" placeholder="Message" />
     <br/>
     <button onClick={this.submitMessage}>Subtmit Message</button>
+    <Feed/>
     <Jobs />
     {/* <MuiThemeProvider>
       <ListExampleSelectable />
