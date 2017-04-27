@@ -1,6 +1,6 @@
 //Helper functions
 import firebase from 'firebase';
-
+import axios from 'axios';
 const addNonExistingUsers = (userObject) => {
   const {displayName, email, photoURL} = userObject;
     let userInFireBase = firebase.database().ref(`users/${displayName}`);
@@ -25,11 +25,20 @@ const loginRequest = () => {
     })
 }
 
+const getJobsRequest = () => {
+  return axios.get('http://service.dice.com/api/rest/jobsearch/v1/simple.json?text=javascript&city=94102&pgcnt=20')
+  .then((res) => res.data.resultItemList)
+}
+
 //ACTION CREATORS
 export const login = (props) => {
     return {type: 'LOGIN', payload: loginRequest()}
 }
 export const addProject = (project) => {
-  // console.log('project', project);
   return {type: 'ADD_PROJECT', payload: project}
+}
+
+export const getJobs = () => {
+  console.log('getJobs action creator');
+  return {type: 'GET_JOBS', payload: getJobsRequest()}
 }

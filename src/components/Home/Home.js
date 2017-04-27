@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-// import JobList from './'
+import Jobs from './Jobs';
 var firebase = require('firebase');
-
-
+// import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+// import ListExampleSelectable from './List';
 class Home extends Component {
  constructor(props, context) {
   super(props, context)
@@ -59,6 +59,10 @@ class Home extends Component {
     <input onChange={this.updateMessage} type="text" placeholder="Message" />
     <br/>
     <button onClick={this.submitMessage}>Subtmit Message</button>
+    <Jobs />
+    {/* <MuiThemeProvider>
+      <ListExampleSelectable />
+    </MuiThemeProvider> */}
    </div>
   )
  }
