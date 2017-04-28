@@ -29,13 +29,27 @@ const getJobsRequest = () => {
     return axios.get('http://service.dice.com/api/rest/jobsearch/v1/simple.json?text=javascript&city=94102&pgcnt=20').then((res) => res.data.resultItemList)
 }
 
-const postResult = (post) => {
-  const postObject = {
-   post: post.post,
-   time: new Date()
-  }
-  return postObject
-}
+// const postResult = (post) => {
+//   const postObject = {
+//    post: post.post,
+//    time: new Date()
+//   }
+//   return postObject
+// }
+
+// export const addInfoToPost = (...info) => {
+//   console.log('adding info yo', info[0], info[1]['object Object'].values.post);
+//   const postInfo = {
+//     post: info[1]['object Object'].values.post,
+//     name:info[0].userData.displayName,
+//     time: new Date(),
+//     comments: [],
+//     photoURL:info[0].userData.photoURL
+//   }
+//   console.log('post info !!!!!', postInfo);
+//   return postInfo;
+// }
+
 
 export const addInfoToPost = (...info) => {
   console.log('adding info yo', info[0], info[1]['object Object'].values.post);
@@ -51,6 +65,7 @@ export const addInfoToPost = (...info) => {
 }
 
 
+
 //ACTION CREATORS
 export const login = (props) => {
     return {type: 'LOGIN', payload: loginRequest()}
@@ -62,7 +77,6 @@ export const addProject = (project) => {
 
 export const addPost = (GoogleAuth, form) => {
     // console.log('post is =====', post);
-    // console.log('this.prop is ‘, this.props);
     return {type: 'ADD_POST', payload: addInfoToPost(GoogleAuth, form) }
 }
 

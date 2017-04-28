@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import {reduxForm, Field  } from 'redux-form';
+import { reduxForm, Field  } from 'redux-form';
 import Comments from './Comments';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {addPost} from '../../actions';
+import { addPost, addInfoToPost } from '../../actions';
 
 // import {TextField} from 'redux-form-material-ui'
 function postFire(...args) {
