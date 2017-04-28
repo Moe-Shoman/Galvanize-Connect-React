@@ -7,28 +7,29 @@ import AddProjectForm from '../AddProject/add_project_form';
 import { connect } from 'react-redux';
 
 
-function mapStateToProps({ GoogleAuth }){
+function mapStateToProps({ userData }){
   return {
-    GoogleAuth
+    userData
   }
 }
 
-const renderUserName = (GoogleAuth) => {
-  console.log("In the renderUsername", GoogleAuth);
+const renderUserName = (userData) => {
+  console.log("In the renderUsername", userData);
   return (
-          <div>{GoogleAuth.userData.displayName}</div>
+          <div>{userData.name}</div>
   )
 }
 
 class Profile extends Component {
 
     render() {
+      console.log(this.props.userData);
       return (
       <div>
         <div className="userPro">
-          <h1>{renderUserName(this.props.GoogleAuth)}</h1>
+          <h1>{renderUserName(this.props.userData)}</h1>
 
-            <img className="ui circular image imgPro" src={this.props.GoogleAuth.userData.photoURL}></img>
+            <img className="ui circular image imgPro" src={this.props.userData.photo}></img>
         </div>
         <div>
           <ProjectsList />

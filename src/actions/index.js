@@ -10,12 +10,19 @@ const addNonExistingUsers = (userObject) => {
         }
     })
 }
+<<<<<<< HEAD
 
 const addPostToFireBase = (postObject) => {
   let addPostsInFireBase = firebase.database().ref("feed/posts").push();
   addPostsInFireBase.set(postObject);
 }
 
+=======
+const addPostToFireBase = (postObject) => {
+  let PostsInFireBase = firebase.database().ref("feed/posts").push();
+  PostsInFireBase.set(postObject);
+}
+>>>>>>> 68c028114fcd1666ff43acf51bc4944b73883d95
 const loginRequest = () => {
     let provider = new firebase.auth.GoogleAuthProvider();
     provider.addScope('profile');
@@ -34,25 +41,28 @@ const getJobsRequest = () => {
     return axios.get('http://service.dice.com/api/rest/jobsearch/v1/simple.json?text=javascript&city=94102&pgcnt=20').then((res) => res.data.resultItemList)
 }
 
-// const postResult = (post) => {
-//   const postObject = {
-//    post: post.post,
-//    time: new Date()
-//   }
-//   return postObject
-// }
+const fetchPostsFromFireBase = () => {
+  let postsInFireBase = firebase.database().ref("feed/posts");
 
+}
+
+
+<<<<<<< HEAD
 
 export const addInfoToPost = (...info) => {
   // console.log('adding info yo', info[0], info[1]['object Object'].values.post);
+=======
+export const addInfoToPost = (userData, form) => {
+>>>>>>> 68c028114fcd1666ff43acf51bc4944b73883d95
   const postInfo = {
-    post: info[1]['object Object'].values.post,
-    name:info[0].userData.displayName,
+    post: form['object Object'].values.post,
+    name: userData.name,
     time: new Date(),
     comments: [],
-    photoURL:info[0].userData.photoURL
+    photoURL: userData.photo
   }
   console.log('post info !!!!!', postInfo);
+  addPostToFireBase(postInfo);
   return postInfo;
 }
 
@@ -60,19 +70,27 @@ export const addInfoToPost = (...info) => {
 
 //ACTION CREATORS
 export const login = (props) => {
-    return {type: 'LOGIN', payload: loginRequest()}
+    return {type: 'LOGIN', payload: loginRequest()};
 }
 
 export const addProject = (project) => {
-    return {type: 'ADD_PROJECT', payload: project}
+    return {type: 'ADD_PROJECT', payload: project};
 }
 
+<<<<<<< HEAD
 export const addPost = (GoogleAuth, form) => {
     // console.log('post is =====', post);
     return {type: 'ADD_POST', payload: addInfoToPost(GoogleAuth, form) }
+=======
+export const addPost = (userData, form) => {
+    return {type: 'ADD_POST', payload: addInfoToPost(userData, form)};
+>>>>>>> 68c028114fcd1666ff43acf51bc4944b73883d95
 }
 
 export const getJobs = () => {
-    console.log('getJobs action creator');
-    return {type: 'GET_JOBS', payload: getJobsRequest()}
+    return {type: 'GET_JOBS', payload: getJobsRequest()};
+}
+
+export const fetchPosts = () => {
+  return {type: 'FETCH_POSTS', payload: fetchPostsFromFireBase()};
 }
