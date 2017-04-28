@@ -1,20 +1,28 @@
 import React from 'react';
 import Skill from './skills_list_item';
+import {connect} from 'react-redux';
+import './skill.css';
 
+const mapStateToProps = ({ skills }) => {
+  return {
+    skills
+  }
+}
 
-const SkillsList = (props) => {
-
-  //  const projectsList = [1, 2, 3, 4, 5];
-  // const projectItems = props.projectsList.map((project)=> {
-  //   return <Project/>
-  // });
-
+const SkillsList = ({ skills }) => {
+    const allSkills = skills.map((e, i)=>{
+      return (
+        <Skill name={e} key={i}/>
+      )
+    })
 
   return (
     <ul className="col-md-4 list-group">
-      <Skill/>
+      <div className="allskills">
+        {allSkills}
+      </div>
     </ul>
   )
 }
 
-export default SkillsList;
+export default connect(mapStateToProps)(SkillsList);

@@ -8,10 +8,6 @@ import { connect } from 'react-redux';
 
 
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators( { addProject }, dispatch)
-}
-
 
 
 function mapStateToProps({ userData, projects, form}){
@@ -79,6 +75,6 @@ AddProjectForm = reduxForm({
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({
+export default connect(mapStateToProps, { addProject })(reduxForm({
   form: 'AddProjectForm',
 })(AddProjectForm))

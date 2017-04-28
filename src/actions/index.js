@@ -117,3 +117,7 @@ export const getJobs = () => {
 export const fetchPosts = () => {
   return {type: 'FETCH_POSTS', payload: fetchPostsFromFireBase()};
 }
+
+export const addSkill = () => {
+  return {type: 'Add_SKILL', payload: ""}
+}

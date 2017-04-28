@@ -8,5 +8,6 @@ export default {
   projectList: [],
   projects: [],
   jobs: [],
-  posts: []
+  posts: [],
+  skills: []
 }
