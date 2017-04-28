@@ -1,55 +1,30 @@
-// import React, {Component} from 'react';
+import React, {Component} from 'react';
 // import { reduxForm, Field  } from 'redux-form';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
+import { addComment } from '../../actions';
 // import { bindActionCreators } from 'redux';
-//
-//
-// function mapStateToProps ({GoogleAuth, comments, form  }) {
-//  return {
-//   GoogleAuth,
-//   posts,
-//   form
-//  }
-// }
-//
-// function mapDispatchToProps (dispatch) {
-//  return bindActionCreators({ addComment }, dispatch)
-// }
-//
-//
-// class Comments extends Component {
-//     render() {
-//         return (
-//             <div>
-//                 <p>I'm a Comment</p>
-//             </div>
-//         )
-//     }
-// }
 
 
-// export default Comments;
+function mapStateToProps ({ }) {
+ return {
+
+ }
+}
 
 
 
+class Comments extends Component {
+    render() {
+     const {addComment} = this.props;
+        return (
+            <div>
+                <h1>this is a comment</h1>
+                <button onClick={addComment}>click me </button>
+            </div>
+        )
+    }
+}
 
 
-// class PostForm extends Component {
-//     render() {
-//      const { GoogleAuth, addPost, handleSubmit, form } = this.props;
-//         return (
-//          <form>
-//            <div>
-//              <label htmlFor="post">Add Post</label>
-//              <Field  name="post" component="input" type="text"/>
-//            </div>
-//            <button type="submit" onClick={(e) => {e.preventDefault(); addPost(GoogleAuth, form)}}>Submit</button>
-//          </form>
-//         )
-//     }
-// }
-//
-//
-// export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({
-//  form: 'PostForm',
-// })(PostForm))
+
+export default connect(mapStateToProps, {addComment})(Comments)

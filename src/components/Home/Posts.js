@@ -21,7 +21,7 @@ class PostForm extends Component {
         return (
          <form>
            <div>
-             <label htmlFor="post">Add Post</label>
+             <label htmlFor="post">Add Post</label><br/>
              <Field  name="post" component="input" type="text"/>
            </div>
            <button type="submit" onClick={(e) => {e.preventDefault(); addPost(userData, form)}}>Submit</button>

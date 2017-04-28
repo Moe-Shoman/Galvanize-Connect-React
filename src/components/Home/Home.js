@@ -6,6 +6,7 @@ import { Redirect} from 'react-router-dom';
 import Jobs from './Jobs';
 import firebase from 'firebase'
 import Feed from './Feed';
+import Comment from './Comments'
 
 
 class Home extends Component {
@@ -21,6 +22,7 @@ class Home extends Component {
 
  componentDidMount() {
   firebase.database().ref('messages/').on('value', (snapshot) => {
+   console.log('snapshot is ---------', snapshot.val());
    const currentMessages = snapshot.val()
 
    if(currentMessages != null) {
@@ -59,12 +61,13 @@ class Home extends Component {
 
    <div>
      {currentMessage}
-    <input onChange={this.updateMessage} type="text" placeholder="Message" />
+    {/* <input onChange={this.updateMessage} type="text" placeholder="Message" /> */}
     <br/>
 
-    <button onClick={this.submitMessage}>Subtmit Post</button>
+    {/* <button onClick={this.submitMessage}>Subtmit Post</button>
 
-    <button onClick={this.submitMessage}>Subtmit Message</button>
+    <button onClick={this.submitMessage}>Subtmit Message</button> */}
+    <Comment/>
     <Feed/>
     <Jobs />
     {/* <MuiThemeProvider>
