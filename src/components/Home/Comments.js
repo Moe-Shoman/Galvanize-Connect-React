@@ -1,5 +1,11 @@
 import React, {Component} from 'react';
-export default class Comments extends Component {
+import { reduxForm, Field  } from 'redux-form';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+
+
+class Comments extends Component {
     render() {
         return (
             <div>
@@ -8,3 +14,6 @@ export default class Comments extends Component {
         )
     }
 }
+
+
+export default Comments;

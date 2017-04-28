@@ -11,6 +11,11 @@ const addNonExistingUsers = (userObject) => {
     })
 }
 
+const addPostToFireBase = (postObject) => {
+  let addPostsInFireBase = firebase.database().ref("feed/posts").push();
+  addPostsInFireBase.set(postObject);
+}
+
 const loginRequest = () => {
     let provider = new firebase.auth.GoogleAuthProvider();
     provider.addScope('profile');
@@ -37,22 +42,9 @@ const getJobsRequest = () => {
 //   return postObject
 // }
 
-// export const addInfoToPost = (...info) => {
-//   console.log('adding info yo', info[0], info[1]['object Object'].values.post);
-//   const postInfo = {
-//     post: info[1]['object Object'].values.post,
-//     name:info[0].userData.displayName,
-//     time: new Date(),
-//     comments: [],
-//     photoURL:info[0].userData.photoURL
-//   }
-//   console.log('post info !!!!!', postInfo);
-//   return postInfo;
-// }
-
 
 export const addInfoToPost = (...info) => {
-  console.log('adding info yo', info[0], info[1]['object Object'].values.post);
+  // console.log('adding info yo', info[0], info[1]['object Object'].values.post);
   const postInfo = {
     post: info[1]['object Object'].values.post,
     name:info[0].userData.displayName,

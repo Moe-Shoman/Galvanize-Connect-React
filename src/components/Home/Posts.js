@@ -6,9 +6,9 @@ import { bindActionCreators } from 'redux';
 import { addPost, addInfoToPost } from '../../actions';
 
 // import {TextField} from 'redux-form-material-ui'
-function postFire(...args) {
- console.log('Fire Bruh', args);
-}
+// function postFire(...args) {
+//  console.log('Fire Bruh', args);
+// }
 function mapStateToProps ({ GoogleAuth, posts, form }) {
  return {
   GoogleAuth,
