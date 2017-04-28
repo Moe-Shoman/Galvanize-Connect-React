@@ -37,6 +37,19 @@ const postResult = (post) => {
   return postObject
 }
 
+export const addInfoToPost = (...info) => {
+  console.log('adding info yo', info[0], info[1]['object Object'].values.post);
+  const postInfo = {
+    post: info[1]['object Object'].values.post,
+    name:info[0].userData.displayName,
+    time: new Date(),
+    comments: [],
+    photoURL:info[0].userData.photoURL
+  }
+  console.log('post info !!!!!', postInfo);
+  return postInfo;
+}
+
 
 //ACTION CREATORS
 export const login = (props) => {
@@ -47,11 +60,10 @@ export const addProject = (project) => {
     return {type: 'ADD_PROJECT', payload: project}
 }
 
-export const addPost = (post) => {
-    console.log('post is =====', post);
-    // console.log('this.prop is ', this.props);
-    return {type: 'ADD_POST', payload: post}
-
+export const addPost = (GoogleAuth, form) => {
+    // console.log('post is =====', post);
+    // console.log('this.prop is ‘, this.props);
+    return {type: 'ADD_POST', payload: addInfoToPost(GoogleAuth, form) }
 }
 
 export const getJobs = () => {
