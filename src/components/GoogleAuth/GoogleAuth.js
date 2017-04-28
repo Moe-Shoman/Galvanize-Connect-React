@@ -8,17 +8,17 @@ import { Redirect} from 'react-router-dom';
 // function mapDispatchToProps(dispatch) {
 //   return bindActionCreators({ login }, dispatch)
 // }
-function mapStateToProps({userData, GoogleAuth}) {
+function mapStateToProps({ userData }) {
   return {
-    GoogleAuth
+    userData
   }
 }
 
 class GoogleAuthentication extends Component {
     render() {
-      console.log('this.props in auth', this.props);
-      if (this.props.GoogleAuth) {
-        // firebase.database().ref('users/'+nextMessage.id).set(nextMessage)
+      const { userData } = this.props;
+      console.log('this.props in auth', userData.loggedIn, 'loggedIn or nah???');
+      if (userData.loggedIn) {
         return (<Redirect to='/Home'/>);
       }
       return (

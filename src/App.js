@@ -28,12 +28,8 @@ class App extends Component {
     firebase.initializeApp(config)
   }
   render() {
-    const { userData, GoogleAuth } = this.props;
-    // console.log(GoogleAuth, 'GoogleAuth');
-    // console.log('this.props', this.props);
+    const { loggedIn } = this.props.userData;
     return (
-    // <div class="ui five item menu">
-    //
     <div>
      <Router class="ui five item menu">
 
@@ -47,7 +43,7 @@ class App extends Component {
        {/* <SideNav/> */}
        <Route path='/Home' component={Home} />
        <Route path='/Login' component={GoogleAuthentication} />
-       <Route exact path='/' render={() => ( GoogleAuth ? (<Redirect to="/Home" />): (<Redirect to="/Login" />))} />
+       <Route exact path='/' render={() => ( loggedIn ? (<Redirect to="/Home" />): (<Redirect to="/Login" />))} />
        <Route path='/Cohort' component={Cohort}/>
        <Route path='/Profile' component={Profile}/>
       </div>
@@ -57,9 +53,9 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = ({ GoogleAuth }) => {
+const mapStateToProps = ({ userData }) => {
   return {
-    GoogleAuth
+    userData
   }
 }
 export default connect(mapStateToProps)(App);
