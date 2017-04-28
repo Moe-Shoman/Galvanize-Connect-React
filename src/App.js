@@ -29,8 +29,8 @@ class App extends Component {
   }
   render() {
     const { userData, GoogleAuth } = this.props;
-    console.log(GoogleAuth, 'GoogleAuth');
-    console.log('this.props', this.props);
+    // console.log(GoogleAuth, 'GoogleAuth');
+    // console.log('this.props', this.props);
     return (
     // <div class="ui five item menu">
     //

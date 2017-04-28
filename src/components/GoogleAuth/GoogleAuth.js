@@ -5,9 +5,9 @@ import { bindActionCreators } from 'redux';
 import { login } from '../../actions'
 import { Redirect} from 'react-router-dom';
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ login }, dispatch)
-}
+// function mapDispatchToProps(dispatch) {
+//   return bindActionCreators({ login }, dispatch)
+// }
 function mapStateToProps({userData, GoogleAuth}) {
   return {
     GoogleAuth
@@ -29,4 +29,4 @@ class GoogleAuthentication extends Component {
       )
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(GoogleAuthentication);
+export default connect(mapStateToProps , { login })(GoogleAuthentication);

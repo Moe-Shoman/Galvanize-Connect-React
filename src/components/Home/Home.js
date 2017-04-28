@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
+import ReplyToPost from '../ReplyToPost/ReplyToPost'
+import { bindActionCreators } from 'redux';
+import { addMessage } from '../../actions'
+import { Redirect} from 'react-router-dom';
 import Jobs from './Jobs';
 import firebase from 'firebase'
 import Feed from './Feed';
-// import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-// import ListExampleSelectable from './List';
+
+
 class Home extends Component {
  constructor(props, context) {
   super(props, context)
@@ -40,27 +44,26 @@ class Home extends Component {
    }
    console.log('this.state before', this.state);
       firebase.database().ref('messages/'+nextMessage.id).set(nextMessage)
-      console.log('this.state after', this.state);
-   // let list = Object.assign([], this.state.messages)
-   // list.push(nextMessage)
-   // this.setState({
-   //  messages: list
-   // })
  }
 
  render() {
   const currentMessage = this.state.messages.map((message, i) => {
    return (
-    <li key={message.id}>{message.text}</li>
+    <div>
+     <li key={message.id}>{message.text}</li>
+     <ReplyToPost/>
+    </div>
    )
   })
   return (
+
    <div>
-    <ol>
      {currentMessage}
-    </ol>
     <input onChange={this.updateMessage} type="text" placeholder="Message" />
     <br/>
+
+    <button onClick={this.submitMessage}>Subtmit Post</button>
+
     <button onClick={this.submitMessage}>Subtmit Message</button>
     <Feed/>
     <Jobs />
@@ -73,3 +76,4 @@ class Home extends Component {
 }
 
 export default Home;
+// export default connect(mapStateToProps, mapDispatchToProps)(Home);
