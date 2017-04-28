@@ -1,39 +1,36 @@
 import React, {Component} from 'react';
-import {reduxForm, Field  } from 'redux-form';
+import { reduxForm, Field  } from 'redux-form';
 import Comments from './Comments';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {addPost} from '../../actions';
+import { addPost, addInfoToPost } from '../../actions';
 
 // import {TextField} from 'redux-form-material-ui'
 function postFire(...args) {
  console.log('Fire Bruh', args);
 }
-function mapStateToProps ({GoogleAuth, comments, postText, time}) {
+function mapStateToProps ({ GoogleAuth, posts, form }) {
  return {
   GoogleAuth,
-  comments,
-  postText,
-  time
+  posts,
+  form
  }
 }
 
 function mapDispatchToProps (dispatch) {
- return bindActionCreators({addPost}, dispatch)
+ return bindActionCreators({ addPost }, dispatch)
 }
 
 class PostForm extends Component {
     render() {
-     const {GoogleAuth, comments, time} = this.props;
-     console.log('this.props in Posts', this.props);
-     const {handleSubmit} = this.props;
+     const { GoogleAuth, addPost, handleSubmit, form } = this.props;
         return (
-         <form onSubmit={handleSubmit(this.props.addPost)}>
+         <form>
            <div>
              <label htmlFor="post">Add Post</label>
              <Field  name="post" component="input" type="text"/>
            </div>
-           <button type="submit" onClick={() => {postFire(GoogleAuth, comments, time)}}>Submit</button>
+           <button type="submit" onClick={(e) => {e.preventDefault(); addPost(GoogleAuth, form)}}>Submit</button>
          </form>
         )
     }
