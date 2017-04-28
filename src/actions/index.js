@@ -2,7 +2,7 @@
 import firebase from 'firebase';
 import axios from 'axios';
 const addNonExistingUsers = (userObject) => {
-  const {displayName, email, photoURL} = userObject;
+    const {displayName, email, photoURL} = userObject;
     let userInFireBase = firebase.database().ref(`users/${displayName}`);
     userInFireBase.once("value").then((snapshot) => {
         if (!snapshot.exists()) {
@@ -25,17 +25,18 @@ const loginRequest = () => {
     })
 }
 
-
-
-const addNewMessage = () => {
- console.log('============== inside addNewMessage');
-}
-
 const getJobsRequest = () => {
-  return axios.get('http://service.dice.com/api/rest/jobsearch/v1/simple.json?text=javascript&city=94102&pgcnt=20')
-  .then((res) => res.data.resultItemList)
-
+    return axios.get('http://service.dice.com/api/rest/jobsearch/v1/simple.json?text=javascript&city=94102&pgcnt=20').then((res) => res.data.resultItemList)
 }
+
+const postResult = (post) => {
+  const postObject = {
+   post: post.post,
+   time: new Date()
+  }
+  return postObject
+}
+
 
 //ACTION CREATORS
 export const login = (props) => {
@@ -43,17 +44,17 @@ export const login = (props) => {
 }
 
 export const addProject = (project) => {
-  return {type: 'ADD_PROJECT', payload: project}
+    return {type: 'ADD_PROJECT', payload: project}
 }
 
+export const addPost = (post) => {
+    console.log('post is =====', post);
+    // console.log('this.prop is ', this.props);
+    return {type: 'ADD_POST', payload: post}
 
-
-//add message
-export const addMessage = (props) => new Promise((resolve, reject) => {
- return {type: 'ADD_MESSAGE', payload: addNewMessage()}
-})
+}
 
 export const getJobs = () => {
-  console.log('getJobs action creator');
-  return {type: 'GET_JOBS', payload: getJobsRequest()}
+    console.log('getJobs action creator');
+    return {type: 'GET_JOBS', payload: getJobsRequest()}
 }

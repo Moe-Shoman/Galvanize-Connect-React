@@ -4,7 +4,7 @@ export default class Comments extends Component {
         return (
             <div>
                 <p>I'm a Comment</p>
-              </div>
-              )
+            </div>
+        )
     }
 }

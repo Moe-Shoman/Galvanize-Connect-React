@@ -6,8 +6,7 @@ import { Redirect} from 'react-router-dom';
 import Jobs from './Jobs';
 import firebase from 'firebase'
 import Feed from './Feed';
-// import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-// import ListExampleSelectable from './List';
+
 
 class Home extends Component {
  constructor(props, context) {
