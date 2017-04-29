@@ -105,10 +105,15 @@ export const login = (props) => {
 export const addProject = ( userData, form) => {
     return {type: 'ADD_PROJECT', payload: addInfoToProject(userData,form)};
 }
+// export const editProject = () => {
+//    return { type: 'DELETE_PROJECT', payload: removeProject()}
+// }
+
 
 export const addPost = (userData, form) => {
     return {type: 'ADD_POST', payload: addInfoToPost(userData, form)};
 }
+
 
 export const getJobs = () => {
     return {type: 'GET_JOBS', payload: getJobsRequest()};

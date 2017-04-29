@@ -69,9 +69,10 @@ class AddProjectForm extends Component {
   }
 
 }
-AddProjectForm = reduxForm({
-  form: 'project' // a unique name for this form
-})(AddProjectForm);
+
+// AddProjectForm = reduxForm({
+//   form: 'project' // a unique name for this form
+// })(AddProjectForm);
 
 
 
