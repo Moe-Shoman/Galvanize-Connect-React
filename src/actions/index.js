@@ -76,11 +76,6 @@ const getJobsRequest = () => {
     return axios.get('http://service.dice.com/api/rest/jobsearch/v1/simple.json?text=javascript&city=94102&pgcnt=20').then((res) => res.data.resultItemList)
 }
 
-const fetchPostsFromFireBase = () => {
-  let postsInFireBase = firebase.database().ref("feed/posts");
-
-}
-
 
 export const addInfoToPost = (userData, form) => {
   const postInfo = {
@@ -88,14 +83,16 @@ export const addInfoToPost = (userData, form) => {
     name: userData.name,
     time: new Date(),
     comments: [],
-    photoURL: userData.photo
+    photo: userData.photo
   }
-  console.log('post info !!!!!', postInfo);
   addPostToFireBase(postInfo);
   return postInfo;
 }
 
-
+function restructureFetchedFireBasePosts(posts) {
+  let restructuredPosts = Object.values(posts)
+  return restructuredPosts;
+}
 
 //ACTION CREATORS
 export const login = (props) => {
@@ -119,8 +116,8 @@ export const getJobs = () => {
     return {type: 'GET_JOBS', payload: getJobsRequest()};
 }
 
-export const fetchPosts = () => {
-  return {type: 'FETCH_POSTS', payload: fetchPostsFromFireBase()};
+export const fetchPosts = (posts) => {
+  return {type: 'FETCH_POSTS', payload: restructureFetchedFireBasePosts(posts)};
 }
 
 export const addSkill = () => {
