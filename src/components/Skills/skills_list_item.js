@@ -1,23 +1,22 @@
 import React from 'react';
 // import semantic from 'semantic-ui-react';
 import './skill.css';
+import {connect} from 'react-redux';
 
-const Skill = () => {
+const mapStateToProps = ({skills}) => {
+  return {
+    skills
+  }
+}
 
+const Skill = (props) => {
+  const { name } = props;
       return (
         <div>
-          <h2>List of Skills</h2>
-          <div className="allskills">
-            <div className="skillFormat">  one skill here</div>
-            <div className="skillFormat">  one skill here</div>
-            <div className="skillFormat">  one skill here</div>
-            <div className="skillFormat">  one skill here</div>
-            <div className="skillFormat">  one skill here</div>
-          </div>
-          <div>
-            <p>Here we will find the format for each skill the user enters</p>
+          <div className="skillFormat">
+            <p>{name}</p>
           </div>
         </div>
       )
 }
-export default Skill;
+export default connect(mapStateToProps)(Skill);

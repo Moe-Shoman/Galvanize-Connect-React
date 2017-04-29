@@ -1,11 +1,11 @@
 import initialState from './initialState';
 
-export default function (projects = initialState.projects, action){
+export default function (state = initialState.projects, action){
   switch (action.type) {
     case 'ADD_PROJECT':
-      return [...projects, action.payload]
+      return [...state, action.payload]
       break;
     default:
-      return projects
+      return state
   }
 }
