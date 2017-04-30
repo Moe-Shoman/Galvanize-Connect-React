@@ -3,16 +3,17 @@ import React from 'react';
 import './skill.css';
 import {connect} from 'react-redux';
 
-const mapStateToProps = ({skills}) => {
+const mapStateToProps = ({ skills }) => {
   return {
     skills
   }
 }
 
 const Skill = (props) => {
-  const { name } = props;
+
+  const { name } = this.props;
       return (
-        <div>
+        <div >
           <div className="skillFormat">
             <p>{name}</p>
           </div>
