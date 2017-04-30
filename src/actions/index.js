@@ -48,7 +48,7 @@ export const addInfoToPost = (userData, form) => {
 
 
 export const logMe = () => {
- alert('Comment component is on board');
+ alert ('Comment component is on board');
 }
 
 

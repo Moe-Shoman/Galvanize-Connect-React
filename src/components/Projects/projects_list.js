@@ -19,9 +19,12 @@ const _renderProject = (projects) => {
       )
     }
    return projects.map((project) => {
+     console.log("PROJECT+++++", project);
     return (
             <div key="project.projectName">
+
                 <div>{project.projectName}</div>
+
                 <div>{project.description}</div>
             </div>
             )
