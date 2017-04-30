@@ -29,19 +29,14 @@ const loginRequest = () => {
     })
 }
 
+// information being sent to Firebase DB
 const addProjectToFireBase = (userData, projectInfo) => {
-  const userInfo = {
-    project: userData.project,
-    description: userData.description
-  }
-  // console.log("The DATA HERE", userData.user);
-  // console.log("The PRO HERE", projectInfo);
-  // let passedInProject = form['object Object'].values;
-  // console.log("YWAYAYAYA", passedInProject);
-  // console.log("FORM HERE !!!!!", form['object Object'].values.projectName);
-  // // console.log("This is the PROJECT info", projectObj);
-  let ProjectInFB = firebase.database().ref(`users/${userData.user}`).push();
-   ProjectInFB.set(userInfo);
+  // const userInfo = {
+  //   projectTitle: userData.project,
+  //   description: userData.description
+  // }
+  let ProjectInFB = firebase.database().ref(`users/${userData.user}`);
+   ProjectInFB.child("Projects").set(projectInfo);
 
 }
 
@@ -52,9 +47,7 @@ export const addInfoToProject = (userData, form) => {
   console.log("USER DATA INSIDE ADDINF", userData.name);
   const projectInfo ={
     user: userData.name,
-
-    // projects:[],
-    project: allProVals.projectName,
+    projectTitle: allProVals.projectName,
     description: allProVals.description
   }
   // let passedInProject = form['object Object'].values;
