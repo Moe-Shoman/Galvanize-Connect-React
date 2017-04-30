@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {reduxForm, Field  } from 'redux-form';
+import { reduxForm, Field  } from 'redux-form';
 import './projectform.css';
 // import {Field, Form, Group, Button, Input, TextArea} from 'semantic-ui-react';
 import { bindActionCreators } from 'redux';

@@ -29,44 +29,44 @@ const loginRequest = () => {
     })
 }
 
-const addProjectToFireBase = (userData, projectInfo) => {
-  const userInfo = {
-    project: userData.project,
-    description: userData.description
-  }
-  // console.log("The DATA HERE", userData.user);
-  // console.log("The PRO HERE", projectInfo);
-  // let passedInProject = form['object Object'].values;
-  // console.log("YWAYAYAYA", passedInProject);
-  // console.log("FORM HERE !!!!!", form['object Object'].values.projectName);
-  // // console.log("This is the PROJECT info", projectObj);
-  let ProjectInFB = firebase.database().ref(`users/${userData.user}`).push();
-   ProjectInFB.set(userInfo);
-
-}
-
-export const addInfoToProject = (userData, form) => {
-  // console.log("IN addInfoToProject");
-  const allProVals = form['object Object'].values
-  // console.log("I want to see this", allProVals);
-  console.log("USER DATA INSIDE ADDINF", userData.name);
-  const projectInfo ={
-    user: userData.name,
-
-    // projects:[],
-    project: allProVals.projectName,
-    description: allProVals.description
-  }
-  // let passedInProject = form['object Object'].values;
-  // console.log("YWAYAYAYA", passedInProject);
-  // console.log("FORM HERE !!!!!", form['object Object'].values.projectName);
-  // // console.log("This is the PROJECT info", projectObj);
-  // let ProjectInFB = firebase.database().ref(`users/${name}`).push();
-  //  ProjectInFB.set(passedInProject);
-  //  return
-  addProjectToFireBase(projectInfo, userData);
-  return projectInfo;
-}
+// const addProjectToFireBase = (userData, projectInfo) => {
+//   const userInfo = {
+//     project: userData.project,
+//     description: userData.description
+//   }
+//   // console.log("The DATA HERE", userData.user);
+//   // console.log("The PRO HERE", projectInfo);
+//   // let passedInProject = form['object Object'].values;
+//   // console.log("YWAYAYAYA", passedInProject);
+//   // console.log("FORM HERE !!!!!", form['object Object'].values.projectName);
+//   // // console.log("This is the PROJECT info", projectObj);
+//   let ProjectInFB = firebase.database().ref(`users/${userData.user}`).push();
+//    ProjectInFB.set(userInfo);
+//
+// }
+//
+// export const addInfoToProject = (userData, form) => {
+//   // console.log("IN addInfoToProject");
+//   const allProVals = form['object Object'].values
+//   // console.log("I want to see this", allProVals);
+//   console.log("USER DATA INSIDE ADDINF", userData.name);
+//   const projectInfo ={
+//     user: userData.name,
+//
+//     // projects:[],
+//     project: allProVals.projectName,
+//     description: allProVals.description
+//   }
+//   // let passedInProject = form['object Object'].values;
+//   // console.log("YWAYAYAYA", passedInProject);
+//   // console.log("FORM HERE !!!!!", form['object Object'].values.projectName);
+//   // // console.log("This is the PROJECT info", projectObj);
+//   // let ProjectInFB = firebase.database().ref(`users/${name}`).push();
+//   //  ProjectInFB.set(passedInProject);
+//   //  return
+//   addProjectToFireBase(projectInfo, userData);
+//   return projectInfo;
+// }
 
 
 
@@ -94,13 +94,23 @@ function restructureFetchedFireBasePosts(posts) {
   return restructuredPosts;
 }
 
+function addProjectToFireBase(username, project) {
+  let userProjectsInFireBase = firebase.database().ref("feed/posts").push();
+  
+}
+function structuredProject(userData, form) {
+  const allProjectValues = form['object Object'].values;
+  console.log(allProjectValues, 'project values');
+
+}
+
 //ACTION CREATORS
 export const login = (props) => {
     return {type: 'LOGIN', payload: loginRequest()};
 }
 
 export const addProject = ( userData, form) => {
-    return {type: 'ADD_PROJECT', payload: addInfoToProject(userData,form)};
+    return {type: 'ADD_PROJECT', payload: structuredProject(userData,form)};
 }
 // export const editProject = () => {
 //    return { type: 'DELETE_PROJECT', payload: removeProject()}
@@ -108,7 +118,7 @@ export const addProject = ( userData, form) => {
 
 
 export const addPost = (userData, form) => {
-    return {type: 'ADD_POST', payload: addInfoToPost(userData, form)};
+    return {type: 'ADD_POST', payload: structuredProject(userData, form)};
 }
 
 
