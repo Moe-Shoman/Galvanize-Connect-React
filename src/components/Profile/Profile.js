@@ -5,7 +5,7 @@ import ProjectsList from '../Projects/projects_list';
 import SkillsList from '../Skills/skills_list';
 import AddProjectForm from '../AddProject/add_project_form';
 import { connect } from 'react-redux';
-
+import firebase from 'firebase';
 
 function mapStateToProps({ userData }){
   return {
@@ -21,9 +21,7 @@ const renderUserName = (userData) => {
 }
 
 class Profile extends Component {
-
     render() {
-      console.log(this.props.userData);
       return (
       <div>
         <div className="userPro">
@@ -32,9 +30,9 @@ class Profile extends Component {
             <img className="ui circular image imgPro" src={this.props.userData.photo}></img>
         </div>
         <div>
-          <ProjectsList />
           <SkillsList />
           <AddProjectForm />
+          <ProjectsList />
         </div>
       </div>
     );

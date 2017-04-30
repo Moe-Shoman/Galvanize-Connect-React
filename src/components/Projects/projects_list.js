@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
-
+import { fetchProjects } from '../../actions'
 import { connect } from 'react-redux';
+import firebase from 'firebase';
 
 
-
-function mapStateToProps({ projects }){
+function mapStateToProps({ projects, userData }){
   return {
-    projects
+    projects,
+    userData
   }
 }
 
@@ -18,14 +19,13 @@ const _renderProject = (projects) => {
         </div>
       )
     }
-   return projects.map((project) => {
-     console.log("PROJECT+++++", project);
+   return projects.map((project, i) => {
     return (
-            <div key="project.projectName">
+            <div key={i}>
 
-                <div>{project.projectName}</div>
+                <div>PROJECT TITLE: {project.projectName}</div>
 
-                <div>{project.description}</div>
+                <div>DESCRIPTION: {project.description}</div>
             </div>
             )
   })
@@ -33,6 +33,15 @@ const _renderProject = (projects) => {
 
 
 class ProjectsList extends Component {
+  constructor(props){
+    super(props)
+  }
+  componentDidMount(){
+    console.log(this.props.userData.name, 'in mount profile');
+    firebase.database().ref(`users/${this.props.userData.name}/projects`).once("value", (snapshot) => {
+      return this.props.fetchProjects(snapshot.val());
+    })
+  }
 
   render () {
     const {projects} = this.props;
@@ -45,54 +54,4 @@ class ProjectsList extends Component {
 }
 
 
-// const ProjectsList = ({projects}) => {
-// console.log("here is the ProjectsList", projects);
-//
-//   if(projects.length === 0){
-//     return (
-//       <div>
-//         <button>Add a Project</button>
-//       </div>
-//     )
-//   }
-//   return (
-//     <div className="theproject">{_renderProject}</div>
-//   )
-// }
-  //   return projects.map((projectitem) => {
-  //     console.log("projectItem", projectitem.projectName);
-  //   return (
-  //     <div key={projectitem.projectName}>
-  //       <div>
-  //       {projectitem.projectName}
-  //       </div>
-  //       <div>
-  //       {projectitem.description}
-  //       </div>
-  //     </div>
-  //   )
-  // })
-// }
-
-
-  // render(){
-  //   console.log('the props in side project lis', this.props)
-  //   return (
-  //     <ul className="col-md-4 list-group">
-  //       <Project/>
-  //     </ul>
-  //   )
-  //
-  // }
-// }
-  // const projectItems = props.projects.map((project)=> {
-  //   return <Project/>
-  // });
-// function mapStateToProps({ projects }){
-//   console.log(projects);
-//   return {
-//     projects
-//   }
-// }
-
-export default connect(mapStateToProps)(ProjectsList);
+export default connect(mapStateToProps, { fetchProjects })(ProjectsList);
