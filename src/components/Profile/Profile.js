@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 // import semantic from 'semantic-ui-react';
 import './profile.css';
-import ProjectsList from '../Projects/projects_list';
+// import ProjectsList from '../Projects/projects_list';
 import SkillsList from '../Skills/skills_list';
 import AddProjectForm from '../AddProject/add_project_form';
 import { connect } from 'react-redux';
 import firebase from 'firebase';
+import AddSkillsForm from '../Skills/skills_form';
 
 function mapStateToProps({ userData }){
   return {
@@ -32,7 +33,8 @@ class Profile extends Component {
         <div>
           <SkillsList />
           <AddProjectForm />
-          <ProjectsList />
+          <AddSkillsForm />
+          {/* <ProjectsList /> */}
         </div>
       </div>
     );
