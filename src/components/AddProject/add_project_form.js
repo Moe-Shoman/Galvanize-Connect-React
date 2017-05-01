@@ -7,10 +7,7 @@ import { addProject } from '../../actions';
 import { connect } from 'react-redux';
 
 
-
-
-
-function mapStateToProps({ userData, projects, form}){
+function mapStateToProps({ userData, projects, form }){
   return {
     userData,
     projects,

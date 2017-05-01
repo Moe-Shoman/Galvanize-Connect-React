@@ -3,16 +3,23 @@ import Skill from './skills_list_item';
 import {connect} from 'react-redux';
 import './skill.css';
 
-const mapStateToProps = ({ skills }) => {
+const mapStateToProps = ({  skills, userData }) => {
   return {
-    skills
+    skills,
+    userData
   }
 }
+
+// const renderKills = (skills) => {
+//   return
+// }
 
 const SkillsList = ({ skills }) => {
     const allSkills = skills.map((e, i)=>{
       return (
-        <Skill name={e} key={i}/>
+        <div>
+         <Skill skillName={e} key={i}/>
+        </div>
       )
     })
 
