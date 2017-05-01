@@ -62,6 +62,21 @@ function structuredProject(userData, form) {
   addProjectToFireBase(username, allProjectValues);
   return allProjectValues;
 }
+function structuredSkill(userData, form) {
+  console.log("here is the fiven USERDATA", userData)
+  console.log("Here is the given formInfo", form);
+  const  givenSkills = form['object Object'].values.skillName;
+
+  console.log("INTHE STRUCTIRESSKILL FUNC", givenSkills);
+  const userName = userData.name;
+  addSkillToFireBase(userName, givenSkills);
+  return givenSkills;
+}
+
+function addSkillToFireBase(userName, skill){
+  let userSkillsInFireBase = firebase.database().ref(`users/${userName}/skills`).push();
+  userSkillsInFireBase.set(skill)
+}
 
 //ACTION CREATORS
 export const login = (props) => {
@@ -89,6 +104,10 @@ export const fetchProjects = (projects) => {
   return {type: 'FETCH_PROJECTS', payload: restructureFetchedFireBaseObjects(projects)};
 }
 
-export const addSkill = () => {
-  return {type: 'Add_SKILL', payload: ""}
+export const addSkill = (userData, form) => {
+  return {type: 'ADD_SKILL', payload: structuredSkill(userData, form)};
+}
+
+export const fetchSkills = (skills) => {
+  return {type: 'FETCH_SKILLS', payload: restructureFetchedFireBaseObjects(skills)};
 }
