@@ -6,6 +6,10 @@ import SkillsList from '../Skills/skills_list';
 import AddProjectForm from '../AddProject/add_project_form';
 import { connect } from 'react-redux';
 
+//trying to linkt he button to the form.
+
+import { Link } from 'react-router';
+import SkillForm from '../Skills/skills_form';
 
 function mapStateToProps({ userData }){
   return {
@@ -32,9 +36,14 @@ class Profile extends Component {
             <img className="ui circular image imgPro" src={this.props.userData.photo}></img>
         </div>
         <div>
-          <ProjectsList />
+          {/* <ProjectsList /> */}
+          <SkillForm />
           <SkillsList />
-          <AddProjectForm />
+          {/* <AddProjectForm /> */}
+          {/* <div className="text-sx-right">
+            <Link to ="/skills_form" className="button">Add A Skill</Link> */}
+              {/* <button onClick={}>Add a Skill</button> */}
+          {/* </div> */}
         </div>
       </div>
     );

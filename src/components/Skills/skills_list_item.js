@@ -9,13 +9,13 @@ const mapStateToProps = ({ skills }) => {
   }
 }
 
-const Skill = (props) => {
 
-  const { name } = this.props;
+const Skill = (props) => {
+  const { skillName } = this.props;
       return (
-        <div >
+        <div>
           <div className="skillFormat">
-            <p>{name}</p>
+            <p>{skillName}</p>
           </div>
         </div>
       )

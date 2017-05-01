@@ -82,11 +82,34 @@ export const addInfoToPost = (userData, form) => {
   return postInfo;
 }
 
+
+
 function restructureFetchedFireBasePosts(posts) {
   let restructuredPosts = Object.values(posts)
   return restructuredPosts;
 }
+const getSkillFromForm = (userData, form) => {
+  // console.log("INSIDE SKILL ACTION FUNCTION", form)
+  const givenSkill = form['object Object'].values.skill;
+  console.log("The skill given", givenSkill);
+  return sendSkillToFireBase(givenSkill);
+}
 
+const sendSkillToFireBase = (userData, skill )=> {
+  console.log("USERDATA", userData);
+  console.log("SKILL", skill);
+  return "HERE IS THE RETURNED VALUE TO FIREBASE", userData;
+}
+
+// const addProjectToFireBase = (userData, projectInfo) => {
+//   // const userInfo = {
+//   //   projectTitle: userData.project,
+//   //   description: userData.description
+//   // }
+//   let ProjectInFB = firebase.database().ref(`users/${userData.user}`);
+//    ProjectInFB.child("Projects").set(projectInfo);
+//
+// }
 //ACTION CREATORS
 export const login = (props) => {
     return {type: 'LOGIN', payload: loginRequest()};
@@ -113,6 +136,6 @@ export const fetchPosts = (posts) => {
   return {type: 'FETCH_POSTS', payload: restructureFetchedFireBasePosts(posts)};
 }
 
-export const addSkill = () => {
-  return {type: 'Add_SKILL', payload: ""}
+export const addSkill = (userData, form) => {
+  return {type: 'ADD_SKILL', payload: getSkillFromForm(userData, form )}
 }
