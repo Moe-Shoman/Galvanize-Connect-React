@@ -17,6 +17,7 @@ const loginRequest = () => {
     provider.addScope('email');
     provider.addScope('https://www.googleapis.com/auth/plus.login')
     return firebase.auth().signInWithPopup(provider).then((res) => {
+      console.log('res');
         const user = res.user;
         addNonExistingUsers(user);
         return user
@@ -30,19 +31,21 @@ const getJobsRequest = () => {
     return axios.get('http://service.dice.com/api/rest/jobsearch/v1/simple.json?text=javascript&city=94102&pgcnt=20').then((res) => res.data.resultItemList)
 }
 
-const addPostToFireBase = (postObject) => {
-  let PostsInFireBase = firebase.database().ref("feed/posts").push();
+const addPostToFireBase = (postObject, postKey) => {
+  let PostsInFireBase = firebase.database().ref(`feed/posts/${postKey}`);
   PostsInFireBase.set(postObject);
 }
 
 export const addInfoToPost = (userData, input) => {
+  let postKey = firebase.database().ref('feed').child('posts').push().key;
   const postInfo = {
     post: input,
     name: userData.name,
     photo: userData.photo,
-    date: (new Date()).toString()
+    date: (new Date()).toString(),
+    postKey
   }
-  addPostToFireBase(postInfo);
+  addPostToFireBase(postInfo, postKey);
   return postInfo;
 }
 

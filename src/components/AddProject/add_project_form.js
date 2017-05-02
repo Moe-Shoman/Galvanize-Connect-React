@@ -29,7 +29,7 @@ class AddProjectForm extends Component {
         })
     }
     render() {
-      const {userData, addProject, form} = this.props;
+      const {userData, addProject } = this.props;
       if (this.state.showForm) {
         return(
         <form className="theForm ui form">
