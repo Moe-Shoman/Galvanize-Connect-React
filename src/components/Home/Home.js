@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import ReplyToPost from '../ReplyToPost/ReplyToPost'
 import { bindActionCreators } from 'redux';
 import { addMessage } from '../../actions'
 import { Redirect} from 'react-router-dom';
 import Jobs from './Jobs';
 import firebase from 'firebase'
 import Feed from './Feed';
-import Comment from './Comments'
 
 
 class Home extends Component {
@@ -53,7 +51,6 @@ class Home extends Component {
    return (
     <div>
      <li key={message.id}>{message.text}</li>
-     <ReplyToPost/>
     </div>
    )
   })
@@ -67,7 +64,6 @@ class Home extends Component {
     {/* <button onClick={this.submitMessage}>Subtmit Post</button>
 
     <button onClick={this.submitMessage}>Subtmit Message</button> */}
-    <Comment/>
     <Feed/>
     <Jobs />
     {/* <MuiThemeProvider>

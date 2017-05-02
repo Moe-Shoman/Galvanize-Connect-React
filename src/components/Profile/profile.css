@@ -8,6 +8,8 @@
     margin-bottom: 200px;
     font-style: oblique;
     font-size: 4em;
+    width: 90%;
+    float: right;
 }
 h1 {
   font-size: 6rem;
