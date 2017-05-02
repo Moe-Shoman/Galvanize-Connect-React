@@ -30,7 +30,7 @@ class AddSkillsForm extends Component {
   }
   render() {
    const { userData, addSkill } = this.props;
-    if(this.state.showForm) {
+    if (this.state.showForm) {
       return (
        <form className="theForm ui form">
          <div>
@@ -42,12 +42,12 @@ class AddSkillsForm extends Component {
          <button className="ui button" type="submit" onClick={(e) => {
            e.preventDefault();
            addSkill(userData, this.state.skill);
-           {this.toggleForm()}
+           this.toggleForm()
          }}>Submit</button>
          <div>
            <button className='ui button' type="cancel" onClick={(e) =>{
              e.preventDefault();
-             {this.toggleForm()}
+             this.toggleForm()
            }}>Cancel</button>
          </div>
        </form>

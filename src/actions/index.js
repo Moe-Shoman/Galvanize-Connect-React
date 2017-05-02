@@ -17,6 +17,7 @@ const loginRequest = () => {
     provider.addScope('email');
     provider.addScope('https://www.googleapis.com/auth/plus.login')
     return firebase.auth().signInWithPopup(provider).then((res) => {
+      console.log('res');
         const user = res.user;
         addNonExistingUsers(user);
         return user
@@ -30,19 +31,21 @@ const getJobsRequest = () => {
     return axios.get('http://service.dice.com/api/rest/jobsearch/v1/simple.json?text=javascript&city=94102&pgcnt=20').then((res) => res.data.resultItemList)
 }
 
-const addPostToFireBase = (postObject) => {
-  let PostsInFireBase = firebase.database().ref("feed/posts").push();
+const addPostToFireBase = (postObject, postKey) => {
+  let PostsInFireBase = firebase.database().ref(`feed/posts/${postKey}`);
   PostsInFireBase.set(postObject);
 }
 
 export const addInfoToPost = (userData, input) => {
+  let postKey = firebase.database().ref('feed').child('posts').push().key;
   const postInfo = {
     post: input,
     name: userData.name,
     photo: userData.photo,
-    date: (new Date()).toString()
+    date: (new Date()).toString(),
+    postKey
   }
-  addPostToFireBase(postInfo);
+  addPostToFireBase(postInfo, postKey);
   return postInfo;
 }
 
@@ -69,6 +72,28 @@ function updateSkillsAndSendToDB(userData, skill) {
 function addSkillToFireBase(userName, skill){
   let userSkillsInFireBase = firebase.database().ref(`users/${userName}/skills`).push();
   userSkillsInFireBase.set(skill)
+}
+
+export const addReplyToPost = (userData, comment) => {
+ // console.log ('================================, ', comment['object Object']);
+ console.log ('================================, ', comment);
+ const commentInfo = {
+  comment: comment,
+  name: userData.name,
+  time: new Date(),
+  photo: userData.photo
+ }
+ addCommentToFB(commentInfo);
+ return commentInfo;
+}
+
+const addCommentToFB = (commentObj) => {
+   let newPostKey = firebase.database().ref().child('posts').push().key;
+   let comments = firebase.database().ref(`${newPostKey}/comments`).push();
+   comments.set(commentObj);
+
+   // let ref = firebase.database().getInstance();
+   // let post =
 }
 
 //ACTION CREATORS
@@ -102,4 +127,8 @@ export const addSkill = (userData, skill) => {
 
 export const fetchSkills = (skills) => {
   return {type: 'FETCH_SKILLS', payload: restructureFetchedFireBaseObjects(skills)};
+}
+
+export const addComment = (userData, comment) => {
+ return {type: 'ADD_COMMENTS', payload: addReplyToPost(userData, comment)};
 }
