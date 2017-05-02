@@ -21,7 +21,7 @@ class Feed extends Component {
     render() {
       const Posts = this.props.posts.map((post, ind) => {
        return (
-        <div>
+        <div key={ind}>
          <li key={post.ind}>{post.name}</li>
          <img src={post.photo} alt=""/>
          <li>{post.post}</li>

@@ -8,10 +8,9 @@ import Home from './components/Home/Home';
 import './App.css';
 import firebase from 'firebase';
 import { connect } from 'react-redux';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
-
-import LogInForm from './components/logIn';
-
+injectTapEventPlugin();
 class App extends Component {
   constructor(props){
     super(props)
@@ -35,17 +34,17 @@ class App extends Component {
 
       <div className="page">
         <ul className='navbar-ul'>
-          <li className='navbar-li'><Link to='/' className='navbar-Link'>Login</Link></li>
-          <li className='navbar-li'><Link to='/Home' className='navbar-Link'>Home</Link></li>
-          <li className='navbar-li'><Link to='/Cohort' className='navbar-Link'>Cohort</Link></li>
-          <li className='navbar-li'><Link to='Profile' className='navbar-Link'>Profile</Link></li>
+          <li className='navbar-li'><Link to='/' repalce={true}>Login</Link></li>
+          <li className='navbar-li'><Link to='/Home' repalce={true}>Home</Link></li>
+          <li className='navbar-li'><Link to='/Cohort' repalce={true}>Cohort</Link></li>
+          <li className='navbar-li'><Link to='/Profile' repalce={true}>Profile</Link></li>
         </ul>
        {/* <SideNav/> */}
-       <Route path='/Home' component={Home} />
+       <Route path='/Home' render={() => ( !loggedIn ? (<Redirect to="/Login" />): (<Home/>))}/>
        <Route path='/Login' component={GoogleAuthentication} />
        <Route exact path='/' render={() => ( loggedIn ? (<Redirect to="/Home" />): (<Redirect to="/Login" />))} />
-       <Route path='/Cohort' component={Cohort}/>
-       <Route path='/Profile' component={Profile}/>
+       <Route path='/Cohort' render={() => ( !loggedIn ? (<Redirect to="/Login" />): (<Cohort/>))}/>
+       <Route path='/Profile' render={() => ( !loggedIn ? (<Redirect to="/Login" />): (<Profile/>))}/>
       </div>
      </Router>
     </div>
