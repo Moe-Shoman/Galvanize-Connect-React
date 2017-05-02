@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import { addSkill } from '../../actions';
 import { connect } from 'react-redux';
+import './skill.css';
 
-
-
-
-
-function mapStateToProps({ userData, skills}){
+function mapStateToProps({ userData, skills }){
   return {
     userData,
-    skills,
+    skills
   }
 }
 
@@ -17,7 +14,8 @@ class AddSkillsForm extends Component {
   constructor(props){
     super(props)
     this.state = {
-      skill: ''
+      skill: '',
+      showForn: false
     }
   }
   updateInput = (event) => {
@@ -25,8 +23,14 @@ class AddSkillsForm extends Component {
       skill: event.target.value
     })
   }
+  toggleForm = () => {
+    this.setState((prevState) => {
+      return {showForm: !prevState.showForm}
+    })
+  }
   render() {
    const { userData, addSkill } = this.props;
+    if(this.state.showForm) {
       return (
        <form className="theForm ui form">
          <div>
@@ -35,13 +39,26 @@ class AddSkillsForm extends Component {
               <input className="skillName" name="skill" type="text" onChange={this.updateInput}/>
               </div>
           </div>
-         <button className="ui button" type="submit" onClick={(e) => {e.preventDefault(); addSkill(userData, this.state.skill)}}>Submit</button>
+         <button className="ui button" type="submit" onClick={(e) => {
+           e.preventDefault();
+           addSkill(userData, this.state.skill);
+           {this.toggleForm()}
+         }}>Submit</button>
+         <div>
+           <button className='ui button' type="cancel" onClick={(e) =>{
+             e.preventDefault();
+             {this.toggleForm()}
+           }}>Cancel</button>
+         </div>
        </form>
       )
+    }
+      return (
+        <div>
+            <button onClick={this.toggleForm}>ADD SKILL</button>
+        </div>
+    )
   }
 }
-
-
-
 
 export default connect(mapStateToProps, { addSkill })(AddSkillsForm)
