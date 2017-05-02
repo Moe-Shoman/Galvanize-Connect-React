@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { reduxForm, Field  } from 'redux-form';
-import { bindActionCreators } from 'redux';
 import { addSkill } from '../../actions';
 import { connect } from 'react-redux';
 
@@ -8,26 +6,36 @@ import { connect } from 'react-redux';
 
 
 
-function mapStateToProps({ userData, skills, form}){
+function mapStateToProps({ userData, skills}){
   return {
     userData,
     skills,
-    form
   }
 }
 
 class AddSkillsForm extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      skill: ''
+    }
+  }
+  updateInput = (event) => {
+    this.setState({
+      skill: event.target.value
+    })
+  }
   render() {
-   const { userData, addSkill, form } = this.props;
+   const { userData, addSkill } = this.props;
       return (
        <form className="theForm ui form">
          <div>
            <div calssName="field">
               <label htmlFor="skillName">Add Skill</label>
-              <Field className="skillName" name="skillName" component="input" type="text"/>
+              <input className="skillName" name="skill" type="text" onChange={this.updateInput}/>
               </div>
           </div>
-         <button className="ui button" type="submit" onClick={(e) => {e.preventDefault(); addSkill(userData, form)}}>Submit</button>
+         <button className="ui button" type="submit" onClick={(e) => {e.preventDefault(); addSkill(userData, this.state.skill)}}>Submit</button>
        </form>
       )
   }
@@ -36,6 +44,4 @@ class AddSkillsForm extends Component {
 
 
 
-export default connect(mapStateToProps, { addSkill })(reduxForm({
-  form: 'AddSkillsForm',
-})(AddSkillsForm))
+export default connect(mapStateToProps, { addSkill })(AddSkillsForm)
