@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReplyToPost from '../ReplyToPost/ReplyToPost'
 import { bindActionCreators } from 'redux';
 import { addMessage } from '../../actions'
 import { Redirect} from 'react-router-dom';
@@ -21,6 +20,7 @@ class Home extends Component {
 
  componentDidMount() {
   firebase.database().ref('messages/').on('value', (snapshot) => {
+   console.log('snapshot is ---------', snapshot.val());
    const currentMessages = snapshot.val()
 
    if(currentMessages != null) {
@@ -51,7 +51,6 @@ class Home extends Component {
    return (
     <div>
      <li key={message.id}>{message.text}</li>
-     <ReplyToPost/>
     </div>
    )
   })
@@ -59,12 +58,12 @@ class Home extends Component {
 
    <div>
      {currentMessage}
-    <input onChange={this.updateMessage} type="text" placeholder="Message" />
+    {/* <input onChange={this.updateMessage} type="text" placeholder="Message" /> */}
     <br/>
 
-    <button onClick={this.submitMessage}>Subtmit Post</button>
+    {/* <button onClick={this.submitMessage}>Subtmit Post</button>
 
-    <button onClick={this.submitMessage}>Subtmit Message</button>
+    <button onClick={this.submitMessage}>Subtmit Message</button> */}
     <Feed/>
     <Jobs />
     {/* <MuiThemeProvider>

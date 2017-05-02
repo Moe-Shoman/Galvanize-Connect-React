@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
-import PostsForm from './PostsForm';
 import { connect } from 'react-redux';
 import { fetchPosts } from '../../actions';
+import PostsForm from './PostsForm'
+import Comments from './Comments'
+
 import firebase from 'firebase';
 
 function mapStateToProps({ posts }){
   return {
-    posts
+    posts,
   }
 }
 class Feed extends Component {
@@ -25,6 +27,7 @@ class Feed extends Component {
          <li key={post.ind}>{post.name}</li>
          <img src={post.photo} alt=""/>
          <li>{post.post}</li>
+         <div><Comments/></div>
         </div>
        )
       })
