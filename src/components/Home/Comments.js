@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {addComment} from '../../actions';
-// import { Button, Modal } from 'semantic-ui-react'
-// import { bindActionCreators } from 'redux';
 
 function mapStateToProps({userData, form}) {
     return {userData, form}
