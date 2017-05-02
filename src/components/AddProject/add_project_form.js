@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import './projectform.css';
-// import {Field, Form, Group, Button, Input, TextArea} from 'semantic-ui-react';
-import {bindActionCreators} from 'redux';
 import {addProject} from '../../actions';
 import {connect} from 'react-redux';
 
 function mapStateToProps({userData, projects}) {
-    return {userData, projects}
+    return {
+      userData,
+      projects
+    }
 }
 
 class AddProjectForm extends Component {
@@ -48,8 +49,14 @@ class AddProjectForm extends Component {
             addProject(userData, {
               projectName: this.state.projectName,
               description: this.state.description
-            })
-          }}>Submit</button>
+            }); {this.toggleForm()}
+          }} >Submit</button>
+          <div>
+            <button className='ui button' type="cancel" onClick={(e) =>{
+              e.preventDefault();
+              {this.toggleForm()}
+            }} >Cancel</button>
+          </div>
         </form>)
       }
         return (
