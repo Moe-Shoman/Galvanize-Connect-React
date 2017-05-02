@@ -9,5 +9,6 @@ export default {
   projects: [],
   jobs: [],
   posts: [],
+  comments: [],
   skills: []
 }
