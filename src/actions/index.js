@@ -74,6 +74,28 @@ function addSkillToFireBase(userName, skill){
   userSkillsInFireBase.set(skill)
 }
 
+export const addReplyToPost = (userData, comment) => {
+ // console.log ('================================, ', comment['object Object']);
+ console.log ('================================, ', comment);
+ const commentInfo = {
+  comment: comment,
+  name: userData.name,
+  time: new Date(),
+  photo: userData.photo
+ }
+ addCommentToFB(commentInfo);
+ return commentInfo;
+}
+
+const addCommentToFB = (commentObj) => {
+   let newPostKey = firebase.database().ref().child('posts').push().key;
+   let comments = firebase.database().ref(`${newPostKey}/comments`).push();
+   comments.set(commentObj);
+
+   // let ref = firebase.database().getInstance();
+   // let post =
+}
+
 //ACTION CREATORS
 export const login = (props) => {
     return {type: 'LOGIN', payload: loginRequest()};
@@ -105,4 +127,8 @@ export const addSkill = (userData, skill) => {
 
 export const fetchSkills = (skills) => {
   return {type: 'FETCH_SKILLS', payload: restructureFetchedFireBaseObjects(skills)};
+}
+
+export const addComment = (userData, comment) => {
+ return {type: 'ADD_COMMENTS', payload: addReplyToPost(userData, comment)};
 }
