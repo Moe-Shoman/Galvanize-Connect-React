@@ -17,7 +17,6 @@ const loginRequest = () => {
     provider.addScope('email');
     provider.addScope('https://www.googleapis.com/auth/plus.login')
     return firebase.auth().signInWithPopup(provider).then((res) => {
-      console.log('res');
         const user = res.user;
         addNonExistingUsers(user);
         return user
@@ -74,22 +73,23 @@ function addSkillToFireBase(userName, skill){
   userSkillsInFireBase.set(skill)
 }
 
-export const addReplyToPost = (userData, comment) => {
+export const addReplyToPost = (userData, comment, postKey, postIndex) => {
  // console.log ('================================, ', comment['object Object']);
- console.log ('================================, ', comment);
+ console.log ('================================, ', comment, postIndex);
  const commentInfo = {
   comment: comment,
   name: userData.name,
-  time: new Date(),
-  photo: userData.photo
+  time: (new Date()).toString(),
+  photo: userData.photo,
+  postIndex
  }
- addCommentToFB(commentInfo);
+ addCommentToFB(commentInfo, postKey);
  return commentInfo;
 }
 
-const addCommentToFB = (commentObj) => {
-   let newPostKey = firebase.database().ref().child('posts').push().key;
-   let comments = firebase.database().ref(`${newPostKey}/comments`).push();
+const addCommentToFB = (commentObj, postKey) => {
+   let comments = firebase.database().ref(`feed/posts/${postKey}/comments`).push();
+  //  let comments = firebase.database().ref(`${newPostKey}/comments`).push();
    comments.set(commentObj);
 
    // let ref = firebase.database().getInstance();
@@ -126,9 +126,11 @@ export const addSkill = (userData, skill) => {
 }
 
 export const fetchSkills = (skills) => {
+  console.log('skils in fetch skills', skills);
   return {type: 'FETCH_SKILLS', payload: restructureFetchedFireBaseObjects(skills)};
 }
-
-export const addComment = (userData, comment) => {
- return {type: 'ADD_COMMENTS', payload: addReplyToPost(userData, comment)};
+// restructureFetchedFireBaseObjects(skills)
+export const addComment = (userData, comment, postKey, postIndex) => {
+  console.log(postIndex, 'postIndex in add comment');
+ return {type: 'ADD_COMMENTS', payload: addReplyToPost(userData, comment, postKey, postIndex)};
 }

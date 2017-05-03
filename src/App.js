@@ -34,10 +34,10 @@ class App extends Component {
 
       <div className="page">
         <ul className='navbar-ul'>
-          <li className='navbar-li'><Link to='/' repalce={true}>Login</Link></li>
-          <li className='navbar-li'><Link to='/Home' repalce={true}>Home</Link></li>
-          <li className='navbar-li'><Link to='/Cohort' repalce={true}>Cohort</Link></li>
-          <li className='navbar-li'><Link to='/Profile' repalce={true}>Profile</Link></li>
+          <li className='navbar-li'><Link to='/' >Login</Link></li>
+          <li className='navbar-li'><Link to='/Home' >Home</Link></li>
+          <li className='navbar-li'><Link to='/Cohort' >Cohort</Link></li>
+          <li className='navbar-li'><Link to='/Profile' >Profile</Link></li>
         </ul>
        {/* <SideNav/> */}
        <Route path='/Home' render={() => ( !loggedIn ? (<Redirect to="/Login" />): (<Home/>))}/>
