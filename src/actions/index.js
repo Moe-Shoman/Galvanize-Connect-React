@@ -149,10 +149,15 @@ export const addComment = (userData, comment, postKey, postIndex) => {
 }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 export const addCohort = (userData, cohort) => {
   console.log("ADDING THIS for nanigans ");
+=======
+
+export const addCohort = (userData, cohort) => {
+>>>>>>> parent of 3ca1d9c... Merge pull request #35 from Moe-Shoman/revert-34-addCohort
 =======
 
 export const addCohort = (userData, cohort) => {
@@ -162,6 +167,9 @@ export const addCohort = (userData, cohort) => {
 
 //need to add fetch cohort in order to show it in the user profile.
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> addCohort
+=======
+>>>>>>> parent of 3ca1d9c... Merge pull request #35 from Moe-Shoman/revert-34-addCohort
 =======
 >>>>>>> parent of 3ca1d9c... Merge pull request #35 from Moe-Shoman/revert-34-addCohort
