@@ -22,7 +22,6 @@ class AddProjectForm extends Component {
     updateInput = (event) => {
         const value = event.target.value;
         const name = event.target.name
-        console.log("NAME in UPDATEINOUT", name);
         this.setState({[name]: value})
     }
     toggleForm = () => {
