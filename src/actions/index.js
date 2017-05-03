@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const addNonExistingUsers = (userObject) => {
     const {displayName, email, photoURL} = userObject;
-    let userInFireBase = firebase.database().ref(`users/${displayName}`);
+    const userInFireBase = firebase.database().ref(`users/${displayName}`);
     userInFireBase.once("value").then((snapshot) => {
         if (!snapshot.exists()) {
             userInFireBase.set({name: displayName, email, profilePic: photoURL})
@@ -12,7 +12,7 @@ const addNonExistingUsers = (userObject) => {
     })
 }
 const loginRequest = () => {
-    let provider = new firebase.auth.GoogleAuthProvider();
+    const provider = new firebase.auth.GoogleAuthProvider();
     provider.addScope('profile');
     provider.addScope('email');
     provider.addScope('https://www.googleapis.com/auth/plus.login')
@@ -30,18 +30,19 @@ const getJobsRequest = () => {
 }
 
 const addPostToFireBase = (postObject, postKey) => {
-    let PostsInFireBase = firebase.database().ref(`feed/posts/${postKey}`);
+    const PostsInFireBase = firebase.database().ref(`feed/posts/${postKey}`);
     PostsInFireBase.set(postObject);
 }
 
 export const addInfoToPost = (userData, input) => {
-    let postKey = firebase.database().ref('feed').child('posts').push().key;
+    const postKey = firebase.database().ref('feed').child('posts').push().key;
     const postInfo = {
         post: input,
         name: userData.name,
         photo: userData.photo,
         date: (new Date()).toString(),
-        postKey
+        postKey,
+        comments: []
     }
     addPostToFireBase(postInfo, postKey);
     return postInfo;
@@ -51,17 +52,17 @@ function restructurePostsAndComments(PostsInFireBase) {
     restructuredPosts.forEach((post) => {
         if (post.comments) {
             post.comments = Object.values(post.comments)
-        }})
-    console.log('restructuredPosts', restructuredPosts);
+        }
+    })
     return restructuredPosts
 }
 function restructureFetchedFireBaseObjects(object) {
-    let restructuredPosts = Object.values(object)
+    const restructuredPosts = Object.values(object)
     return restructuredPosts;
 }
 
 function addProjectToFireBase(username, project) {
-    let userProjectsInFireBase = firebase.database().ref(`users/${username}/projects`).push();
+    const userProjectsInFireBase = firebase.database().ref(`users/${username}/projects`).push();
     userProjectsInFireBase.set(project)
 }
 function updateProjectsAndSendToDB(userData, project) {
@@ -77,36 +78,38 @@ function updateSkillsAndSendToDB(userData, skill) {
 
 function updateCohortAndSendToDB(userData, cohort) {
     addCohortToFireBase(userData, cohort);
-    return cohort
+    return cohort;
 }
 
 function addSkillToFireBase(userName, skill) {
-    let userSkillsInFireBase = firebase.database().ref(`users/${userName}/skills`).push();
-    userSkillsInFireBase.set(skill)
+    const userSkillsInFireBase = firebase.database().ref(`users/${userName}/skills`).push();
+    userSkillsInFireBase.set(skill);
 }
 
 function addCohortToFireBase(userData, cohort) {
-  let userCohortInFireBase = firebase.database()
-  userCohortInFireBase.ref(`users`).child(`${userData.name}`).update({cohort});
-  userCohortInFireBase.ref(`cohorts`).child(`${cohort}`).push(`${userData.name}`);
+    const userCohortInFireBase = firebase.database();
+    userCohortInFireBase.ref(`users`).child(`${userData.name}`).update({cohort});
+    userCohortInFireBase.ref(`cohorts`).child(`${cohort}`).push().set({
+    name: userData.name,
+    photo:userData.photo});
 }
 
-export const addReplyToPost = (userData, comment, postKey, postIndex) => {
+const addCommentToFB = (commentObj, postKey) => {
+  const comments = firebase.database().ref(`feed/posts/${postKey}/comments`).push();
+  comments.set(commentObj);
+}
+export const addCommentsToPost = (userData, comment, postKey, postIndex) => {
     const commentInfo = {
         comment: comment,
         name: userData.name,
         time: (new Date()).toString(),
         photo: userData.photo,
         postIndex
-    }
+    };
     addCommentToFB(commentInfo, postKey);
     return commentInfo;
 }
 
-const addCommentToFB = (commentObj, postKey) => {
-    let comments = firebase.database().ref(`feed/posts/${postKey}/comments`).push();
-    comments.set(commentObj);
-}
 
 //ACTION CREATORS
 export const login = (props) => {
@@ -147,15 +150,12 @@ export const addSkill = (userData, skill) => {
 }
 
 export const fetchSkills = (skills) => {
-    console.log('skils in fetch skills', skills);
     return {type: 'FETCH_SKILLS', payload: restructureFetchedFireBaseObjects(skills)};
 }
-// restructureFetchedFireBaseObjects(skills)
 export const addComment = (userData, comment, postKey, postIndex) => {
-    console.log(postIndex, 'postIndex in add comment');
     return {
         type: 'ADD_COMMENTS',
-        payload: addReplyToPost(userData, comment, postKey, postIndex)
+        payload: addCommentsToPost(userData, comment, postKey, postIndex)
     };
 }
 
@@ -163,7 +163,7 @@ export const addCohort = (userData, cohort) => {
     return {
         type: 'ADD_COHORT',
         payload: updateCohortAndSendToDB(userData, cohort)
-    }
+    };
 }
 
 //need to add fetch cohort in order to show it in the user profile.

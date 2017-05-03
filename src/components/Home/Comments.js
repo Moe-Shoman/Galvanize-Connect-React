@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {addComment} from '../../actions';
 
-function mapStateToProps({userData, form}) {
+function mapStateToProps({userData}) {
     return { userData }
 }
 
@@ -20,7 +20,6 @@ class Comments extends Component {
     })
   }
     render() {
-      console.log('this.props in comments', this.props);
      const { userData, addComment, postKey, postIndex } = this.props;
         return (
          <form>
