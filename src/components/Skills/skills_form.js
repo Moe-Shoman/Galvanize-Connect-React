@@ -35,14 +35,10 @@ class AddSkillsForm extends Component {
       return (
        <form className="theForm ui form">
          <div>
-<<<<<<< HEAD
-           <div className="field">
-=======
            <div>
->>>>>>> 004cace1e1543fd318313454bb60fe47f26b4a3f
               <label htmlFor="skillName">Add Skill</label>
               <input className="skillName" name="skill" type="text" onChange={this.updateInput}/>
-              </div>
+            </div>
           </div>
          <button className="ui button" type="submit" onClick={(e) => {
            e.preventDefault();
