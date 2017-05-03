@@ -68,30 +68,14 @@ function updateSkillsAndSendToDB(userData, skill) {
   return skill;
 }
 
-function updateCohortAndSendToDB(userData, cohort) {
-  addCohortToFireBase(userData, cohort);
-  return cohort
-}
-
 function addSkillToFireBase(userName, skill){
   let userSkillsInFireBase = firebase.database().ref(`users/${userName}/skills`).push();
   userSkillsInFireBase.set(skill)
 }
 
-<<<<<<< HEAD
-function addCohortToFireBase(userData, cohort) {
-  console.log("USERDATA", userData);
-  let userCohortInFireBase = firebase.database().ref(`users`).child(`${userData.name}`)
-  userCohortInFireBase.update({cohort});
-}
-
-
-export const addReplyToPost = (userData, comment) => {
-=======
 export const addReplyToPost = (userData, comment, postKey, postIndex) => {
  // console.log ('================================, ', comment['object Object']);
  console.log ('================================, ', comment, postIndex);
->>>>>>> 004cace1e1543fd318313454bb60fe47f26b4a3f
  const commentInfo = {
   comment: comment,
   name: userData.name,
@@ -107,6 +91,9 @@ const addCommentToFB = (commentObj, postKey) => {
    let comments = firebase.database().ref(`feed/posts/${postKey}/comments`).push();
   //  let comments = firebase.database().ref(`${newPostKey}/comments`).push();
    comments.set(commentObj);
+
+   // let ref = firebase.database().getInstance();
+   // let post =
 }
 
 //ACTION CREATORS
@@ -147,9 +134,3 @@ export const addComment = (userData, comment, postKey, postIndex) => {
   console.log(postIndex, 'postIndex in add comment');
  return {type: 'ADD_COMMENTS', payload: addReplyToPost(userData, comment, postKey, postIndex)};
 }
-
-export const addCohort = (userData, cohort) => {
-  return {type: 'ADD_COHORT', payload: updateCohortAndSendToDB(userData, cohort)}
-}
-
-//need to add fetch cohort in order to show it in the user profile.
