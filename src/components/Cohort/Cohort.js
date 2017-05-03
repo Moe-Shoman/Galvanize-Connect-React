@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import Carousel from './Carousel'
+import MemberCards from './MemberCards'
 
 export default class Cohort extends Component {
     render() {
       return (
         <div>
-          <Carousel/>
+          <MemberCards/>
         </div>
       )
     }

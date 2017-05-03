@@ -79,14 +79,14 @@ function addSkillToFireBase(userName, skill){
 }
 
 function addCohortToFireBase(userData, cohort) {
-  console.log("USERDATA", userData);
+  // console.log("USERDATA", userData);
   let userCohortInFireBase = firebase.database().ref(`users`).child(`${userData.name}`)
   userCohortInFireBase.update({cohort});
 }
 
 
 export const addReplyToPost = (userData, comment, postKey, postIndex) => {
- console.log ('================================, ', comment, postIndex);
+ // console.log ('================================, ', comment, postIndex);
  const commentInfo = {
   comment: comment,
   name: userData.name,
@@ -103,6 +103,12 @@ const addCommentToFB = (commentObj, postKey) => {
   //  let comments = firebase.database().ref(`${newPostKey}/comments`).push();
    comments.set(commentObj);
 }
+
+// export const fetchUsersFromFB = () => {
+//
+// }
+
+
 
 //ACTION CREATORS
 export const login = (props) => {
@@ -125,6 +131,10 @@ export const fetchPosts = (posts) => {
   return {type: 'FETCH_POSTS', payload: restructureFetchedFireBaseObjects(posts)};
 }
 
+export const fetchCohort = (cohort) => {
+  return {type: 'FETCH_COHORT', payload: restructureFetchedFireBaseObjects(cohort)};
+}
+
 export const fetchProjects = (projects) => {
   return {type: 'FETCH_PROJECTS', payload: restructureFetchedFireBaseObjects(projects)};
 }
@@ -134,12 +144,12 @@ export const addSkill = (userData, skill) => {
 }
 
 export const fetchSkills = (skills) => {
-  console.log('skils in fetch skills', skills);
+  // console.log('skils in fetch skills', skills);
   return {type: 'FETCH_SKILLS', payload: restructureFetchedFireBaseObjects(skills)};
 }
 // restructureFetchedFireBaseObjects(skills)
 export const addComment = (userData, comment, postKey, postIndex) => {
-  console.log(postIndex, 'postIndex in add comment');
+  // console.log(postIndex, 'postIndex in add comment');
  return {type: 'ADD_COMMENTS', payload: addReplyToPost(userData, comment, postKey, postIndex)};
 }
 

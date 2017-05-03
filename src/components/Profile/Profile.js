@@ -36,7 +36,7 @@ class Profile extends Component {
           <AddProjectForm />
           <AddSkillsForm />
           <ProjectsList />
-          {/* <AddCohort /> */}
+          <AddCohort />
         </div>
       </div>
     );
