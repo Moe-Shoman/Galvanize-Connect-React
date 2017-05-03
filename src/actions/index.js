@@ -78,9 +78,20 @@ function addSkillToFireBase(userName, skill){
   userSkillsInFireBase.set(skill)
 }
 
+<<<<<<< HEAD
+function addCohortToFireBase(userData, cohort) {
+  console.log("USERDATA", userData);
+  let userCohortInFireBase = firebase.database().ref(`users`).child(`${userData.name}`)
+  userCohortInFireBase.update({cohort});
+}
+
+
+export const addReplyToPost = (userData, comment) => {
+=======
 export const addReplyToPost = (userData, comment, postKey, postIndex) => {
  // console.log ('================================, ', comment['object Object']);
  console.log ('================================, ', comment, postIndex);
+>>>>>>> 004cace1e1543fd318313454bb60fe47f26b4a3f
  const commentInfo = {
   comment: comment,
   name: userData.name,
@@ -137,12 +148,20 @@ export const addComment = (userData, comment, postKey, postIndex) => {
  return {type: 'ADD_COMMENTS', payload: addReplyToPost(userData, comment, postKey, postIndex)};
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 export const addCohort = (userData, cohort) => {
   console.log("ADDING THIS for nanigans ");
+=======
+
+export const addCohort = (userData, cohort) => {
+>>>>>>> parent of 3ca1d9c... Merge pull request #35 from Moe-Shoman/revert-34-addCohort
   return {type: 'ADD_COHORT', payload: updateCohortAndSendToDB(userData, cohort)}
 }
 
 //need to add fetch cohort in order to show it in the user profile.
+<<<<<<< HEAD
 >>>>>>> addCohort
+=======
+>>>>>>> parent of 3ca1d9c... Merge pull request #35 from Moe-Shoman/revert-34-addCohort
