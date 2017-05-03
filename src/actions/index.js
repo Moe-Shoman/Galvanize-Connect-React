@@ -73,14 +73,6 @@ function addSkillToFireBase(userName, skill){
   userSkillsInFireBase.set(skill)
 }
 
-function addCohortToFireBase(userData, cohort) {
-  console.log("USERDATA", userData);
-  let userCohortInFireBase = firebase.database().ref(`users`).child(`${userData.name}`)
-  userCohortInFireBase.update({cohort});
-}
-
-
-
 export const addReplyToPost = (userData, comment, postKey, postIndex) => {
  // console.log ('================================, ', comment['object Object']);
  console.log ('================================, ', comment, postIndex);
@@ -142,11 +134,3 @@ export const addComment = (userData, comment, postKey, postIndex) => {
   console.log(postIndex, 'postIndex in add comment');
  return {type: 'ADD_COMMENTS', payload: addReplyToPost(userData, comment, postKey, postIndex)};
 }
-
-
-export const addCohort = (userData, cohort) => {
-  console.log("ADDING THIS for nanigans ");
-  return {type: 'ADD_COHORT', payload: updateCohortAndSendToDB(userData, cohort)}
-}
-
-//need to add fetch cohort in order to show it in the user profile.

@@ -32,10 +32,9 @@ class Profile extends Component {
         </div> */}
         <div>
           <SkillsList />
-          <AddProjectForm />
-          <AddSkillsForm />
-          <ProjectsList />
-          <AddCohort />
+          {/* <AddProjectForm /> */}
+          {/* <AddSkillsForm /> */}
+          {/* <ProjectsList /> */}
         </div>
       </div>
     );
