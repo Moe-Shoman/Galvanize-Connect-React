@@ -146,6 +146,7 @@ export const addComment = (userData, comment, postKey, postIndex) => {
 }
 
 export const addCohort = (userData, cohort) => {
+  console.log("ADDING THIS for nanigans ");
   return {type: 'ADD_COHORT', payload: updateCohortAndSendToDB(userData, cohort)}
 }
 
