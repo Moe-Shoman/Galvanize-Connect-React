@@ -6,7 +6,7 @@ import posts from './reducer_addPosts';
 import userData  from './reducer_login';
 import skills from './skills_reducer';
 import jobs from './reducer_getJobs';
-import comments from './reducer_comment';
+// import comments from './reducer_comment';
 
 const rootReducer = combineReducers({
   form: formReducer,
@@ -15,7 +15,6 @@ const rootReducer = combineReducers({
   jobs,
   posts,
   skills,
-  comments
 });
 
 export default rootReducer;

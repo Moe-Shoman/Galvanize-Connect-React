@@ -22,10 +22,10 @@ class Feed extends Component {
         if (commentObject) {
             // console.log('maybe the array of comments', Object.values(commentObject));
             const comments = Object.values(commentObject);
-            return comments.map((comment) => {
+            return comments.map((comment, i) => {
               console.log('comment in mapping vals', comment);
                 return (
-                    <div>
+                    <div key={i}>
                       <p>{comment.comment}</p>
                       <p>{comment.name}</p>
                       {/* <img src={comment.photo} alt=""/> */}
