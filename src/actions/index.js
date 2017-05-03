@@ -17,7 +17,6 @@ const loginRequest = () => {
     provider.addScope('email');
     provider.addScope('https://www.googleapis.com/auth/plus.login')
     return firebase.auth().signInWithPopup(provider).then((res) => {
-      console.log('res');
         const user = res.user;
         addNonExistingUsers(user);
         return user
@@ -79,6 +78,7 @@ function addSkillToFireBase(userName, skill){
   userSkillsInFireBase.set(skill)
 }
 
+<<<<<<< HEAD
 function addCohortToFireBase(userData, cohort) {
   console.log("USERDATA", userData);
   let userCohortInFireBase = firebase.database().ref(`users`).child(`${userData.name}`)
@@ -87,19 +87,25 @@ function addCohortToFireBase(userData, cohort) {
 
 
 export const addReplyToPost = (userData, comment) => {
+=======
+export const addReplyToPost = (userData, comment, postKey, postIndex) => {
+ // console.log ('================================, ', comment['object Object']);
+ console.log ('================================, ', comment, postIndex);
+>>>>>>> 004cace1e1543fd318313454bb60fe47f26b4a3f
  const commentInfo = {
   comment: comment,
   name: userData.name,
-  time: new Date(),
-  photo: userData.photo
+  time: (new Date()).toString(),
+  photo: userData.photo,
+  postIndex
  }
- addCommentToFB(commentInfo);
+ addCommentToFB(commentInfo, postKey);
  return commentInfo;
 }
 
-const addCommentToFB = (commentObj) => {
-   let newPostKey = firebase.database().ref().child('posts').push().key;
-   let comments = firebase.database().ref(`${newPostKey}/comments`).push();
+const addCommentToFB = (commentObj, postKey) => {
+   let comments = firebase.database().ref(`feed/posts/${postKey}/comments`).push();
+  //  let comments = firebase.database().ref(`${newPostKey}/comments`).push();
    comments.set(commentObj);
 }
 
@@ -133,11 +139,13 @@ export const addSkill = (userData, skill) => {
 }
 
 export const fetchSkills = (skills) => {
+  console.log('skils in fetch skills', skills);
   return {type: 'FETCH_SKILLS', payload: restructureFetchedFireBaseObjects(skills)};
 }
-
-export const addComment = (userData, comment) => {
- return {type: 'ADD_COMMENTS', payload: addReplyToPost(userData, comment)};
+// restructureFetchedFireBaseObjects(skills)
+export const addComment = (userData, comment, postKey, postIndex) => {
+  console.log(postIndex, 'postIndex in add comment');
+ return {type: 'ADD_COMMENTS', payload: addReplyToPost(userData, comment, postKey, postIndex)};
 }
 
 export const addCohort = (userData, cohort) => {

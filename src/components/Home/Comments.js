@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {addComment} from '../../actions';
 
 function mapStateToProps({userData, form}) {
-    return {userData, form}
+    return { userData }
 }
 
 
@@ -20,14 +20,15 @@ class Comments extends Component {
     })
   }
     render() {
-     const { userData, addComment, form } = this.props;
+      console.log('this.props in comments', this.props);
+     const { userData, addComment, postKey, postIndex } = this.props;
         return (
          <form>
            <div>
              <label htmlFor="comment">Reply</label>
              <input  name="comment" onChange={this.updateComment} value={this.state.input} type="text"/>
            </div>
-           <button type="submit" onClick={(e) => {e.preventDefault(); addComment(userData, this.state.input)}}>Submit Reply</button>
+           <button type="submit" onClick={(e) => {e.preventDefault(); addComment(userData, this.state.input, postKey, postIndex);}}>Submit Reply</button>
          </form>
         )
     }
