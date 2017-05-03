@@ -7,6 +7,7 @@ import AddProjectForm from '../AddProject/add_project_form';
 import { connect } from 'react-redux';
 import firebase from 'firebase';
 import AddSkillsForm from '../Skills/skills_form';
+import AddCohort from './add_cohort';
 
 function mapStateToProps({ userData }){
   return {

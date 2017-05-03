@@ -23,6 +23,7 @@ class AddSkillsForm extends Component {
       skill: event.target.value
     })
   }
+
   toggleForm = () => {
     this.setState((prevState) => {
       return {showForm: !prevState.showForm}

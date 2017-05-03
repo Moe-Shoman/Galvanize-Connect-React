@@ -68,6 +68,11 @@ function updateSkillsAndSendToDB(userData, skill) {
   return skill;
 }
 
+function updateCohortAndSendToDB(userData, cohort) {
+  addCohortToFireBase(userData, cohort);
+  return cohort
+}
+
 function addSkillToFireBase(userName, skill){
   let userSkillsInFireBase = firebase.database().ref(`users/${userName}/skills`).push();
   userSkillsInFireBase.set(skill)
@@ -91,9 +96,6 @@ const addCommentToFB = (commentObj, postKey) => {
    let comments = firebase.database().ref(`feed/posts/${postKey}/comments`).push();
   //  let comments = firebase.database().ref(`${newPostKey}/comments`).push();
    comments.set(commentObj);
-
-   // let ref = firebase.database().getInstance();
-   // let post =
 }
 
 //ACTION CREATORS
@@ -134,3 +136,13 @@ export const addComment = (userData, comment, postKey, postIndex) => {
   console.log(postIndex, 'postIndex in add comment');
  return {type: 'ADD_COMMENTS', payload: addReplyToPost(userData, comment, postKey, postIndex)};
 }
+<<<<<<< HEAD
+=======
+
+export const addCohort = (userData, cohort) => {
+  console.log("ADDING THIS for nanigans ");
+  return {type: 'ADD_COHORT', payload: updateCohortAndSendToDB(userData, cohort)}
+}
+
+//need to add fetch cohort in order to show it in the user profile.
+>>>>>>> addCohort
