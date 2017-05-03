@@ -23,6 +23,7 @@ class AddSkillsForm extends Component {
       skill: event.target.value
     })
   }
+
   toggleForm = () => {
     this.setState((prevState) => {
       return {showForm: !prevState.showForm}
@@ -34,7 +35,7 @@ class AddSkillsForm extends Component {
       return (
        <form className="theForm ui form">
          <div>
-           <div calssName="field">
+           <div className="field">
               <label htmlFor="skillName">Add Skill</label>
               <input className="skillName" name="skill" type="text" onChange={this.updateInput}/>
               </div>
