@@ -30,7 +30,7 @@ class AddSkillsForm extends Component {
       return (
        <form className="theForm ui form">
          <div>
-           <div calssName="field">
+           <div>
               <label htmlFor="skillName">Add Skill</label>
               <input className="skillName" name="skill" type="text" onChange={this.updateInput}/>
               </div>

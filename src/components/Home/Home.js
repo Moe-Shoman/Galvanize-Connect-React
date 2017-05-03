@@ -58,21 +58,13 @@ class Home extends Component {
 
    <div>
      {currentMessage}
-    {/* <input onChange={this.updateMessage} type="text" placeholder="Message" /> */}
     <br/>
 
-    {/* <button onClick={this.submitMessage}>Subtmit Post</button>
-
-    <button onClick={this.submitMessage}>Subtmit Message</button> */}
     <Feed/>
     <Jobs />
-    {/* <MuiThemeProvider>
-      <ListExampleSelectable />
-    </MuiThemeProvider> */}
    </div>
   )
  }
 }
 
 export default Home;
-// export default connect(mapStateToProps, mapDispatchToProps)(Home);

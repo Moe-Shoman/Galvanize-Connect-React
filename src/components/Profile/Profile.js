@@ -25,16 +25,16 @@ class Profile extends Component {
     render() {
       return (
       <div>
-        <div className="userPro">
+        {/* <div className="userPro">
           <h1>{renderUserName(this.props.userData)}</h1>
 
             <img className="ui circular image imgPro" src={this.props.userData.photo}></img>
-        </div>
+        </div> */}
         <div>
           <SkillsList />
-          <AddProjectForm />
-          <AddSkillsForm />
-          <ProjectsList />
+          {/* <AddProjectForm /> */}
+          {/* <AddSkillsForm /> */}
+          {/* <ProjectsList /> */}
         </div>
       </div>
     );
