@@ -8,6 +8,9 @@ function mapStateToProps({ userData }) {
   }
 }
 
+
+
+
 class AddCohort extends Component {
   constructor(props) {
     super (props)
@@ -28,10 +31,29 @@ class AddCohort extends Component {
       return { showForm: !prevState.showForm }
     })
   }
+renderButton = (cohort) => {
+  console.log("THE COHOOOORT", cohort)
+
+    if(!cohort) {
+      return (
+        <div>
+          <button onClick={this.toggleForm}>ADD COHORT</button>
+        </div>
+      )
+    }
+    return (
+      <div>
+        <button onClick={this.toggleForm}>Edit Cohort</button>
+      </div>
+    )
+
+  }
 
 
   render(){
     const { userData, addCohort } = this.props;
+
+    console.log("USERDAA", userData);
     const { cohort } = this.state;
     if(this.state.showForm){
       return (
@@ -51,9 +73,7 @@ class AddCohort extends Component {
       )
     }
     return (
-      <div>
-        <button onClick={this.toggleForm}>ADD COHORT</button>
-      </div>
+        <div>{this.renderButton(userData.cohort)}</div>
     )
   }
 }

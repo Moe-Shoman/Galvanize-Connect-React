@@ -69,7 +69,12 @@ function updateSkillsAndSendToDB(userData, skill) {
 }
 
 function updateCohortAndSendToDB(userData, cohort) {
-  addCohortToFireBase(userData, cohort);
+ const userCohortInfo = {
+  name: userData.name,
+  photo: userData.photo
+ }
+
+  addCohortToFireBase(userCohortInfo, cohort);
   return cohort
 }
 
@@ -79,9 +84,9 @@ function addSkillToFireBase(userName, skill){
 }
 
 function addCohortToFireBase(userData, cohort) {
-  // console.log("USERDATA", userData);
-  let userCohortInFireBase = firebase.database().ref(`users`).child(`${userData.name}`)
-  userCohortInFireBase.update({cohort});
+  let userCohortInFireBase = firebase.database()
+  userCohortInFireBase.ref(`users`).child(`${userData.name}`).update({cohort});
+  userCohortInFireBase.ref(`cohorts`).child(`${cohort}`).push().set({name: userData.name, photo:userData.photo});
 }
 
 
