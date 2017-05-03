@@ -25,7 +25,7 @@ class Feed extends Component {
             return comments.map((comment, i) => {
               console.log('comment in mapping vals', comment);
                 return (
-                    <div key={i}>
+                    <div key={i + comment.comment}>
                       <p>{comment.comment}</p>
                       <p>{comment.name}</p>
                       {/* <img src={comment.photo} alt=""/> */}
