@@ -16,6 +16,10 @@ export default (state = initialState.userData, action) => {
       case 'LOGIN_REJECTED':
         return state
         break;
+      case 'ADD_COHORT':
+      return Object.assign({}, state, {
+        cohort: action.payload
+      })
     default:
       return state
   }
