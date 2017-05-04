@@ -8,9 +8,6 @@ function mapStateToProps({ userData }) {
   }
 }
 
-
-
-
 class AddCohort extends Component {
   constructor(props) {
     super (props)
@@ -53,7 +50,7 @@ renderButton = (cohort) => {
   render(){
     const { userData, addCohort } = this.props;
 
-    console.log("USERDAA", userData);
+    console.log("USERDATA", userData);
     const { cohort } = this.state;
     if(this.state.showForm){
       return (
