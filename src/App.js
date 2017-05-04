@@ -39,7 +39,7 @@ class App extends Component {
           <li className='navbar-li'><Link to='/Cohort' >Cohort</Link></li>
           <li className='navbar-li'><Link to='/Profile' >Profile</Link></li>
         </ul>
-       {/* <SideNav/> */}
+
        <Route path='/Home' render={() => ( !loggedIn ? (<Redirect to="/Login" />): (<Home/>))}/>
        <Route path='/Login' component={GoogleAuthentication} />
        <Route exact path='/' render={() => ( loggedIn ? (<Redirect to="/Home" />): (<Redirect to="/Login" />))} />
