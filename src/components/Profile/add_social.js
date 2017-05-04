@@ -19,6 +19,7 @@ import { addSocialLinks } from '../../actions';
            Twitter: ''
        }
      }
+
   updateInput = (event) => {
     const givenLink = event.target.value;
     const linkName = event.target.name;
