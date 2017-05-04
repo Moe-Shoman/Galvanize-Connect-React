@@ -11,5 +11,6 @@ export default {
   posts: [],
   comments: [],
   skills: [],
-  cohort: null
+  cohort: null,
+  cohortVal: []
 }

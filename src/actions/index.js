@@ -79,6 +79,7 @@ function updateSkillsAndSendToDB(userData, skill) {
 function updateCohortAndSendToDB(userData, cohort) {
     addCohortToFireBase(userData, cohort);
     return cohort;
+
 }
 
 function addSkillToFireBase(userName, skill) {
@@ -111,6 +112,12 @@ export const addCommentsToPost = (userData, comment, postKey, postIndex) => {
 }
 
 
+// export const fetchUsersFromFB = () => {
+//
+// }
+
+
+
 //ACTION CREATORS
 export const login = (props) => {
     return {type: 'LOGIN', payload: loginRequest()};
@@ -136,6 +143,10 @@ export const getJobs = () => {
 
 export const fetchPosts = (posts) => {
     return {type: 'FETCH_POSTS', payload: restructurePostsAndComments(posts)};
+}
+
+export const fetchCohort = (cohort) => {
+  return {type: 'FETCH_COHORT', payload: restructureFetchedFireBaseObjects(cohort)};
 }
 
 export const fetchProjects = (projects) => {
