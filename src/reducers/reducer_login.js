@@ -17,6 +17,10 @@ export default (state = initialState.userData, action) => {
       return Object.assign({}, state, {
         cohort: action.payload
       })
+      break;
+      case 'ADD_SOCIAL':
+      return Object.assign({}, state, action.payload
+      )
     default:
       return state
   }
