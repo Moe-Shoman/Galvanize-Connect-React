@@ -39,7 +39,7 @@ class Feeds extends Component {
                   <Card>
                     <Card.Content>
                       <Card.Header>
-                        Recent Activity
+                        POST
                       </Card.Header>
                     </Card.Content>
                     <Card.Content>
