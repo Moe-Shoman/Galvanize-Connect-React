@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { login } from '../../actions';
 import { Redirect} from 'react-router-dom';
 import { Button, Icon } from 'semantic-ui-react';
-import './GoogleAuth.css';
+// import './GoogleAuth.css';
 function mapStateToProps({ userData }) {
   return {
     userData

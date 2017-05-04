@@ -115,6 +115,7 @@ export const addReplyToPost = (userData, comment, postKey, postIndex) => {
  }
  addCommentToFB(commentInfo, postKey);
  return commentInfo;
+ }
 function addCohortToFireBase(userData, cohort) {
     const userCohortInFireBase = firebase.database();
     userCohortInFireBase.ref(`users`).child(`${userData.name}`).update({cohort});
@@ -127,7 +128,7 @@ const addCommentToFB = (commentObj, postKey) => {
   const comments = firebase.database().ref(`feed/posts/${postKey}/comments`).push();
   comments.set(commentObj);
 }
-export const addCommentsToPost = (userData, comment, postKey, postIndex) => {
+const addCommentsToPost = (userData, comment, postKey, postIndex) => {
     const commentInfo = {
         comment: comment,
         name: userData.name,

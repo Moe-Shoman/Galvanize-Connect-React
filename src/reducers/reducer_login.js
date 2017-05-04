@@ -19,8 +19,7 @@ export default (state = initialState.userData, action) => {
       })
       break;
       case 'ADD_SOCIAL':
-      return Object.assign({}, state, action.payload
-      )
+      return Object.assign({}, state, action.payload)
     default:
       return state
   }
