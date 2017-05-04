@@ -20,31 +20,22 @@ class Feed extends Component {
     }
     renderComments = (commentObject) => {
         if (commentObject) {
-            // console.log('maybe the array of comments', Object.values(commentObject));
             const comments = Object.values(commentObject);
-            return comments.map((comment) => {
-              console.log('comment in mapping vals', comment);
+            return comments.map((comment, i) => {
                 return (
-                    <div>
+                    <div key={i + comment.comment}>
                       <p>{comment.comment}</p>
                       <p>{comment.name}</p>
                       {/* <img src={comment.photo} alt=""/> */}
                     </div>
                 )
             })
-            // const { comment, name, photo } = Object.values(commentObject)[0];
-            // return(
-            //   <div>
-            //     <div>{name}</div>
-            //     <div>{comment}</div>
-            //   </div>
-            // )
         }
     }
     render() {
         const Posts = this.props.posts.map((post, ind) => {
             return (
-                <div key={post.postKey}>
+                <div key={post.postKey + ind}>
                     <li key={post.ind}>{post.name}</li>
                     <img src={post.photo} alt=""/>
                     <li>{post.post}</li>
