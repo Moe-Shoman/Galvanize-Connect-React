@@ -3,7 +3,11 @@ export default {
     name: null,
     email: null,
     photo: null,
-    loggedIn: false,
+    loggedIn: false
+    // linkedIn: null,
+    // gitHub: null,
+    // twitter: null
+
   },
   projectList: [],
   projects: [],
@@ -11,5 +15,8 @@ export default {
   posts: [],
   comments: [],
   skills: [],
-  cohort: null
+  cohort: null,
+  linkedIn: null,
+  gitHub: null,
+  twitter: null
 }

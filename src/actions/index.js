@@ -79,11 +79,30 @@ function addSkillToFireBase(userName, skill){
 }
 
 function addCohortToFireBase(userData, cohort) {
+  console.log("USERDATA", userData)
+
   let userCohortInFireBase = firebase.database()
   userCohortInFireBase.ref(`users`).child(`${userData.name}`).update({cohort});
-  userCohortInFireBase.ref(`cohorts`).child(`${cohort}`).push(`${userData.name}`);
+  userCohortInFireBase.ref(`cohorts`).child(`${cohort}`).push().set({
+    name: userData.name,
+    photo:userData.photo});
+}
+//need to write the fetch cohort from firebase
+
+function addSocialLinksToFireBase(username, SocialInks) {
+  console.log("INSIDE LINKSTOFB", username);
+  console.log("INSIDE LINKSTOFB", SocialInks);
+  let userSocialInFireBase = firebase.database()
+  userSocialInFireBase.ref(`users`).child(`${username}`).update({SocialInks});
+  // userSocialInFireBase.child(`${userData.name}`).update({links});
+  // userSocialInFireBase.set(links)
 }
 
+function updateLinksAndSendToBD(userData, SocialInks) {
+  const username = userData.name;
+  addSocialLinksToFireBase(username, SocialInks);
+  return SocialInks;
+}
 
 export const addReplyToPost = (userData, comment, postKey, postIndex) => {
  console.log ('================================, ', comment, postIndex);
@@ -144,7 +163,14 @@ export const addComment = (userData, comment, postKey, postIndex) => {
 }
 
 export const addCohort = (userData, cohort) => {
+  console.log('INADDCOHORT', cohort)
   return {type: 'ADD_COHORT', payload: updateCohortAndSendToDB(userData, cohort)}
 }
 
+export const addSocialLinks = (userData, SocialInks) => {
+  console.log("USERDATA IN ADDSOCIAL",  userData)
+  console.log("LINKS IN ADDSOCIAL", SocialInks)
+  return {type: 'ADD_SOCIAL',  payload: updateLinksAndSendToBD(userData, SocialInks)}
+}
+// updateLinksAndSendToDB(userData, links)
 //need to add fetch cohort in order to show it in the user profile.
