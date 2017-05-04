@@ -4,10 +4,9 @@ export default {
     email: null,
     photo: null,
     loggedIn: false
-    // linkedIn: null,
-    // gitHub: null,
-    // twitter: null
-
+    linkedIn: null,
+    gitHub: null,
+    twitter: null
   },
   projectList: [],
   projects: [],
@@ -16,7 +15,5 @@ export default {
   comments: [],
   skills: [],
   cohort: null,
-  linkedIn: null,
-  gitHub: null,
-  twitter: null
+  cohortVal: []
 }

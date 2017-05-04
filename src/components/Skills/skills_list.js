@@ -25,53 +25,30 @@ class SkillsList extends Component {
     })
   }
 
-  // renderSkill = (skills) => {
-  //   console.log('skill in render function', skills);
-  //   return skills.map((skill, i)=>{
-  //     return (
-  //       <div key={i}>
-  //         <div>
-  //           {skill}
-  //         </div>
-  //       </div>
-  //     )
-  //   })
-  // }
+  renderSkills = (skills) => {
+    if (skills) {
+      return skills.map((skill, i)=>{
+        return (
+          <div key={i}>
+            <div>
+              {skill}
+            </div>
+          </div>
+        )
+      })
+    }
+  }
   render(){
-    const Skills = this.props.skills.map((skill, i) => {
-     return (
-      <div key={i}>
-        <div>
-          {skill}
-        </div>
-      </div>
-     )
-    })
+    const { skills } = this.props
     return(
       <div>
         <p>hello!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</p>
         <div>
-          {Skills}
+          {this.renderSkills(skills)}
         </div>
       </div>
     );
   }
 }
-
-// = ({ skills }) => {
-//     const allSkills = skills.map((e, i)=>{
-//       return (
-//         <Skill name={e} key={i}/>
-//       )
-//     })
-//
-//   return (
-//     <ul className="col-md-4 list-group">
-//       <div className="allskills">
-//         {allSkills}
-//       </div>
-//     </ul>
-//   )
-// }
 
 export default connect(mapStateToProps, {fetchSkills})(SkillsList);
