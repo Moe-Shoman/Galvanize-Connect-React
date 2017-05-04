@@ -29,8 +29,6 @@ class AddCohort extends Component {
     })
   }
 renderButton = (cohort) => {
-  console.log("THE COHOOOORT", cohort)
-
     if(!cohort) {
       return (
         <div>
@@ -49,8 +47,6 @@ renderButton = (cohort) => {
 
   render(){
     const { userData, addCohort } = this.props;
-
-    console.log("USERDATA", userData);
     const { cohort } = this.state;
     if(this.state.showForm){
       return (

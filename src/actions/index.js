@@ -87,15 +87,11 @@ function addCohortToFireBase(userData, cohort) {
     name: userData.name,
     photo:userData.photo});
 }
-//need to write the fetch cohort from firebase
+
 
 function addSocialLinksToFireBase(username, SocialInks) {
-  console.log("INSIDE LINKSTOFB", username);
-  console.log("INSIDE LINKSTOFB", SocialInks);
   let userSocialInFireBase = firebase.database()
   userSocialInFireBase.ref(`users`).child(`${username}`).update({SocialInks});
-  // userSocialInFireBase.child(`${userData.name}`).update({links});
-  // userSocialInFireBase.set(links)
 }
 
 function updateLinksAndSendToBD(userData, SocialInks) {
@@ -105,7 +101,6 @@ function updateLinksAndSendToBD(userData, SocialInks) {
 }
 
 export const addReplyToPost = (userData, comment, postKey, postIndex) => {
- console.log ('================================, ', comment, postIndex);
  const commentInfo = {
   comment: comment,
   name: userData.name,
@@ -153,24 +148,21 @@ export const addSkill = (userData, skill) => {
 }
 
 export const fetchSkills = (skills) => {
-  console.log('skils in fetch skills', skills);
   return {type: 'FETCH_SKILLS', payload: restructureFetchedFireBaseObjects(skills)};
 }
-// restructureFetchedFireBaseObjects(skills)
+
 export const addComment = (userData, comment, postKey, postIndex) => {
-  console.log(postIndex, 'postIndex in add comment');
  return {type: 'ADD_COMMENTS', payload: addReplyToPost(userData, comment, postKey, postIndex)};
 }
 
 export const addCohort = (userData, cohort) => {
-  console.log('INADDCOHORT', cohort)
   return {type: 'ADD_COHORT', payload: updateCohortAndSendToDB(userData, cohort)}
 }
 
 export const addSocialLinks = (userData, SocialInks) => {
-  console.log("USERDATA IN ADDSOCIAL",  userData)
-  console.log("LINKS IN ADDSOCIAL", SocialInks)
   return {type: 'ADD_SOCIAL',  payload: updateLinksAndSendToBD(userData, SocialInks)}
 }
-// updateLinksAndSendToDB(userData, links)
-//need to add fetch cohort in order to show it in the user profile.
+
+export const fetchSocial = (SocialInks) => {
+  return {type: 'FETCH_LINKS', payload: SocialInks};
+}
