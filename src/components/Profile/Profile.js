@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 // import firebase from 'firebase';
 import AddSkillsForm from '../Skills/skills_form';
 import AddCohort from './add_cohort';
+import SocialLinks from './social';
 
 function mapStateToProps({ userData }){
   return {
@@ -37,6 +38,7 @@ class Profile extends Component {
           <AddSkillsForm />
           <ProjectsList />
           <AddCohort />
+          <SocialLinks />
         </div>
       </div>
     );
