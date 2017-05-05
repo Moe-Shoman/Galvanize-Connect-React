@@ -31,7 +31,7 @@ h1 {
     position: absolute;
     margin-top: 0px;
     bottom: -125px;
-    left: calc(46% - 75px);
+    left: calc(47% - 75px);
 }
 .styleLinks {
   display: inline-flex;
@@ -40,5 +40,13 @@ h1 {
   justify-content: center;
   align-items: center;
 
+}
 
+.userName {
+  padding-top: 35px;
+}
+.numStyle{
+  color: white;
+  font-size: 3rem;
+  padding-bottom: 10px;
 }

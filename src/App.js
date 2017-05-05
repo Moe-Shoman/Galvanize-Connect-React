@@ -8,6 +8,7 @@ import './App.css';
 import firebase from 'firebase';
 import {connect} from 'react-redux';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+
 import {
     Sidebar,
     Button,
@@ -16,6 +17,7 @@ import {
     Icon,
     Header
 } from 'semantic-ui-react';
+
 
 injectTapEventPlugin();
 class App extends Component {
@@ -35,7 +37,7 @@ class App extends Component {
     }
     render() {
         const {name} = this.props.userData;
-        console.log(name, 'me mayne');
+        // console.log(name, 'me mayne');
         return (
             <Router class="ui five item menu">
                 <div>
@@ -90,6 +92,7 @@ class App extends Component {
             </Router>
         );
     }
+
 }
 
 const mapStateToProps = ({userData}) => {
