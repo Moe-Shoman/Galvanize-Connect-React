@@ -14,8 +14,7 @@ class MemberCards extends Component {
     constructor(props) {
         super(props)
     }
-    componentWillMount() {
-
+    componentDidMount() {
         firebase.database().ref(`cohorts/${this.props.userData.cohort}`).once("value", (snapshot) => {
             return this.props.fetchCohort(snapshot.val());
         })
