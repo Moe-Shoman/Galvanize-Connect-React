@@ -6,6 +6,7 @@
 * Project Description
 * Who This App Is For
 * Technology, Libraries & Modules Used
+* Issues Remaining
 * How To contribute
 
 
@@ -33,6 +34,18 @@
  Semantic-UI-React
  HTML
  CSS
+
+```
+
+## Issues Remaining
+```
+ - Chat feature
+ - Cohort component need to render after cohort number is added
+ - Add a database listener for post component to append to the page without refreshing
+ - Allow users to visit other's profile
+ - Allow users to add images
+ - Allow users to include link to their deployed application on their profile page
+ - Add contact us component
 
 ```
 
