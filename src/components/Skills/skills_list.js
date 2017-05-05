@@ -18,7 +18,6 @@ class SkillsList extends Component {
     super(props)
   }
   componentDidMount(){
-    console.log("IN MOUNT PROFILE", this.props.userData.name, 'bang bang', 'why IAM I NOT HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
     firebase.database().ref(`users/${this.props.userData.name}/skills`).once("value", (snapshot) => {
       console.log('snap');
       return this.props.fetchSkills(snapshot.val());

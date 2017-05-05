@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import Jobs from './Jobs';
-import Feed from './Feed';
+import Feeds from './Feed';
 
 
 class Home extends Component {
  render() {
   return (
    <div>
-    <Feed/>
+    <Feeds/>
     <Jobs />
    </div>
   )

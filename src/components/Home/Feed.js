@@ -3,13 +3,13 @@ import {connect} from 'react-redux';
 import {fetchPosts} from '../../actions';
 import PostsForm from './PostsForm'
 import Comments from './Comments'
-
 import firebase from 'firebase';
-
+import CardExampleContentBlock from './exampleCard';
+import { Card, Feed } from 'semantic-ui-react';
 function mapStateToProps({posts}) {
     return {posts}
 }
-class Feed extends Component {
+class Feeds extends Component {
     constructor(props) {
         super(props)
     }
@@ -36,9 +36,27 @@ class Feed extends Component {
         const Posts = this.props.posts.map((post, ind) => {
             return (
                 <div key={post.postKey + ind}>
-                    <li key={post.ind}>{post.name}</li>
-                    <img src={post.photo} alt=""/>
-                    <li>{post.post}</li>
+                  <Card>
+                    <Card.Content>
+                      <Card.Header>
+                        POST
+                      </Card.Header>
+                    </Card.Content>
+                    <Card.Content>
+                      <Feed>
+                        <Feed.Event>
+                          <Feed.Label image={post.photo} />
+                          <Feed.Content>
+                            <Feed.Date content={post.date} />
+                            <Feed.Summary>
+                              <Card.Header>{post.name}</Card.Header>
+                              {post.post}
+                            </Feed.Summary>
+                          </Feed.Content>
+                        </Feed.Event>
+                      </Feed>
+                    </Card.Content>
+                  </Card>
                     {this.renderComments(post.comments)}
                     <div><Comments postKey={post.postKey} postIndex={ind}/></div>
                 </div>
@@ -46,9 +64,13 @@ class Feed extends Component {
         })
         return (
             <div>
-                <PostsForm/> {Posts}
+                <PostsForm/>
+                {Posts}
+                {/* {this.example()} */}
+                {/* <CardExampleContentBlock /> */}
             </div>
         )
     }
 }
-export default connect(mapStateToProps, {fetchPosts})(Feed);
+
+export default connect(mapStateToProps, {fetchPosts})(Feeds);

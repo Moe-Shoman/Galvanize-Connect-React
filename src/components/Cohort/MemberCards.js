@@ -22,34 +22,40 @@ class MemberCards extends Component {
      if(cohortMembers) {
       const members = Object.values(cohortMembers);
       return members.map((member) => {
-        console.log('member is ===================', member.name);
-        return (
-         <div>
-        <Card>
-           <Image src={member.photo}/>
-           <Card.Content>
-               <Card.Header>{member.name}</Card.Header>
-           </Card.Content>
-       </Card>
-       </div>
-      )
+       console.log('data after renderCohorMember ', member)
       })
      }
     }
 
     render() {
-     const cohortUser = this.props.cohortVal.map((cohort) => {
-      return (
-       <div>
-       {this.renderCohorMember(cohort)}
-       </div>
-      )
-     })
-        return (
-         <div>
-          {cohortUser}
+      // console.log('cohort val is ', this.props.cohortVal);
+      const cards = [];
+      for (let obj in this.props.cohortVal[0]) {
+       console.log('NAME:', obj.name);
+       console.log('SRC:', obj.photo);
+       console.log('obj:', obj);
+        cards.push(
+         <Card>
+            <Image src={obj.photo}/>
+            <Card.Content>
+                <Card.Header>{obj.name}</Card.Header>
+            </Card.Content>
+        </Card>
+        )
+      }
+        const cohortMems = this.props.cohortVal.map((member) => {
+            return (
+                <Card>
+                    <Image src={member.photo}/>
+                    <Card.Content>
+                        <Card.Header>{member.name}</Card.Header>
+                    </Card.Content>
+                </Card>
+            );
+        });
 
-         </div>
+        return (
+         <div>{cards}</div>
         )
     }
 }
