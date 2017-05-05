@@ -5,9 +5,8 @@ import {connect} from 'react-redux';
 import firebase from 'firebase';
 // import './skill.css';
 
-const mapStateToProps = ({ skills, userData }) => {
+const mapStateToProps = ({ userData }) => {
   return {
-    skills,
     userData
   }
 }
@@ -17,12 +16,12 @@ class SkillsList extends Component {
   constructor(props){
     super(props)
   }
-  componentDidMount(){
-    firebase.database().ref(`users/${this.props.userData.name}/skills`).once("value", (snapshot) => {
-      console.log('snap');
-      return this.props.fetchSkills(snapshot.val());
-    })
-  }
+  // componentDidMount(){
+  //   firebase.database().ref(`users/${this.props.userData.name}/skills`).once("value", (snapshot) => {
+  //     console.log('snap');
+  //     return this.props.fetchSkills(snapshot.val());
+  //   })
+  // }
 
   renderSkills = (skills) => {
     if (skills) {
@@ -38,10 +37,9 @@ class SkillsList extends Component {
     }
   }
   render(){
-    const { skills } = this.props
+    const { skills } = this.props.userData
     return(
       <div>
-        <p>hello!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</p>
         <div>
           {this.renderSkills(skills)}
         </div>

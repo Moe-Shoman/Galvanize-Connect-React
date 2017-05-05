@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import GoogleAuthentication from './components/GoogleAuth/GoogleAuth';
 import {BrowserRouter as Router, Route, Redirect, Link} from 'react-router-dom';
-import SideNav from './components/SideNav/SideNav';
 import Cohort from './components/Cohort/Cohort';
 import Profile from './components/Profile/Profile';
 import Home from './components/Home/Home';
