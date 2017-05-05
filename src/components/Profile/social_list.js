@@ -4,6 +4,7 @@ import { fetchSocial } from '../../actions';
 import {connect} from 'react-redux';
 import firebase from 'firebase';
 // import './skill.css';
+import { Button, Icon, Size } from 'semantic-ui-react';
 
 const mapStateToProps = ({ userData }) => {
   return {
@@ -19,25 +20,30 @@ class ListOfSocialLinks extends Component {
   }
 
 renderSoLinks = (userData)=> {
+  console.log("USERDATA in RENDERSOLINKS", userData)
     return (
-    <div>
       <div>
-        {userData.GitHub}
-      </div>
-      <div>
-        {userData.LinkedIn}
-      </div>
-      <div>
-        {userData.Twitter}
-      </div>
+        <div>
+        <div className="styleLinks">
+            <div className="github">
+              <Button  href={userData.GitHub} icon='github square' size='large'/>
+            </div>
+            <div className="linkedIn">
+              <Button  href={userData.LinkedIn} icon='linkedin square' size='large'/>
+            </div>
+            <div className="twitter">
+              <Button href={userData.Twitter} icon='twitter' size='large'/>
+            </div>
+        </div>
+
     </div>
+  </div>
   )
 }
   render() {
     const {userData} = this.props
     return(
       <div>
-        <p> I'm HERERE IN THE SOCIALLIST COMPONENT</p>
         <div>
             {this.renderSoLinks(userData)}
         </div>
