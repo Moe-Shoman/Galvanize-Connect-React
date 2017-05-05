@@ -9,6 +9,7 @@ import './App.css';
 import firebase from 'firebase';
 import { connect } from 'react-redux';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import { Sidebar, Segment, Button, Menu, Image, Icon, Header } from 'semantic-ui-react'
 
 injectTapEventPlugin();
 class App extends Component {
@@ -33,12 +34,19 @@ class App extends Component {
      <Router class="ui five item menu">
 
       <div className="page">
+
+       {/* <div>
         <ul className='navbar-ul'>
           <li className='navbar-li'><Link to='/' >Login</Link></li>
           <li className='navbar-li'><Link to='/Home' >Home</Link></li>
           <li className='navbar-li'><Link to='/Cohort' >Cohort</Link></li>
           <li className='navbar-li'><Link to='/Profile' >Profile</Link></li>
         </ul>
+       </div> */}
+
+      <SideNav/>
+
+
 
        <Route path='/Home' render={() => ( !loggedIn ? (<Redirect to="/Login" />): (<Home/>))}/>
        <Route path='/Login' component={GoogleAuthentication} />

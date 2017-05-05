@@ -27,13 +27,13 @@ class MemberCards extends Component {
             const members = Object.values(cohortMembers);
             return members.map((member) => {
                 return (
-                    <div>
-                        <Card>
-                            <Image src={member.photo}/>
-                            <Card.Content>
-                                <Card.Header>{member.name}</Card.Header>
-                            </Card.Content>
-                        </Card>
+                    <div class="ui grid">
+                      <Card>
+                          <Image src={member.photo}/>
+                          <Card.Content>
+                            <Card.Header>{member.name}</Card.Header>
+                          </Card.Content>
+                      </Card>
                     </div>
                 )
             })
