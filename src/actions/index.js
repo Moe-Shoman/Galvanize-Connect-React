@@ -71,6 +71,7 @@ function restructurePostsAndComments(PostsInFireBase) {
     })
     return restructuredPosts
 }
+
 function restructureFetchedFireBaseObjects(object) {
     const restructuredPosts = Object.values(object)
     return restructuredPosts;
@@ -147,9 +148,6 @@ const addCommentsToPost = (userData, comment, postKey, postIndex) => {
     return commentInfo;
 }
 
-// export const fetchUsersFromFB = () => {
-//
-// }
 
 //ACTION CREATORS
 export const login = (props) => {
@@ -177,6 +175,15 @@ export const getJobs = () => {
 export const fetchPosts = (posts) => {
     return {type: 'FETCH_POSTS', payload: restructurePostsAndComments(posts)};
 }
+
+
+
+export const fetchCohort = (cohort) => {
+  // console.log('cohort vlaue ins fetchCohort is  ========', cohort);
+  return {type: 'FETCH_COHORT', payload: restructureFetchedFireBaseObjects(cohort)};
+}
+
+
 
 export const addSkill = (userData, skill) => {
     return {

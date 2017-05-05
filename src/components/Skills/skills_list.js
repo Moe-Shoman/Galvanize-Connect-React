@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import { fetchSkills } from '../../actions';
-// import Skill from './skills_list_item';
+import Chip from 'material-ui/Chip';
 import {connect} from 'react-redux';
+import { styles } from 'material-ui/Chip'
 import firebase from 'firebase';
-// import './skill.css';
+import './skill.css';
 
 const mapStateToProps = ({ userData }) => {
   return {
@@ -16,20 +17,14 @@ class SkillsList extends Component {
   constructor(props){
     super(props)
   }
-  // componentDidMount(){
-  //   firebase.database().ref(`users/${this.props.userData.name}/skills`).once("value", (snapshot) => {
-  //     console.log('snap');
-  //     return this.props.fetchSkills(snapshot.val());
-  //   })
-  // }
 
   renderSkills = (skills) => {
     if (skills) {
       return skills.map((skill, i)=>{
         return (
           <div key={i}>
-            <div>
-              {skill}
+            <div className="skillFormat">
+              {skill }
             </div>
           </div>
         )

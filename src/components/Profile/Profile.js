@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-// import semantic from 'semantic-ui-react';
+import Chip from 'material-ui/Chip';
+import semantic from 'semantic-ui-react';
 import './profile.css';
 import ProjectsList from '../Projects/projects_list';
 import SkillsList from '../Skills/skills_list';
 import AddProjectForm from '../AddProject/add_project_form';
 import { connect } from 'react-redux';
-// import firebase from 'firebase';
+import firebase from 'firebase';
 import AddSkillsForm from '../Skills/skills_form';
 import AddCohort from './add_cohort';
 import SocialLinks from './add_social';
