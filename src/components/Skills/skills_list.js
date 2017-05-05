@@ -41,7 +41,6 @@ class SkillsList extends Component {
     const { skills } = this.props
     return(
       <div>
-        <p>hello!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</p>
         <div>
           {this.renderSkills(skills)}
         </div>

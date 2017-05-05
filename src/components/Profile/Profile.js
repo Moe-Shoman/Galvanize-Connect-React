@@ -10,6 +10,7 @@ import AddSkillsForm from '../Skills/skills_form';
 import AddCohort from './add_cohort';
 import SocialLinks from './add_social';
 import ListOfSocialLinks from './social_list';
+import {Sidebar} from 'semantic-ui-react';
 
 function mapStateToProps({ userData }){
   return {
@@ -27,6 +28,8 @@ const renderUserName = (userData) => {
 class Profile extends Component {
     render() {
       return (
+  <Sidebar.Pusher className="userPro">
+        {/* <Segment basic> */}
       <div>
         <div className="userPro">
           <h1>{renderUserName(this.props.userData)}</h1>
@@ -43,6 +46,8 @@ class Profile extends Component {
           <ListOfSocialLinks />
         </div>
       </div>
+    {/* </Segment> */}
+         </Sidebar.Pusher>
     );
     }
 }
