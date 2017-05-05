@@ -4,6 +4,14 @@
 
 ## Updating to New Releases
 
+## Contributers
+```
+Ivonne Torrero
+Muhammed Shoman
+Deep Singh
+
+```
+
 Create React App is divided into two packages:
 
 * `create-react-app` is a global command-line utility that you use to create new projects.
