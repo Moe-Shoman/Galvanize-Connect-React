@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
-// import { reduxForm, Field  } from 'redux-form';
 import { connect } from 'react-redux';
 import { addPost } from '../../actions';
 
-// import {TextField} from 'redux-form-material-ui'
 function mapStateToProps ({ userData, posts, form }) {
  return {
   userData,
