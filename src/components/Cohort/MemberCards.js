@@ -46,10 +46,8 @@ class MemberCards extends Component {
     // }
 
     render() {
-     console.log('cohort val is ================ ', this.props.cohortVal);
          const members = Object.values(this.props.cohortVal);
         const cohortUser = members.map((cohort) => {
-         console.log('cohort inside of memeber is ---------------- ', cohort);
             // return (
             //     <div>
             //         {this.renderCohorMember(cohort)}

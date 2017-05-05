@@ -17,15 +17,6 @@ class ListOfSocialLinks extends Component {
   constructor(props){
     super(props)
   }
-  componentDidMount(){
-    firebase.database().ref(`users/${this.props.userData.name}`).once("value", (snapshot) => {
-
-      const user = snapshot.val()
-
-      const links = user.SocialInks;
-      return this.props.fetchSocial(links);
-    })
-  }
 
 renderSoLinks = (userData)=> {
     return (
