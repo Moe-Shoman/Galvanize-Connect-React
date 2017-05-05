@@ -16,13 +16,17 @@ class MemberCards extends Component {
         super(props)
     }
     componentDidMount() {
-     // const cohortNum = this.props.userData.cohort
-        firebase.database().ref('cohorts').once("value", (snapshot) => {
+     const num = 'G42'
+        firebase.database().ref(`cohorts/${num}`).once("value", (snapshot) => {
             return this.props.fetchCohort(snapshot.val());
         })
+        // firebase.database().ref('cohorts').once("value", (snapshot) => {
+        //     return this.props.fetchCohort(snapshot.val());
+        // })
     }
 
     renderCohorMember = (cohortMembers) => {
+     // console.log('cohortMembers is =============== ', this.props.userData);
         if (cohortMembers) {
             const members = Object.values(cohortMembers);
             return members.map((member) => {
