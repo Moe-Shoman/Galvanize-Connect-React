@@ -16,7 +16,7 @@ class SideNav extends Component {
         //    <li className='navbar-li'><Link to='/Profile' >Profile</Link></li>
         //  </ul>
         // </div>
-
+       <div class="navbar-fixed-left">
         <Navbar inverse collapseOnSelect>
          <Navbar.Header>
           <Navbar.Brand>
@@ -29,9 +29,9 @@ class SideNav extends Component {
           <NavItem> <Link to='/Login' >Login</Link></NavItem>
          </Nav>
         </Navbar>
-
+       </div>
     )
   }
 }
 
-export default SideNav;
+// export default SideNav;

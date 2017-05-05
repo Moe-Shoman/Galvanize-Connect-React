@@ -5,7 +5,9 @@ export default class Cohort extends Component {
     render() {
       return (
         <div>
+         <div>
           <MemberCards/>
+         </div>
         </div>
       )
     }
