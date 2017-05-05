@@ -20,6 +20,14 @@ export default (state = initialState.userData, action) => {
       break;
       case 'ADD_SOCIAL':
       return Object.assign({}, state, action.payload)
+      break;
+      case 'FETCH_LINKS':
+      return Object.assign({}, state,{
+        LinkedIn: action.payload.LinkedIn,
+        GitHub: action.payload.GitHub,
+        Twitter: action.payload.Twitter
+      });
+      break;
     default:
       return state
   }
