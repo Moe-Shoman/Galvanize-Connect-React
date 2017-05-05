@@ -24,9 +24,9 @@ const _renderProject = (projects) => {
     return (
             <div className="projectItem" key={i}>
 
-                <div>PROJECT TITLE: {project.projectName}</div>
+                <div className="projectTitle">Title: {project.projectName}</div>
 
-                <div>DESCRIPTION: {project.description}</div>
+                <div className="projectDes">Description: {project.description}</div>
             </div>
             )
   })

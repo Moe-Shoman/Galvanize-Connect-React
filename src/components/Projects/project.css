@@ -2,7 +2,15 @@
 .projectItem {
   background-color: pink;
   margin: 100px;
+  margin-top: relative;
   height: auto;
   width: auto;
+  position: absolute;
+  padding: 100px;
 
+}
+
+.projectTitle{
+  margin: auto;
+  position: relative;
 }
