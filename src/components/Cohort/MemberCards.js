@@ -4,6 +4,7 @@ import firebase from 'firebase'
 import {fetchCohort} from '../../actions';
 import {Card, Icon, Image} from 'semantic-ui-react'
 import './cohort.css'
+import AddCohort from '../Profile/add_cohort'
 
 function mapStateToProps({cohortVal, userData}) {
     return {
@@ -24,6 +25,9 @@ class MemberCards extends Component {
     }
 
     render() {
+      if(!this.props.userData.cohort) {
+       return <AddCohort/>
+      }
         const members = Object.values(this.props.cohortVal);
         const cohortUser = members.map((cohort) => {
             return (
