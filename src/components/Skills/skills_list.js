@@ -6,9 +6,8 @@ import { styles } from 'material-ui/Chip'
 import firebase from 'firebase';
 import './skill.css';
 
-const mapStateToProps = ({ skills, userData }) => {
+const mapStateToProps = ({ userData }) => {
   return {
-    skills,
     userData
   }
 }
@@ -17,11 +16,6 @@ const mapStateToProps = ({ skills, userData }) => {
 class SkillsList extends Component {
   constructor(props){
     super(props)
-  }
-  componentDidMount(){
-    firebase.database().ref(`users/${this.props.userData.name}/skills`).once("value", (snapshot) => {
-      return this.props.fetchSkills(snapshot.val());
-    });
   }
 
   renderSkills = (skills) => {
@@ -38,7 +32,7 @@ class SkillsList extends Component {
     }
   }
   render(){
-    const { skills } = this.props
+    const { skills } = this.props.userData
     return(
       <div>
         <div>

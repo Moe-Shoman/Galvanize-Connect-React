@@ -7,13 +7,12 @@ import './project.css';
 
 function mapStateToProps({ projects, userData }){
   return {
-    projects,
     userData
   }
 }
 
 const _renderProject = (projects) => {
-    if(projects.length === 0){
+    if(!projects){
       return (
         <div>
           <button>Add a Project</button>
@@ -37,15 +36,15 @@ class ProjectsList extends Component {
   constructor(props){
     super(props)
   }
-  componentDidMount(){
-    console.log(this.props.userData.name, 'in mount profile');
-    firebase.database().ref(`users/${this.props.userData.name}/projects`).once("value", (snapshot) => {
-      return this.props.fetchProjects(snapshot.val());
-    })
-  }
+  // componentDidMount(){
+  //   console.log(this.props.userData.name, 'in mount profile');
+  //   firebase.database().ref(`users/${this.props.userData.name}/projects`).once("value", (snapshot) => {
+  //     return this.props.fetchProjects(snapshot.val());
+  //   })
+  // }
 
   render () {
-    const {projects} = this.props;
+    const {projects} = this.props.userData;
     return (
       <div >
         {_renderProject(projects)}

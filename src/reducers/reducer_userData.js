@@ -5,14 +5,13 @@ export default (state = initialState.userData, action) => {
     case 'LOGIN_PENDING':
       return state;
     case 'LOGIN_FULFILLED':
-      return {
-        name: action.payload.displayName,
-        photo: action.payload.photoURL,
-        email: action.payload.email,
-        loggedIn: true
-      }
+      return Object.assign({}, state, action.payload)
       case 'LOGIN_REJECTED':
         return state
+      case 'ADD_PROJECT':
+        return Object.assign({}, state, {projects: state.projects.concat(action.payload)});
+        case 'ADD_SKILL':
+          return Object.assign({}, state, {skills: state.skills.concat(action.payload)})
       case 'ADD_COHORT':
       return Object.assign({}, state, {
         cohort: action.payload

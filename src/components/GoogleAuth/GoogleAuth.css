@@ -1,0 +1,17 @@
+/*googleButton {
+  text-align: center;
+}*/
+#signIn {
+  text-align: center;
+  margin: 100px 400px;
+  position: absolute;
+}
+img  {
+  height: 150px;
+  width: 150px;
+}
+#connectHeader {
+  float: right;
+  margin-top: 55px;
+  font-size: 48px;
+}
