@@ -6,10 +6,13 @@
     background-size: cover;
     position: relative;
     margin-bottom: 200px;
+    margin-top: 0px;
     font-style: oblique;
     font-size: 4em;
     width: 90%;
     float: right;
+    border: 10px;
+    border-color: black;
 }
 h1 {
   font-size: 6rem;
@@ -17,15 +20,25 @@ h1 {
    align: center;
    padding-top: 50px;
 }
-.imgPro.ui {
+.imgPro.ui {x
     width: 250px;
     height: 250px;
     font-size: 1em;
-    background-image: url("ivo.jpeg");
+    background-image: url("Icon-user.jpeg");
     background-size: cover;
     border: 5px solid;
     border-color: white;
     position: absolute;
+    margin-top: 0px;
     bottom: -125px;
     left: calc(50% - 75px);
+}
+.styleLinks {
+  display: flex;
+  flex-flow: row;
+  background-color: grey;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+
 }
