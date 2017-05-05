@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import firebase from 'firebase'
 import {fetchCohort} from '../../actions';
 import {Card, Icon, Image} from 'semantic-ui-react'
+import './cohort.css'
 
 function mapStateToProps({cohortVal, userData}) {
     return {
@@ -23,12 +24,12 @@ class MemberCards extends Component {
     }
 
     render() {
-         const members = Object.values(this.props.cohortVal);
+        const members = Object.values(this.props.cohortVal);
         const cohortUser = members.map((cohort) => {
             return (
                 <div class="card">
                   <Card>
-                      <Image src={cohort.photo}/>
+                      <Image src={cohort.photo} size='big'/>
                       <Card.Content>
                         <Card.Header>{cohort.name}</Card.Header>
                       </Card.Content>

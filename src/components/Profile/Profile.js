@@ -28,34 +28,6 @@ const renderUserName = (userData) => {
 class Profile extends Component {
     render() {
       return (
-      <div>
-        <div className="userPro">
-          <h1>{renderUserName(this.props.userData)}</h1>
-
-            <img className="ui circular image imgPro" src={this.props.userData.photo}></img>
-        </div>
-        <div>
-          {/* <SkillsList /> */}
-          <div>
-          <AddProjectForm />
-          </div>
-          <div>
-          <AddSkillsForm />
-          </div>
-          <div>
-          <ProjectsList />
-          </div>
-          <div>
-          <AddCohort />
-          </div>
-          <div>
-          <SocialLinks />
-          </div>
-          <div>
-          <ListOfSocialLinks />
-          </div>
-        </div>
-      </div>
         <Sidebar.Pusher>
               <div>
                 <div className="userPro">
