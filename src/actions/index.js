@@ -4,11 +4,20 @@ import axios from 'axios';
 
 const addNonExistingUsers = (userObject) => {
     const {displayName, email, photoURL} = userObject;
+    console.log('userObject', userObject, displayName);
     const userInFireBase = firebase.database().ref(`users/${displayName}`);
-    userInFireBase.once("value").then((snapshot) => {
+    return userInFireBase.once("value").then((snapshot) => {
         if (!snapshot.exists()) {
-            userInFireBase.set({name: displayName, email, profilePic: photoURL})
+          console.log(displayName);
+          const newUser = {
+            name: displayName,
+            email,
+            photo: photoURL
+          }
+            userInFireBase.set(newUser);
+            return newUser;
         }
+          return snapshot.val();
     })
 }
 const loginRequest = () => {
@@ -18,11 +27,9 @@ const loginRequest = () => {
     provider.addScope('https://www.googleapis.com/auth/plus.login')
     return firebase.auth().signInWithPopup(provider).then((res) => {
         const user = res.user;
-        addNonExistingUsers(user);
-        return user
-    }).catch((err) => {
-        console.error(err);
+        return addNonExistingUsers(user)
     })
+    .catch((err) => console.error(err))
 }
 
 const getJobsRequest = () => {

@@ -5,12 +5,7 @@ export default (state = initialState.userData, action) => {
     case 'LOGIN_PENDING':
       return state;
     case 'LOGIN_FULFILLED':
-      return {
-        name: action.payload.displayName,
-        photo: action.payload.photoURL,
-        email: action.payload.email,
-        loggedIn: true
-      }
+      return action.payload
       case 'LOGIN_REJECTED':
         return state
       case 'ADD_COHORT':

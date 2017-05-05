@@ -38,7 +38,8 @@ class App extends Component {
         firebase.initializeApp(config)
     }
     render() {
-        const {loggedIn} = this.props.userData;
+        const {name} = this.props.userData;
+        console.log(name, 'me mayne');
         return (
             <Router class="ui five item menu">
                 <div>
@@ -76,17 +77,17 @@ class App extends Component {
                             </Link>
                         </Menu.Item>
                     </Sidebar>
-                    <Route path='/Home' render={() => (!loggedIn
+                    <Route path='/Home' render={() => (!name
                         ? (<Redirect to="/Login"/>)
                         : (<Home/>))}/>
                     <Route path='/Login' component={GoogleAuthentication}/>
-                    <Route exact path='/' render={() => (loggedIn
+                    <Route exact path='/' render={() => (name
                         ? (<Redirect to="/Home"/>)
                         : (<Redirect to="/Login"/>))}/>
-                    <Route path='/Cohort' render={() => (!loggedIn
+                    <Route path='/Cohort' render={() => (!name
                         ? (<Redirect to="/Login"/>)
                         : (<Cohort/>))}/>
-                    <Route path='/Profile' render={() => (!loggedIn
+                    <Route path='/Profile' render={() => (!name
                         ? (<Redirect to="/Login"/>)
                         : (<Profile/>))}/>
                 </div>
