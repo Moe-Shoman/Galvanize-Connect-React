@@ -83,10 +83,35 @@ function updateCohortAndSendToDB(userData, cohort) {
 
 }
 
+
 function addSkillToFireBase(userName, skill) {
     const userSkillsInFireBase = firebase.database().ref(`users/${userName}/skills`).push();
     userSkillsInFireBase.set(skill);
 }
+
+
+function addSocialLinksToFireBase(username, SocialInks) {
+  let userSocialInFireBase = firebase.database()
+  userSocialInFireBase.ref(`users`).child(`${username}`).update({SocialInks});
+}
+
+function updateLinksAndSendToBD(userData, SocialInks) {
+  const username = userData.name;
+  addSocialLinksToFireBase(username, SocialInks);
+  return SocialInks;
+}
+
+export const addReplyToPost = (userData, comment, postKey, postIndex) => {
+ const commentInfo = {
+  comment: comment,
+  name: userData.name,
+  time: (new Date()).toString(),
+  photo: userData.photo,
+  postIndex
+ }
+ addCommentToFB(commentInfo, postKey);
+ return commentInfo;
+ }
 
 function addCohortToFireBase(userData, cohort) {
     const userCohortInFireBase = firebase.database();
@@ -176,4 +201,10 @@ export const addCohort = (userData, cohort) => {
     };
 }
 
-//need to add fetch cohort in order to show it in the user profile.
+export const addSocialLinks = (userData, SocialInks) => {
+  return {type: 'ADD_SOCIAL',  payload: updateLinksAndSendToBD(userData, SocialInks)}
+}
+
+export const fetchSocial = (SocialInks) => {
+  return {type: 'FETCH_LINKS', payload: SocialInks};
+}

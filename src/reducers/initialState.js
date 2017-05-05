@@ -4,6 +4,9 @@ export default {
     email: null,
     photo: null,
     loggedIn: false,
+    linkedIn: null,
+    gitHub: null,
+    twitter: null
   },
   projectList: [],
   projects: [],
