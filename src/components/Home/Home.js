@@ -2,15 +2,25 @@ import React, {Component} from 'react';
 import Jobs from './Jobs';
 import Feeds from './Feed';
 import {Segment, Sidebar} from 'semantic-ui-react';
+
+
 class Home extends Component {
     render() {
         return (
             <Sidebar.Pusher>
                 <Segment basic>
-                    <div>
-                        <Feeds/>
-                        <Jobs/>
-                    </div>
+
+                     <div className='ui grid'>
+                      <div class ='two wide column'>
+                         <Feeds/>
+                       </div>
+
+                       <div class='eight wide column'>
+                         <Jobs/>
+
+                       </div>
+                      </div>
+
                 </Segment>
             </Sidebar.Pusher>
         )

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {getJobs} from '../../actions';
+import { Card } from 'semantic-ui-react'
 
 function mapStateToProps({jobs}) {
     return {jobs}
@@ -16,9 +17,21 @@ function mapDispatchToProps(dispatch) {
 const renderJobs = (jobs) => {
     return jobs.map((job, i) => (
         <div key={i}>
-            <a href={job.detailUrl}>{job.jobTitle}</a>
+            {/* <a href={job.detailUrl}>{job.jobTitle}</a>
             <div>{job.company}</div>
-            <div>{job.location}</div>
+            <div>{job.location}</div> */}
+
+
+            <Card.Group>
+              <Card>
+                <Card.Content>
+                  <Card.Header href={job.detailUrl}>{job.jobTitle}</Card.Header>
+                  <Card.Meta>{job.company}</Card.Meta>
+                  <Card.Description>{job.location}</Card.Description>
+                </Card.Content>
+              </Card>
+            </Card.Group>
+
         </div>
     ))
 }
@@ -39,3 +52,17 @@ class Jobs extends Component {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Jobs);
+
+// const CardExampleHeaderCard = () => (
+//   <Card.Group>
+//     <Card>
+//       <Card.Content>
+//         <Card.Header>{job.detailUrl}>{job.jobTitle}</Card.Header>
+//         <Card.Meta>{job.company}</Card.Meta>
+//         <Card.Description>{job.location}</Card.Description>
+//       </Card.Content>
+//     </Card>
+//   </Card.Group>
+// )
+//
+// export default CardExampleHeaderCard
