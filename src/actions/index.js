@@ -4,11 +4,28 @@ import axios from 'axios';
 
 const addNonExistingUsers = (userObject) => {
     const {displayName, email, photoURL} = userObject;
+    console.log('userObject', userObject, displayName);
     const userInFireBase = firebase.database().ref(`users/${displayName}`);
-    userInFireBase.once("value").then((snapshot) => {
+    return userInFireBase.once("value").then((snapshot) => {
         if (!snapshot.exists()) {
-            userInFireBase.set({name: displayName, email, profilePic: photoURL})
+            console.log(displayName);
+            const newUser = {
+                name: displayName,
+                email,
+                photo: photoURL,
+                linkedIn: null,
+                gitHub: null,
+                twitter: null,
+                projects: [],
+                skills: []
+            }
+            userInFireBase.set(newUser);
+            return newUser;
         }
+        const registeredUser = snapshot.val();
+        registeredUser.projects = Object.values(registeredUser.projects);
+        registeredUser.skills = Object.values(registeredUser.skills);
+        return registeredUser;
     })
 }
 const loginRequest = () => {
@@ -18,11 +35,8 @@ const loginRequest = () => {
     provider.addScope('https://www.googleapis.com/auth/plus.login')
     return firebase.auth().signInWithPopup(provider).then((res) => {
         const user = res.user;
-        addNonExistingUsers(user);
-        return user
-    }).catch((err) => {
-        console.error(err);
-    })
+        return addNonExistingUsers(user)
+    }).catch((err) => console.error(err))
 }
 
 const getJobsRequest = () => {
@@ -82,47 +96,43 @@ function updateCohortAndSendToDB(userData, cohort) {
 
 }
 
-
 function addSkillToFireBase(userName, skill) {
     const userSkillsInFireBase = firebase.database().ref(`users/${userName}/skills`).push();
     userSkillsInFireBase.set(skill);
 }
 
-
 function addSocialLinksToFireBase(username, SocialInks) {
-  let userSocialInFireBase = firebase.database()
-  userSocialInFireBase.ref(`users`).child(`${username}`).update({SocialInks});
+    let userSocialInFireBase = firebase.database()
+    userSocialInFireBase.ref(`users`).child(`${username}`).update({GitHub: SocialInks.GitHub, LinkedIn: SocialInks.LinkedIn, Twitter: SocialInks.Twitter});
 }
 
 function updateLinksAndSendToBD(userData, SocialInks) {
-  const username = userData.name;
-  addSocialLinksToFireBase(username, SocialInks);
-  return SocialInks;
+    const username = userData.name;
+    addSocialLinksToFireBase(username, SocialInks);
+    return SocialInks;
 }
 
 export const addReplyToPost = (userData, comment, postKey, postIndex) => {
- const commentInfo = {
-  comment: comment,
-  name: userData.name,
-  time: (new Date()).toString(),
-  photo: userData.photo,
-  postIndex
- }
- addCommentToFB(commentInfo, postKey);
- return commentInfo;
- }
+    const commentInfo = {
+        comment: comment,
+        name: userData.name,
+        time: (new Date()).toString(),
+        photo: userData.photo,
+        postIndex
+    }
+    addCommentToFB(commentInfo, postKey);
+    return commentInfo;
+}
 
 function addCohortToFireBase(userData, cohort) {
     const userCohortInFireBase = firebase.database();
     userCohortInFireBase.ref(`users`).child(`${userData.name}`).update({cohort});
-    userCohortInFireBase.ref(`cohorts`).child(`${cohort}`).push().set({
-    name: userData.name,
-    photo:userData.photo});
+    userCohortInFireBase.ref(`cohorts`).child(`${cohort}`).push().set({name: userData.name, photo: userData.photo});
 }
 
 const addCommentToFB = (commentObj, postKey) => {
-  const comments = firebase.database().ref(`feed/posts/${postKey}/comments`).push();
-  comments.set(commentObj);
+    const comments = firebase.database().ref(`feed/posts/${postKey}/comments`).push();
+    comments.set(commentObj);
 }
 const addCommentsToPost = (userData, comment, postKey, postIndex) => {
     const commentInfo = {
@@ -136,12 +146,9 @@ const addCommentsToPost = (userData, comment, postKey, postIndex) => {
     return commentInfo;
 }
 
-
 // export const fetchUsersFromFB = () => {
 //
 // }
-
-
 
 //ACTION CREATORS
 export const login = (props) => {
@@ -170,14 +177,6 @@ export const fetchPosts = (posts) => {
     return {type: 'FETCH_POSTS', payload: restructurePostsAndComments(posts)};
 }
 
-export const fetchCohort = (cohort) => {
-  return {type: 'FETCH_COHORT', payload: restructureFetchedFireBaseObjects(cohort)};
-}
-
-export const fetchProjects = (projects) => {
-    return {type: 'FETCH_PROJECTS', payload: restructureFetchedFireBaseObjects(projects)};
-}
-
 export const addSkill = (userData, skill) => {
     return {
         type: 'ADD_SKILL',
@@ -185,9 +184,6 @@ export const addSkill = (userData, skill) => {
     };
 }
 
-export const fetchSkills = (skills) => {
-    return {type: 'FETCH_SKILLS', payload: restructureFetchedFireBaseObjects(skills)};
-}
 export const addComment = (userData, comment, postKey, postIndex) => {
     return {
         type: 'ADD_COMMENTS',
@@ -203,9 +199,12 @@ export const addCohort = (userData, cohort) => {
 }
 
 export const addSocialLinks = (userData, SocialInks) => {
-  return {type: 'ADD_SOCIAL',  payload: updateLinksAndSendToBD(userData, SocialInks)}
+    return {
+        type: 'ADD_SOCIAL',
+        payload: updateLinksAndSendToBD(userData, SocialInks)
+    }
 }
 
 export const fetchSocial = (SocialInks) => {
-  return {type: 'FETCH_LINKS', payload: SocialInks};
+    return {type: 'FETCH_LINKS', payload: SocialInks};
 }

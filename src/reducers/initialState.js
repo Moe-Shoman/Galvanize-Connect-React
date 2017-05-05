@@ -3,17 +3,14 @@ export default {
     name: null,
     email: null,
     photo: null,
-    loggedIn: false,
     linkedIn: null,
     gitHub: null,
-    twitter: null
+    twitter: null,
+    projects: [],
+    skills: [],
   },
-  projectList: [],
-  projects: [],
   jobs: [],
   posts: [],
   comments: [],
-  skills: [],
-  cohort: null,
   cohortVal: []
 }

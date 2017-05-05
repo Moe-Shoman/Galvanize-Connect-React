@@ -4,8 +4,11 @@ import firebase from 'firebase'
 import {fetchCohort} from '../../actions';
 import {Card, Icon, Image} from 'semantic-ui-react'
 
-function mapStateToProps({cohortVal}) {
-    return {cohortVal}
+function mapStateToProps({cohortVal, userData}) {
+    return {
+     cohortVal,
+     userData
+    }
 }
 
 class MemberCards extends Component {
@@ -13,49 +16,42 @@ class MemberCards extends Component {
         super(props)
     }
     componentDidMount() {
+     // const cohortNum = this.props.userData.cohort
         firebase.database().ref('cohorts').once("value", (snapshot) => {
             return this.props.fetchCohort(snapshot.val());
         })
     }
 
     renderCohorMember = (cohortMembers) => {
-     if(cohortMembers) {
-      const members = Object.values(cohortMembers);
-      return members.map((member) => {
-       console.log('data after renderCohorMember ', member)
-      })
-     }
+        if (cohortMembers) {
+            const members = Object.values(cohortMembers);
+            return members.map((member) => {
+                return (
+                    <div class="card">
+                      <Card>
+                          <Image src={member.photo}/>
+                          <Card.Content>
+                            <Card.Header>{member.name}</Card.Header>
+                          </Card.Content>
+                      </Card>
+                    </div>
+                )
+            })
+        }
     }
 
     render() {
-      // console.log('cohort val is ', this.props.cohortVal);
-      const cards = [];
-      for (let obj in this.props.cohortVal[0]) {
-       console.log('NAME:', obj.name);
-       console.log('SRC:', obj.photo);
-       console.log('obj:', obj);
-        cards.push(
-         <Card>
-            <Image src={obj.photo}/>
-            <Card.Content>
-                <Card.Header>{obj.name}</Card.Header>
-            </Card.Content>
-        </Card>
-        )
-      }
-        const cohortMems = this.props.cohortVal.map((member) => {
+        const cohortUser = this.props.cohortVal.map((cohort) => {
             return (
-                <Card>
-                    <Image src={member.photo}/>
-                    <Card.Content>
-                        <Card.Header>{member.name}</Card.Header>
-                    </Card.Content>
-                </Card>
-            );
-        });
-
+                <div>
+                    {this.renderCohorMember(cohort)}
+                </div>
+            )
+        })
         return (
-         <div>{cards}</div>
+            <div>
+                {cohortUser}
+            </div>
         )
     }
 }

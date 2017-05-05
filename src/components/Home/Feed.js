@@ -4,7 +4,6 @@ import {fetchPosts} from '../../actions';
 import PostsForm from './PostsForm'
 import Comments from './Comments'
 import firebase from 'firebase';
-import CardExampleContentBlock from './exampleCard';
 import { Card, Feed } from 'semantic-ui-react';
 function mapStateToProps({posts}) {
     return {posts}
@@ -26,7 +25,6 @@ class Feeds extends Component {
                     <div key={i + comment.comment}>
                       <p>{comment.comment}</p>
                       <p>{comment.name}</p>
-                      {/* <img src={comment.photo} alt=""/> */}
                     </div>
                 )
             })
@@ -66,8 +64,6 @@ class Feeds extends Component {
             <div>
                 <PostsForm/>
                 {Posts}
-                {/* {this.example()} */}
-                {/* <CardExampleContentBlock /> */}
             </div>
         )
     }
