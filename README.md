@@ -5,8 +5,8 @@
 * Contributors
 * Project Description
 * Who This App Is For
-* How To Use This App
 * Technology, Libraries & Modules Used
+* How To contribute
 
 
 
@@ -25,10 +25,6 @@
 ## Who This App Is For
  For any Galvanize alum.
 
-## How To Use This App
-
-
-
 
 ## Technology, Libraries & Modules Used
 ```
@@ -39,3 +35,8 @@
  CSS
 
 ```
+
+## How To contribute
+ In order to contribute to this project you need permission to edit our Firebase database. Open an issue, leave your gmail along with the issue you'd like to resolve and our team will add you as a collaborator.  
+
+ Once added, clone this repository and run ```npm install``` in order to install project related dependencies. Make a pull request and once the pull request is approved we'll merge your contribution.
