@@ -176,7 +176,7 @@ export const fetchPosts = (posts) => {
 
 
 export const fetchCohort = (cohort) => {
- console.log('cohort vlaue ins fetchCohort is ', cohort);
+  // console.log('cohort vlaue ins fetchCohort is  ========', cohort);
   return {type: 'FETCH_COHORT', payload: restructureFetchedFireBaseObjects(cohort)};
 }
 

@@ -16,13 +16,8 @@ class MemberCards extends Component {
         super(props)
     }
     componentDidMount() {
-<<<<<<< HEAD
-     const num = 'G42'
-        firebase.database().ref(`cohorts/${num}`).once("value", (snapshot) => {
-=======
-     // const cohortNum = this.props.userData.cohort
-        firebase.database().ref('cohorts').once("value", (snapshot) => {
->>>>>>> d9f7fe3d15598f397637b5e1b9cb204c2122adcb
+
+        firebase.database().ref(`cohorts/${this.props.userData.cohort}`).once("value", (snapshot) => {
             return this.props.fetchCohort(snapshot.val());
         })
         // firebase.database().ref('cohorts').once("value", (snapshot) => {
@@ -30,34 +25,45 @@ class MemberCards extends Component {
         // })
     }
 
-    renderCohorMember = (cohortMembers) => {
-<<<<<<< HEAD
-     // console.log('cohortMembers is =============== ', this.props.userData);
-=======
->>>>>>> d9f7fe3d15598f397637b5e1b9cb204c2122adcb
-        if (cohortMembers) {
-            const members = Object.values(cohortMembers);
-            return members.map((member) => {
-                return (
-                    <div class="card">
-                      <Card>
-                          <Image src={member.photo}/>
-                          <Card.Content>
-                            <Card.Header>{member.name}</Card.Header>
-                          </Card.Content>
-                      </Card>
-                    </div>
-                )
-            })
-        }
-    }
+    // renderCohorMember = (cohortMembers) => {
+    //  console.log('cohortMembers is =============== ', cohortMembers);
+    //     if (cohortMembers) {
+    //         const members = Object.values(cohortMembers);
+    //         return members.map((member) => {
+    //          console.log('memerb is ============== ', member);
+    //             return (
+    //                 // <div class="card">
+    //                   <Card>
+    //                       <Image src={member.photo}/>
+    //                       <Card.Content>
+    //                         <Card.Header>{member.name}</Card.Header>
+    //                       </Card.Content>
+    //                   </Card>
+    //                 // </div>
+    //             )
+    //         })
+    //     }
+    // }
 
     render() {
-        const cohortUser = this.props.cohortVal.map((cohort) => {
+     console.log('cohort val is ================ ', this.props.cohortVal);
+         const members = Object.values(this.props.cohortVal);
+        const cohortUser = members.map((cohort) => {
+         console.log('cohort inside of memeber is ---------------- ', cohort);
+            // return (
+            //     <div>
+            //         {this.renderCohorMember(cohort)}
+            //     </div>
+            // )
             return (
-                <div>
-                    {this.renderCohorMember(cohort)}
-                </div>
+                // <div class="card">
+                  <Card>
+                      <Image src={cohort.photo}/>
+                      <Card.Content>
+                        <Card.Header>{cohort.name}</Card.Header>
+                      </Card.Content>
+                  </Card>
+                // </div>
             )
         })
         return (
