@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { fetchProjects } from '../../actions'
 import { connect } from 'react-redux';
 import firebase from 'firebase';
+import './project.css';
 
 
 function mapStateToProps({ projects, userData }){
@@ -21,7 +22,7 @@ const _renderProject = (projects) => {
     }
    return projects.map((project, i) => {
     return (
-            <div key={i}>
+            <div className="projectItem" key={i}>
 
                 <div>PROJECT TITLE: {project.projectName}</div>
 
@@ -46,7 +47,7 @@ class ProjectsList extends Component {
   render () {
     const {projects} = this.props;
     return (
-      <div>
+      <div >
         {_renderProject(projects)}
       </div>
     );
