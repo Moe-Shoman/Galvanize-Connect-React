@@ -5,8 +5,9 @@
 * Contributors
 * Project Description
 * Who This App Is For
-* How To Use This App
 * Technology, Libraries & Modules Used
+* Issues Remaining
+* How To contribute
 
 
 
@@ -25,10 +26,6 @@
 ## Who This App Is For
  For any Galvanize alum.
 
-## How To Use This App
-
-
-
 
 ## Technology, Libraries & Modules Used
 ```
@@ -39,3 +36,20 @@
  CSS
 
 ```
+
+## Issues Remaining
+```
+ - Chat feature
+ - Cohort component need to render after cohort number is added
+ - Add a database listener for post component to append to the page without refreshing
+ - Allow users to visit other's profile
+ - Allow users to add images
+ - Allow users to include link to their deployed application on their profile page
+ - Add contact us component
+
+```
+
+## How To contribute
+ In order to contribute to this project you need permission to edit our Firebase database. Open an issue, leave your gmail along with the issue you'd like to resolve and our team will add you as a collaborator.  
+
+ Once added, clone this repository and run ```npm install``` in order to install project related dependencies. Make a pull request and once the pull request is approved we'll merge your contribution.
