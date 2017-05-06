@@ -37,30 +37,30 @@ class Profile extends Component {
                   </div>
                   <div className="cohortStyle">
                       <h3 className="numStyle">{this.props.userData.cohort}</h3>
+                      <div>
+                      <AddCohort />
+                      </div>
                   </div>
                   <div>
                       <ListOfSocialLinks />
+                      {/* <div>
+                      <SocialLinks />
+                      </div> */}
                   </div>
                 </div>
 
                 <div>
-                  <SkillsList />
-                  <div>
-                  <AddProjectForm />
-                  </div>
+                  {/* <SkillsList /> */}
+
                   <div>
                   <AddSkillsForm />
                   </div>
-                  <div>
+                  {/* <div> */}
                   <ProjectsList />
+                  {/* </div> */}
+                  <div className="projectButton">
+                  <AddProjectForm />
                   </div>
-                  <div>
-                  <AddCohort />
-                  </div>
-                  <div>
-                  <SocialLinks />
-                  </div>
-
                 </div>
               </div>
               </Sidebar.Pusher>

@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import firebase from 'firebase';
 import './project.css';
 
+import {Item} from 'semantic-ui-react';
+
 
 function mapStateToProps({ projects, userData }){
   return {
@@ -22,12 +24,10 @@ const _renderProject = (projects) => {
    return projects.map((project, i) => {
     return (
             <div className="projectItem" key={i}>
-
-                <div className="projectTitle">Title: {project.projectName}</div>
-
-                <div className="projectDes">Description: {project.description}</div>
+                <div className="projectTitle"><h2 className="prohead">{project.projectName}</h2></div>
+                <div className="projectDes"><p>{project.description}</p></div>
             </div>
-            )
+    )
   })
 }
 
@@ -46,7 +46,7 @@ class ProjectsList extends Component {
   render () {
     const {projects} = this.props.userData;
     return (
-      <div >
+      <div className="allProjects">
         {_renderProject(projects)}
       </div>
     );
