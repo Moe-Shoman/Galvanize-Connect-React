@@ -7,7 +7,7 @@ import './project.css';
 import {Item} from 'semantic-ui-react';
 
 
-function mapStateToProps({ projects, userData }){
+function mapStateToProps({ userData }){
   return {
     userData
   }

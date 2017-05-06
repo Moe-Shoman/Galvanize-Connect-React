@@ -9,7 +9,7 @@ export default (state = initialState.userData, action) => {
       case 'LOGIN_REJECTED':
         return state
       case 'ADD_PROJECT':
-        return Object.assign({}, state, {projects: state.projects.concat(action.payload)});
+        return Object.assign({}, state, {projects: [...state.projects, action.payload]});
         case 'ADD_SKILL':
           return Object.assign({}, state, {skills: state.skills.concat(action.payload)})
       case 'ADD_COHORT':
