@@ -30,10 +30,25 @@
   text-align: center;
 }
 .commentRow {
-  margin-left: 100px;
+  margin-left: 75px;
 }
 #postForm {
   width: 50%
+}
+.HomeContainer {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-flow: row;
+}
+.FeedContainer {
+
+}
+.JobsContainer {
+margin-right: 65px;
+margin-top: 40px;
+flex: 3 6 80%;
+order: 3;
 }
 /*ul {
     list-style-type: none;

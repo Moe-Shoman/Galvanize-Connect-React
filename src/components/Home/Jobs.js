@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {getJobs} from '../../actions';
-
+import { Card, Grid } from 'semantic-ui-react';
 function mapStateToProps({jobs}) {
     return {jobs}
 }
@@ -15,11 +15,19 @@ function mapDispatchToProps(dispatch) {
 
 const renderJobs = (jobs) => {
     return jobs.map((job, i) => (
-        <div key={i}>
-            <a href={job.detailUrl}>{job.jobTitle}</a>
-            <div>{job.company}</div>
-            <div>{job.location}</div>
-        </div>
+        <Grid.Row key={i}>
+          <Grid.Column width={10}>
+            <Card.Group className='jobCards' fluid>
+              <Card>
+                <Card.Content>
+                  <Card.Header href={job.detailUrl}>{job.jobTitle}</Card.Header>
+                  <Card.Meta>{job.company}</Card.Meta>
+                  <Card.Description>{job.location}</Card.Description>
+                </Card.Content>
+              </Card>
+            </Card.Group>
+          </Grid.Column>
+        </Grid.Row>
     ))
 }
 
@@ -32,8 +40,9 @@ class Jobs extends Component {
     render() {
         const {jobs} = this.props
         return (
-            <div>{renderJobs(jobs)}
-            </div>
+            <Grid>
+              {renderJobs(jobs)}
+            </Grid>
         )
     }
 }
