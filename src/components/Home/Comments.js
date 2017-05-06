@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {addComment} from '../../actions';
-
+import { Button, Form } from 'semantic-ui-react';
 function mapStateToProps({userData}) {
     return { userData }
 }
@@ -22,13 +22,11 @@ class Comments extends Component {
     render() {
      const { userData, addComment, postKey, postIndex } = this.props;
         return (
-         <form>
-           <div>
-             <label htmlFor="comment">Reply</label>
+         <Form>
+             <label htmlFor="comment">Comment</label>
              <input  name="comment" onChange={this.updateComment} value={this.state.input} type="text"/>
-           </div>
-           <button type="submit" onClick={(e) => {e.preventDefault(); addComment(userData, this.state.input, postKey, postIndex);}}>Submit Reply</button>
-         </form>
+           <Button type="submit" onClick={(e) => {e.preventDefault(); addComment(userData, this.state.input, postKey, postIndex);}}>Submit</Button>
+         </Form>
         )
     }
 }

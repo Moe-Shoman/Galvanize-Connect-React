@@ -5,7 +5,7 @@ import firebase from 'firebase';
 import './project.css';
 
 
-function mapStateToProps({ projects, userData }){
+function mapStateToProps({ userData }){
   return {
     userData
   }

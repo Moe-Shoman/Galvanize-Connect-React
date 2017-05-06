@@ -4,7 +4,7 @@ import {fetchPosts} from '../../actions';
 import PostsForm from './PostsForm'
 import Comments from './Comments'
 import firebase from 'firebase';
-import { Card, Feed } from 'semantic-ui-react';
+import {Card, Feed, Grid} from 'semantic-ui-react';
 function mapStateToProps({posts}) {
     return {posts}
 }
@@ -22,10 +22,23 @@ class Feeds extends Component {
             const comments = Object.values(commentObject);
             return comments.map((comment, i) => {
                 return (
-                    <div key={i + comment.comment}>
-                      <p>{comment.comment}</p>
-                      <p>{comment.name}</p>
-                    </div>
+                  <Grid.Row className='commentRow'>
+
+                  <Grid.Column width={6} verticalAlign='middle'>
+                        <Card fluid key={i + comment.comment} className='comments'>
+                            <Feed.Event>
+                                <Feed.Label image={comment.photo}/>
+                                <Feed.Content>
+                                    <Feed.Date content={comment.date}/>
+                                    <Feed.Summary>
+                                        <Card.Header>{comment.name}</Card.Header>
+                                        {comment.comment}
+                                    </Feed.Summary>
+                                </Feed.Content>
+                            </Feed.Event>
+                        </Card>
+                      </Grid.Column>
+                    </Grid.Row>
                 )
             })
         }
@@ -33,31 +46,35 @@ class Feeds extends Component {
     render() {
         const Posts = this.props.posts.map((post, ind) => {
             return (
-                <div key={post.postKey + ind}>
-                  <Card>
-                    <Card.Content>
-                      <Card.Header>
-                        POST
-                      </Card.Header>
-                    </Card.Content>
-                    <Card.Content>
-                      <Feed>
-                        <Feed.Event>
-                          <Feed.Label image={post.photo} />
-                          <Feed.Content>
-                            <Feed.Date content={post.date} />
-                            <Feed.Summary>
-                              <Card.Header>{post.name}</Card.Header>
-                              {post.post}
-                            </Feed.Summary>
-                          </Feed.Content>
-                        </Feed.Event>
-                      </Feed>
-                    </Card.Content>
-                  </Card>
-                    {this.renderComments(post.comments)}
-                    <div><Comments postKey={post.postKey} postIndex={ind}/></div>
-                </div>
+                <Feed >
+
+                    <div key={post.postKey + ind}>
+                      <Grid>
+                      <Grid.Row>
+
+                      <Grid.Column width={8}>
+                            <Card fluid className='posts'>
+                                <Card.Content>
+                                    <Feed.Event>
+                                        <Feed.Label image={post.photo}/>
+                                        <Feed.Content>
+                                            <Feed.Date content={post.date}/>
+                                            <Feed.Summary>
+                                                <Card.Header>{post.name}</Card.Header>
+                                                {post.post}
+                                            </Feed.Summary>
+                                        </Feed.Content>
+                                    </Feed.Event>
+                                </Card.Content>
+                            </Card>
+                          </Grid.Column>
+                        </Grid.Row>
+
+                        {this.renderComments(post.comments)}
+                        <Comments postKey={post.postKey} postIndex={ind}/> {/* </Segment.Group> */}
+                      </Grid>
+                    </div>
+                </Feed>
             )
         })
         return (
@@ -68,5 +85,9 @@ class Feeds extends Component {
         )
     }
 }
+
+{/* <Grid.Column width={8}>
+      <Segment>2</Segment>
+    </Grid.Column> */}
 
 export default connect(mapStateToProps, {fetchPosts})(Feeds);

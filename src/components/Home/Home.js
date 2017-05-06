@@ -9,7 +9,7 @@ class Home extends Component {
                 <Segment basic>
                     <div>
                         <Feeds/>
-                        <Jobs/>
+                        {/* <Jobs/> */}
                     </div>
                 </Segment>
             </Sidebar.Pusher>

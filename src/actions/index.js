@@ -17,7 +17,7 @@ const addNonExistingUsers = (userObject) => {
                 gitHub: null,
                 twitter: null,
                 projects: '',
-                skills: ''
+                skills: '',
             }
             userInFireBase.set(newUser);
             return newUser;

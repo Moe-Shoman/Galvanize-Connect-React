@@ -17,13 +17,15 @@ class MemberCards extends Component {
         super(props)
     }
     componentDidMount() {
-
         firebase.database().ref(`cohorts/${this.props.userData.cohort}`).once("value", (snapshot) => {
             return this.props.fetchCohort(snapshot.val());
         })
     }
 
     render() {
+      if (!this.props.userData.cohort) {
+        console.log('redirect to profile to add cohort');
+      }
         const members = Object.values(this.props.cohortVal);
         const cohortUser = members.map((cohort) => {
             return (

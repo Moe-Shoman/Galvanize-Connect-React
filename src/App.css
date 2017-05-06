@@ -23,7 +23,18 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
-
+.posts {
+  text-align: center;
+}
+.comments {
+  text-align: center;
+}
+.commentRow {
+  margin-left: 100px;
+}
+#postForm {
+  width: 50%
+}
 /*ul {
     list-style-type: none;
     position: absolute;
