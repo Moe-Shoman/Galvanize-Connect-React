@@ -20,6 +20,7 @@ class Home extends Component {
             </Sidebar.Pusher>
         )
     }
+
 }
 
 export default Home;

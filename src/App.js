@@ -11,7 +11,6 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import {
     Sidebar,
-    Segment,
     Button,
     Menu,
     Image,

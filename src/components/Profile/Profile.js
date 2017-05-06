@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import Chip from 'material-ui/Chip';
-import semantic from 'semantic-ui-react';
+// import Chip from 'material-ui/Chip';
+// import semantic from 'semantic-ui-react';
 import './profile.css';
 import ProjectsList from '../Projects/projects_list';
 import SkillsList from '../Skills/skills_list';
@@ -11,7 +11,7 @@ import AddSkillsForm from '../Skills/skills_form';
 import AddCohort from './add_cohort';
 import SocialLinks from './add_social';
 import ListOfSocialLinks from './social_list';
-import { Sidebar } from 'semantic-ui-react';
+import { Sidebar, Grid } from 'semantic-ui-react';
 function mapStateToProps({ userData }){
   return {
     userData
@@ -28,24 +28,43 @@ const renderUserName = (userData) => {
 class Profile extends Component {
     render() {
       return (
-        <Sidebar.Pusher>
+          <Sidebar.Pusher>
               <div>
                 <div className="userPro">
+                  <div className="userName">
                   <h1>{renderUserName(this.props.userData)}</h1>
-                  <img className="ui circular image imgPro" src={this.props.userData.photo}></img>
+                    <img className="ui circular image imgPro" src={this.props.userData.photo}></img>
+                  </div>
+                  <div className="cohortStyle">
+                      <h3 className="numStyle">{this.props.userData.cohort}</h3>
+                      <div>
+                      <AddCohort />
+                      </div>
+                  </div>
+                  <div>
+                      <ListOfSocialLinks />
+                      {/* <div>
+                      <SocialLinks />
+                      </div> */}
+                  </div>
                 </div>
+
                 <div>
-                  <SkillsList />
-                  <AddProjectForm />
+                  {/* <SkillsList /> */}
+
+                  <div>
                   <AddSkillsForm />
+                  </div>
+                  {/* <div> */}
                   <ProjectsList />
-                  <AddCohort />
-                  <SocialLinks />
-                  <ListOfSocialLinks />
+                  {/* </div> */}
+                  <div className="projectButton">
+                  <AddProjectForm />
+                  </div>
                 </div>
               </div>
-        </Sidebar.Pusher>
-    );
+              </Sidebar.Pusher>
+            );
     }
 }
 

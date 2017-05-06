@@ -22,17 +22,22 @@ class ListOfSocialLinks extends Component {
 renderSoLinks = (userData)=> {
   console.log("USERDATA in RENDERSOLINKS", userData)
     return (
-      <div className="styleLinks">
-        <div className="github">
-          <Button  href={userData.GitHub} icon='github square' size='large'/>
+      <div>
+        <div>
+        <div className="styleLinks">
+            <div className="github">
+              <Button  href={userData.GitHub} icon='github square' size='large'/>
+            </div>
+            <div className="linkedIn">
+              <Button  href={userData.LinkedIn} icon='linkedin square' size='large'/>
+            </div>
+            <div className="twitter">
+              <Button href={userData.Twitter} icon='twitter' size='large'/>
+            </div>
         </div>
-          <div className="linkedIn">
-            <Button  href={userData.LinkedIn} icon='linkedin square' size='large'/>
-          </div>
-          <div className="twitter">
-            <Button href={userData.Twitter} icon='twitter' size='large'/>
-          </div>
-      </div>
+
+    </div>
+  </div>
   )
 }
   render() {

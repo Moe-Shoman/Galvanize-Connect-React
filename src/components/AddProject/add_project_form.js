@@ -36,13 +36,15 @@ class AddProjectForm extends Component {
         return(
         <form className="theForm ui form">
           <div>
-            <div calssName="field">
+            <div className="field">
               <label htmlFor="projectName">Project Name</label>
               <input className="proName" name="projectName" onChange={this.updateInput} type="text"/>
             </div>
             <div>
+              <div className="field">
               <label htmlFor="description">Project Description</label>
               <input className="proDesc" name="description" onChange={this.updateInput} type="text"/>
+            </div>
             </div>
           </div>
           <button className="ui button" type="submit" onClick={(e) => {

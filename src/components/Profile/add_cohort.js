@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { addCohort } from '../../actions';
 import { connect } from 'react-redux';
+import { Button, Icon, Size } from 'semantic-ui-react';
 
 function mapStateToProps({ userData }) {
   return {
@@ -32,13 +33,13 @@ renderButton = (cohort) => {
     if(!cohort) {
       return (
         <div>
-          <button onClick={this.toggleForm}>ADD COHORT</button>
+          <Button onClick={this.toggleForm} icon='write' size='large'/>
         </div>
       )
     }
     return (
       <div>
-        <button onClick={this.toggleForm}>Edit Cohort</button>
+        <Button onClick={this.toggleForm} icon='write' size='tiny'/>
       </div>
     )
 
@@ -52,7 +53,7 @@ renderButton = (cohort) => {
       return (
         <form>
           <div>
-            <label>CohortName</label>
+            <label >Cohort: </label>
             <input className="cohortName" type="text" value={this.state.cohort} name="cohortName" onChange={this.updateCohort} />
           </div>
           <div>
