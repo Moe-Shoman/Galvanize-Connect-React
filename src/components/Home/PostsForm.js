@@ -1,40 +1,38 @@
 import React, {Component} from 'react';
-import { connect } from 'react-redux';
-import { addPost } from '../../actions';
-
-function mapStateToProps ({ userData, posts, form }) {
- return {
-  userData,
-  posts,
-  form
- }
+import {connect} from 'react-redux';
+import {addPost} from '../../actions';
+import {Button, Form, TextArea} from 'semantic-ui-react';
+function mapStateToProps({userData, posts, form}) {
+    return {userData, posts, form}
 }
 
 class PostForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      input: ''
+    constructor(props) {
+        super(props);
+        this.state = {
+            input: ''
+        }
     }
-  }
-  updateInput = (event) => {
-    this.setState({
-      input: event.target.value
-    })
-  }
+    updateInput = (event) => {
+        this.setState({input: event.target.value})
+    }
     render() {
-     const { userData, addPost, form } = this.props;
+        const {userData, addPost, form} = this.props;
         return (
-         <form>
-           <div>
-             <label htmlFor="post">Add Post</label>
-             <input  name="post" onChange={this.updateInput} value={this.state.input} type="text"/>
-           </div>
-           <button type="submit" onClick={(e) => {e.preventDefault(); addPost(userData, this.state.input)}}>Submit</button>
-         </form>
+            <Form id='postForm'>
+                <label htmlFor="post">
+                    <h3>
+                        Add Post
+                    </h3>
+                </label>
+                <TextArea name="post" onChange={this.updateInput} value={this.state.input} type="text" autoHeight/>
+                <Button type="submit" onClick={(e) => {
+                    e.preventDefault();
+                    addPost(userData, this.state.input)
+                }}>Submit</Button>
+            </Form>
         )
     }
 }
 
-
-export default connect(mapStateToProps, { addPost })(PostForm)
+export default connect(mapStateToProps, {addPost})(PostForm)

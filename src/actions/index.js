@@ -17,12 +17,13 @@ const addNonExistingUsers = (userObject) => {
                 gitHub: null,
                 twitter: null,
                 projects: '',
-                skills: ''
+                skills: '',
             }
             userInFireBase.set(newUser);
             return newUser;
         }
         const registeredUser = snapshot.val();
+        console.log('registeredUser.projects', registeredUser.projects, registeredUser.skills);
         registeredUser.projects = Object.values(registeredUser.projects);
         registeredUser.skills = Object.values(registeredUser.skills);
         return registeredUser;
