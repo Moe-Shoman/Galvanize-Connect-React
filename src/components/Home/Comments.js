@@ -2,10 +2,6 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {addComment} from '../../actions';
 import { Button, Form } from 'semantic-ui-react';
-function mapStateToProps({userData}) {
-    return { userData }
-}
-
 
 class Comments extends Component {
   constructor(props) {
@@ -31,5 +27,4 @@ class Comments extends Component {
     }
 }
 
-
-export default connect(mapStateToProps, { addComment })(Comments)
+export default connect(({ userData }) => ({ userData }), { addComment })(Comments);
