@@ -36,7 +36,9 @@ class Jobs extends Component {
     componentWillMount() {
         this.props.getJobs()
     }
+    renderJob = () => {
 
+    }
     render() {
         const {jobs} = this.props
         return (

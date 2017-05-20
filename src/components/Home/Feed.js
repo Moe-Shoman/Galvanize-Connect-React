@@ -23,7 +23,6 @@ class Feeds extends Component {
             return comments.map((comment, i) => {
                 return (
                   <Grid.Row className='commentRow'>
-
                   <Grid.Column width={6} verticalAlign='middle'>
                         <Card fluid key={i + comment.comment} className='comments'>
                             <Feed.Event>
