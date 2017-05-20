@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Jobs from './Jobs';
 import Feeds from './Feed';
 import { Segment, Sidebar } from 'semantic-ui-react';

@@ -22,21 +22,21 @@ class Feeds extends Component {
             const comments = Object.values(commentObject);
             return comments.map((comment, i) => {
                 return (
-                  <Grid.Row className='commentRow'>
-                  <Grid.Column width={6} verticalAlign='middle'>
-                        <Card fluid key={i + comment.comment} className='comments'>
-                            <Feed.Event>
-                                <Feed.Label image={comment.photo}/>
-                                <Feed.Content>
-                                    <Feed.Date content={comment.date}/>
-                                    <Feed.Summary>
-                                        <Card.Header>{comment.name}</Card.Header>
-                                        {comment.comment}
-                                    </Feed.Summary>
-                                </Feed.Content>
-                            </Feed.Event>
-                        </Card>
-                      </Grid.Column>
+                    <Grid.Row className='commentRow'>
+                        <Grid.Column width={6} verticalAlign='middle'>
+                            <Card fluid key={i + comment.comment} className='comments'>
+                                <Feed.Event>
+                                    <Feed.Label image={comment.photo}/>
+                                    <Feed.Content>
+                                        <Feed.Date content={comment.date}/>
+                                        <Feed.Summary>
+                                            <Card.Header>{comment.name}</Card.Header>
+                                            {comment.comment}
+                                        </Feed.Summary>
+                                    </Feed.Content>
+                                </Feed.Event>
+                            </Card>
+                        </Grid.Column>
                     </Grid.Row>
                 )
             })
@@ -48,38 +48,37 @@ class Feeds extends Component {
                 <Feed >
 
                     <div key={post.postKey + ind}>
-                      <Grid>
-                      <Grid.Row>
+                        <Grid>
+                            <Grid.Row>
 
-                      <Grid.Column width={8}>
-                            <Card fluid className='posts'>
-                                <Card.Content>
-                                    <Feed.Event>
-                                        <Feed.Label image={post.photo}/>
-                                        <Feed.Content>
-                                            <Feed.Date content={post.date}/>
-                                            <Feed.Summary>
-                                                <Card.Header>{post.name}</Card.Header>
-                                                {post.post}
-                                            </Feed.Summary>
-                                        </Feed.Content>
-                                    </Feed.Event>
-                                </Card.Content>
-                            </Card>
-                          </Grid.Column>
-                        </Grid.Row>
+                                <Grid.Column width={8}>
+                                    <Card fluid className='posts'>
+                                        <Card.Content>
+                                            <Feed.Event>
+                                                <Feed.Label image={post.photo}/>
+                                                <Feed.Content>
+                                                    <Feed.Date content={post.date}/>
+                                                    <Feed.Summary>
+                                                        <Card.Header>{post.name}</Card.Header>
+                                                        {post.post}
+                                                    </Feed.Summary>
+                                                </Feed.Content>
+                                            </Feed.Event>
+                                        </Card.Content>
+                                    </Card>
+                                </Grid.Column>
+                            </Grid.Row>
 
-                        {this.renderComments(post.comments)}
-                        <Comments postKey={post.postKey} postIndex={ind}/> {/* </Segment.Group> */}
-                      </Grid>
+                            {this.renderComments(post.comments)}
+                            <Comments postKey={post.postKey} postIndex={ind}/> {/* </Segment.Group> */}
+                        </Grid>
                     </div>
                 </Feed>
             )
         })
         return (
             <div>
-                <PostsForm/>
-                {Posts}
+                <PostsForm/> {Posts}
             </div>
         )
     }
@@ -87,7 +86,7 @@ class Feeds extends Component {
 
 {/* <Grid.Column width={8}>
       <Segment>2</Segment>
-    </Grid.Column> */}
+    </Grid.Column> */
+}
 
-// export default connect(mapStateToProps, {fetchPosts})(Feeds);
-export default connect(({posts}) => ({ posts }), {fetchPosts})(Feeds);
+export default connect(({posts}) => ({posts}), {fetchPosts})(Feeds);
