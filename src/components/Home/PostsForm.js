@@ -2,9 +2,6 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {addPost} from '../../actions';
 import {Button, Form, TextArea} from 'semantic-ui-react';
-// function mapStateToProps({userData, posts, form}) {
-//     return {userData, posts, form}
-// }
 
 class PostForm extends Component {
     constructor(props) {
