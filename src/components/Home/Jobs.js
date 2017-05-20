@@ -3,15 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {getJobs} from '../../actions';
 import { Card, Grid } from 'semantic-ui-react';
-function mapStateToProps({jobs}) {
-    return {jobs}
-}
 
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({
-        getJobs
-    }, dispatch)
-}
 
 const renderJobs = (jobs) => {
     return jobs.map((job, i) => (
@@ -49,4 +41,4 @@ class Jobs extends Component {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Jobs);
+export default connect(({ jobs }) => ({ jobs }), { getJobs })(Jobs);

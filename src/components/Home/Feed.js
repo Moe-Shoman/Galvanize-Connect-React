@@ -89,4 +89,5 @@ class Feeds extends Component {
       <Segment>2</Segment>
     </Grid.Column> */}
 
-export default connect(mapStateToProps, {fetchPosts})(Feeds);
+// export default connect(mapStateToProps, {fetchPosts})(Feeds);
+export default connect(({posts}) => ({ posts }), {fetchPosts})(Feeds);
