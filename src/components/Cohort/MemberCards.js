@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import firebase from 'firebase';
 import { fetchCohort } from '../../actions';
-import { Card, Icon, Image } from 'semantic-ui-react';
+import { Card, Image } from 'semantic-ui-react';
 import './cohort.css';
 import AddCohort from '../Profile/add_cohort';
 
@@ -37,7 +37,7 @@ class MemberCards extends Component {
           </Card.Content>
         </Card>
       </div>
-            ));
+        ));
     return (
       <div>
         {cohortUser}
