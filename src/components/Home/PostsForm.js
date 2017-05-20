@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {addPost} from '../../actions';
 import {Button, Form, TextArea} from 'semantic-ui-react';
-function mapStateToProps({userData, posts, form}) {
-    return {userData, posts, form}
-}
+// function mapStateToProps({userData, posts, form}) {
+//     return {userData, posts, form}
+// }
 
 class PostForm extends Component {
     constructor(props) {
@@ -35,4 +35,4 @@ class PostForm extends Component {
     }
 }
 
-export default connect(mapStateToProps, {addPost})(PostForm)
+export default connect(({ userData, posts, form }) => ({ userData, posts, form }), { addPost })(PostForm)
