@@ -6,12 +6,6 @@ import { styles } from 'material-ui/Chip'
 import firebase from 'firebase';
 import './skill.css';
 
-const mapStateToProps = ({ userData }) => {
-  return {
-    userData
-  }
-}
-
 
 class SkillsList extends Component {
   constructor(props){
@@ -43,4 +37,7 @@ class SkillsList extends Component {
   }
 }
 
-export default connect(mapStateToProps, {fetchSkills})(SkillsList);
+export default connect(({ userData }) => ({ useData }), {fetchSkills})(SkillsList);
+
+//reference
+// export default connect(({ cohortVal, userData }) => ({ cohortVal, userData }), { fetchCohort })(MemberCards);

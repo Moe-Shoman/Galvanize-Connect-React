@@ -3,12 +3,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { addSocialLinks } from '../../actions';
 
- function mapStateToProps({ userData, links }){
-   return {
-     userData,
-     links
-   }
- }
 
  class SocialLinks extends Component {
    constructor(props){
@@ -80,4 +74,7 @@ import { addSocialLinks } from '../../actions';
 }
 
 
-export default connect(mapStateToProps, { addSocialLinks })(SocialLinks)
+export default connect(({ userData, links}) => ({ userData, links}), { addSocialLinks })(SocialLinks);
+
+//reference
+// export default connect(({ cohortVal, userData }) => ({ cohortVal, userData }), { fetchCohort })(MemberCards);

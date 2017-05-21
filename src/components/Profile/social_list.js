@@ -6,11 +6,11 @@ import firebase from 'firebase';
 // import './skill.css';
 import { Button, Icon, Size } from 'semantic-ui-react';
 
-const mapStateToProps = ({ userData }) => {
-  return {
-    userData
-  }
-}
+// const mapStateToProps = ({ userData }) => {
+//   return {
+//     userData
+//   }
+// }
 
 
 
@@ -52,4 +52,7 @@ renderSoLinks = (userData)=> {
   }
 }
 
-export default connect(mapStateToProps, { fetchSocial })(ListOfSocialLinks);
+// export default connect(mapStateToProps, { fetchSocial })(ListOfSocialLinks);
+export default connect(({ userData}) => ({ userData}), { fetchSocial })(ListOfSocialLinks);
+//reference
+// export default connect(({ cohortVal, userData }) => ({ cohortVal, userData }), { fetchCohort })(MemberCards);

@@ -3,11 +3,6 @@ import { addCohort } from '../../actions';
 import { connect } from 'react-redux';
 import { Button, Icon, Size } from 'semantic-ui-react';
 
-function mapStateToProps({ userData }) {
-  return {
-    userData
-  }
-}
 
 class AddCohort extends Component {
   constructor(props) {
@@ -72,4 +67,4 @@ renderButton = (cohort) => {
   }
 }
 
-export default connect(mapStateToProps, { addCohort })(AddCohort)
+export default connect(({ userData}) => ({ userData }), { addCohort })(AddCohort);

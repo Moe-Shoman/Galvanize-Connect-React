@@ -12,17 +12,7 @@ import AddCohort from './add_cohort';
 // import SocialLinks from './add_social';
 import ListOfSocialLinks from './social_list';
 import { Sidebar } from 'semantic-ui-react';
-function mapStateToProps({ userData }) {
-  return {
-    userData,
-  };
-}
 
-const renderUserName = (userData) => {
-  return (
-    <div>{userData.name}</div>
-  );
-};
 
 class Profile extends Component {
   render() {
@@ -31,7 +21,8 @@ class Profile extends Component {
         <div>
           <div className="userPro">
             <div className="userName">
-              <h1>{renderUserName(this.props.userData)}</h1>
+              {/* <h2>{renderUserName(this.props.userData)}</h2> */}
+              <p className="userName">{this.props.userData.name}</p>
               <img className="ui circular image imgPro" src={this.props.userData.photo}></img>
             </div>
             <div className="cohortStyle">
@@ -67,4 +58,6 @@ class Profile extends Component {
   }
 }
 
-export default connect(mapStateToProps)(Profile);
+export default connect(({ userData }) => ({ userData }))(Profile);
+//reference
+// export default connect(({ cohortVal, userData }) => ({ cohortVal, userData }), { fetchCohort })(MemberCards);
