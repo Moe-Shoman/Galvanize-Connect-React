@@ -6,10 +6,6 @@ import { Card, Image } from 'semantic-ui-react';
 import './cohort.css';
 import AddCohort from '../Profile/add_cohort';
 
-// function mapStateToProps({ cohortVal, userData }) {
-//   return { cohortVal, userData };
-// }
-
 class MemberCards extends Component {
   constructor(props) {
     super(props);
