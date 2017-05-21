@@ -28,7 +28,7 @@ class Feeds extends Component {
                                 <Feed.Event>
                                     <Feed.Label image={comment.photo}/>
                                     <Feed.Content>
-                                        <Feed.Date content={comment.date}/>
+                                        <Feed.Date content={comment.time}/>
                                         <Feed.Summary>
                                             <Card.Header>{comment.name}</Card.Header>
                                             {comment.comment}
