@@ -1,40 +1,38 @@
-import React, {Component} from 'react';
-import { fetchProjects } from '../../actions'
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import firebase from 'firebase';
+// import { Item } from 'semantic-ui-react';
+// import firebase from 'firebase';
+import { fetchProjects } from '../../actions';
 import './project.css';
 
-import {Item} from 'semantic-ui-react';
-
-
-function mapStateToProps({ userData }){
+function mapStateToProps({ userData }) {
   return {
-    userData
-  }
+    userData,
+  };
 }
 
-const _renderProject = (projects) => {
-    if(!projects){
-      return (
+const renderProject = (projects) => {
+  if (!projects) {
+    return (
         <div>
           <button>Add a Project</button>
         </div>
-      )
-    }
-   return projects.map((project, i) => {
+    );
+  }
+  return projects.map((project, i) => {
     return (
-            <div className="projectItem" key={i}>
-                <div className="projectTitle"><h2 className="prohead">{project.projectName}</h2></div>
-                <div className="projectDes"><p>{project.description}</p></div>
-            </div>
-    )
-  })
-}
+      <div className="projectItem" key={i}>
+        <div className="projectTitle"><h2 className="prohead">{project.projectName}</h2></div>
+        <div className="projectDes"><p>{project.description}</p></div>
+      </div>
+    );
+  });
+};
 
 
 class ProjectsList extends Component {
-  constructor(props){
-    super(props)
+  constructor(props) {
+    super(props);
   }
   // componentDidMount(){
   //   console.log(this.props.userData.name, 'in mount profile');
@@ -43,11 +41,11 @@ class ProjectsList extends Component {
   //   })
   // }
 
-  render () {
-    const {projects} = this.props.userData;
+  render() {
+    const { projects } = this.props.userData;
     return (
       <div className="allProjects">
-        {_renderProject(projects)}
+        {renderProject(projects)}
       </div>
     );
   }
