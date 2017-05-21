@@ -5,11 +5,6 @@ import { connect } from 'react-redux';
 import { fetchProjects } from '../../actions';
 import './project.css';
 
-function mapStateToProps({ userData }) {
-  return {
-    userData,
-  };
-}
 
 const renderProject = (projects) => {
   if (!projects) {
@@ -52,4 +47,9 @@ class ProjectsList extends Component {
 }
 
 
-export default connect(mapStateToProps, { fetchProjects })(ProjectsList);
+// export default connect(mapStateToProps, { fetchProjects })(ProjectsList);
+
+export default connect(({ userData }) => ({ userData }), { fetchProjects })(ProjectsList);
+
+//reference
+// export default connect(({ cohortVal, userData }) => ({ cohortVal, userData }), { fetchCohort })(MemberCards);
