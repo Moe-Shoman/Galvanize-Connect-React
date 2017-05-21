@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import firebase from 'firebase';
-import { fetchCohort } from '../../actions';
 import { Card, Image } from 'semantic-ui-react';
+import { fetchCohort } from '../../actions';
 import './cohort.css';
 import AddCohort from '../Profile/add_cohort';
 

@@ -51,7 +51,7 @@ class Feeds extends Component {
                         <Grid>
                             <Grid.Row>
 
-                                <Grid.Column width={8}>
+                                <Grid.Column width={14}>
                                     <Card fluid className='posts'>
                                         <Card.Content>
                                             <Feed.Event>

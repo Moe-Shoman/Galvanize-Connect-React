@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import MemberCards from './MemberCards';
+import React from 'react';
 import { Sidebar } from 'semantic-ui-react';
+import MemberCards from './MemberCards';
 
 const cohort = () => (
   <Sidebar.Pusher>

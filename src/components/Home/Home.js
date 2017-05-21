@@ -8,10 +8,10 @@ const home = () => (
   <Sidebar.Pusher>
     <Segment basic>
       <div className="ui grid">
-        <div className="two wide column">
+        <div className="eight wide column">
           <Feeds />
         </div>
-        <div className="eight wide column">
+        <div className="five wide column">
           <Jobs />
         </div>
       </div>
