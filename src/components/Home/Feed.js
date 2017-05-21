@@ -4,7 +4,7 @@ import {fetchPosts} from '../../actions';
 import PostsForm from './PostsForm'
 import Comments from './Comments'
 import firebase from 'firebase';
-import {Card, Feed, Grid} from 'semantic-ui-react';
+import {Card, Feed, Grid, Button} from 'semantic-ui-react';
 function mapStateToProps({posts}) {
     return {posts}
 }
@@ -36,6 +36,8 @@ class Feeds extends Component {
                                     </Feed.Content>
                                 </Feed.Event>
                             </Card>
+                            <Button>Edit</Button>
+                            <Button>Delete</Button>
                         </Grid.Column>
                     </Grid.Row>
                 )
@@ -66,6 +68,8 @@ class Feeds extends Component {
                                             </Feed.Event>
                                         </Card.Content>
                                     </Card>
+                                    <Button>Edit</Button>
+                                    <Button>Delete</Button>
                                 </Grid.Column>
                             </Grid.Row>
 

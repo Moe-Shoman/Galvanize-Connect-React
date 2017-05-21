@@ -111,17 +111,17 @@ function updateLinksAndSendToBD(userData, SocialInks) {
   return SocialInks;
 }
 
-export const addReplyToPost = (userData, comment, postKey, postIndex) => {
-  const commentInfo = {
-    comment,
-    name: userData.name,
-    time: (new Date()).toString(),
-    photo: userData.photo,
-    postIndex,
-  };
-  addCommentToFB(commentInfo, postKey);
-  return commentInfo;
-};
+// export const addReplyToPost = (userData, comment, postKey, postIndex) => {
+//   const commentInfo = {
+//     comment,
+//     name: userData.name,
+//     time: (new Date()).toString(),
+//     photo: userData.photo,
+//     postIndex,
+//   };
+//   addCommentToFB(commentInfo, postKey);
+//   return commentInfo;
+// };
 
 function addCohortToFireBase(userData, cohort) {
   const userCohortInFireBase = firebase.database();
@@ -137,7 +137,7 @@ const addCommentsToPost = (userData, comment, postKey, postIndex) => {
   const commentInfo = {
     comment,
     name: userData.name,
-    time: (new Date()).toString(),
+    time: new Date().toString(),
     photo: userData.photo,
     postIndex,
   };

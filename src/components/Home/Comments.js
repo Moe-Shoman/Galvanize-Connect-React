@@ -22,6 +22,7 @@ class Comments extends Component {
              <label htmlFor="comment">Comment</label>
              <input  name="comment" onChange={this.updateComment} value={this.state.input} type="text"/>
            <Button type="submit" onClick={(e) => {e.preventDefault(); addComment(userData, this.state.input, postKey, postIndex);}}>Submit</Button>
+           <Button>Edit</Button>
          </Form>
         )
     }
