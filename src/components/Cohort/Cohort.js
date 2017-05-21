@@ -14,7 +14,6 @@ const cohort = () => (
 
 export default cohort;
 
-// example of functioncal react component
 
 // const component = ({destructor if need new}) => (
 //  <div>

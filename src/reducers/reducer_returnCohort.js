@@ -1,11 +1,11 @@
 import initialState from './initialState';
 
-export default function(state = initialState.cohortVal, action){
-  switch(action.type){
+export default function (state = initialState.cohortVal, action) {
+  switch (action.type) {
     case 'FETCH_COHORT':
-    return action.payload;
-    break;
+      return action.payload;
+      break;
     default:
-    return state;
+      return state;
   }
 }

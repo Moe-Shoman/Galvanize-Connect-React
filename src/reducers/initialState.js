@@ -12,5 +12,5 @@ export default {
   jobs: [],
   posts: [],
   comments: [],
-  cohortVal: []
-}
+  cohortVal: [],
+};

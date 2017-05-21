@@ -7,11 +7,11 @@ export default function (posts = initialState.posts, action) {
     case 'FETCH_POSTS':
       return action.payload;
     case 'ADD_COMMENTS':
-      let newPosts = [...posts];
-      let specificPost = newPosts[action.payload.postIndex];
-      newPosts[action.payload.postIndex] = {...specificPost, comments: [...specificPost.comments, action.payload]};
-       return newPosts;
+      const newPosts = [...posts];
+      const specificPost = newPosts[action.payload.postIndex];
+      newPosts[action.payload.postIndex] = { ...specificPost, comments: [...specificPost.comments, action.payload] };
+      return newPosts;
     default:
-      return posts
+      return posts;
   }
 }
