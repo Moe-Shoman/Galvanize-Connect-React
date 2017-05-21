@@ -61,7 +61,7 @@ renderButton = (cohort) => {
             e.preventDefault();
             addCohort(userData, cohort);
             this.toggleForm()
-          }} >Submit</button>
+          }}>Submit</button>
           </div>
         </form>
       )
