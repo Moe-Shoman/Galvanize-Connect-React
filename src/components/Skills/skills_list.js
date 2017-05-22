@@ -5,13 +5,6 @@ import {connect} from 'react-redux';
 import firebase from 'firebase';
 // import './skill.css';
 
-const mapStateToProps = ({ skills, userData }) => {
-  return {
-    skills,
-    userData
-  }
-}
-
 
 class SkillsList extends Component {
   constructor(props){
@@ -50,4 +43,7 @@ class SkillsList extends Component {
   }
 }
 
-export default connect(mapStateToProps, {fetchSkills})(SkillsList);
+export default connect(({ userData }) => ({ useData }), {fetchSkills})(SkillsList);
+
+//reference
+// export default connect(({ cohortVal, userData }) => ({ cohortVal, userData }), { fetchCohort })(MemberCards);

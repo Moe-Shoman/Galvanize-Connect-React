@@ -3,12 +3,6 @@ import { addSkill } from '../../actions';
 import { connect } from 'react-redux';
 import './skill.css';
 
-function mapStateToProps({ userData, skills }){
-  return {
-    userData,
-    skills
-  }
-}
 
 class AddSkillsForm extends Component {
   constructor(props){
@@ -62,4 +56,6 @@ class AddSkillsForm extends Component {
   }
 }
 
-export default connect(mapStateToProps, { addSkill })(AddSkillsForm)
+export default connect(({ userData, skills }) => ({ userData, skills }), { addSkill })(AddSkillsForm)
+//reference
+// export default connect(({ cohortVal, userData }) => ({ cohortVal, userData }), { fetchCohort })(MemberCards);

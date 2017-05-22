@@ -7,7 +7,6 @@ const addNonExistingUsers = (userObject) => {
   const userInFireBase = firebase.database().ref(`users/${displayName}`);
   return userInFireBase.once('value').then((snapshot) => {
     if (!snapshot.exists()) {
-      console.log(displayName);
       const newUser = {
         name: displayName,
         email,
@@ -35,7 +34,7 @@ const loginRequest = () => {
   return firebase.auth().signInWithPopup(provider).then((res) => {
     const user = res.user;
     return addNonExistingUsers(user);
-  }).catch(err => console.error(err));
+  }).catch(err => (err));
 };
 
 const getJobsRequest = () => axios.get('http://service.dice.com/api/rest/jobsearch/v1/simple.json?text=javascript&city=94102&pgcnt=20').then(res => res.data.resultItemList);
@@ -58,18 +57,19 @@ export const addInfoToPost = (userData, input) => {
   addPostToFireBase(postInfo, postKey);
   return postInfo;
 };
+function restructureFetchedFireBaseObjects(object) {
+  const restructuredPosts = Object.values(object);
+  return restructuredPosts;
+}
+
 function restructurePostsAndComments(PostsInFireBase) {
   const restructuredPosts = restructureFetchedFireBaseObjects(PostsInFireBase);
   restructuredPosts.forEach((post) => {
     if (post.comments) {
+      // console.log(post.comments);
       post.comments = Object.values(post.comments);
     }
   });
-  return restructuredPosts;
-}
-
-function restructureFetchedFireBaseObjects(object) {
-  const restructuredPosts = Object.values(object);
   return restructuredPosts;
 }
 
@@ -149,7 +149,10 @@ const deletePost = posts => firebase.database().ref(`feed/posts/${posts.postKey}
 
 
 // ACTION CREATORS
-export const login = props => ({ type: 'LOGIN', payload: loginRequest() });
+export const login = () => ({
+  type: 'LOGIN',
+  payload: loginRequest(),
+});
 
 export const addProject = (userData, project) => ({
   type: 'ADD_PROJECT',
@@ -161,14 +164,21 @@ export const addPost = (userData, input) => ({
   payload: addInfoToPost(userData, input),
 });
 
-export const getJobs = () => ({ type: 'GET_JOBS', payload: getJobsRequest() });
+export const getJobs = () => ({
+  type: 'GET_JOBS',
+  payload: getJobsRequest(),
+});
 
-export const fetchPosts = posts => ({ type: 'FETCH_POSTS', payload: restructurePostsAndComments(posts) });
+export const fetchPosts = posts => ({
+  type: 'FETCH_POSTS',
+  payload: restructurePostsAndComments(posts),
+});
 
 
-export const fetchCohort = cohort =>
-  // console.log('cohort vlaue ins fetchCohort is  ========', cohort);
-   ({ type: 'FETCH_COHORT', payload: restructureFetchedFireBaseObjects(cohort) });
+export const fetchCohort = cohort => ({
+  type: 'FETCH_COHORT',
+  payload: restructureFetchedFireBaseObjects(cohort),
+});
 
 
 export const addSkill = (userData, skill) => ({

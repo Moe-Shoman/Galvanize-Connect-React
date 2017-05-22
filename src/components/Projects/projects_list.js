@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
-import { fetchProjects } from '../../actions';
 import { connect } from 'react-redux';
-import firebase from 'firebase';
+// import { Item } from 'semantic-ui-react';
+// import firebase from 'firebase';
+import { fetchProjects } from '../../actions';
+import './project.css';
 
 
-function mapStateToProps({ projects, userData }) {
-  return {
-    projects,
-    userData,
-  };
-}
-
-const _renderProject = (projects) => {
+const renderProject = (projects) => {
   if (!projects) {
     return (
       <div>
@@ -20,13 +15,11 @@ const _renderProject = (projects) => {
     );
   }
   return projects.map((project, i) => (
-    <div key={i}>
-
-      <div>PROJECT TITLE: {project.projectName}</div>
-
-      <div>DESCRIPTION: {project.description}</div>
+    <div className="projectItem" key={i}>
+      <div className="projectTitle"><h2 className="prohead">{project.projectName}</h2></div>
+      <div className="projectDes"><p>{project.description}</p></div>
     </div>
-            ));
+    ));
 };
 
 
@@ -38,15 +31,15 @@ class ProjectsList extends Component {
   //   // console.log(this.props.userData.name, 'in mount profile');
   //   firebase.database().ref(`users/${this.props.userData.name}/projects`).once('value', snapshot => this.props.fetchProjects(snapshot.val()));
   // }
+
   render() {
     const { projects } = this.props.userData;
     return (
-      <div>
-        {_renderProject(projects)}
+      <div className="allProjects">
+        {renderProject(projects)}
       </div>
     );
   }
 }
 
-
-export default connect(mapStateToProps, { fetchProjects })(ProjectsList);
+export default connect(({ userData }) => ({ userData }), { fetchProjects })(ProjectsList);
