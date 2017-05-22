@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {Card, Feed, Grid, Button} from 'semantic-ui-react';
 import {fetchPosts} from '../../actions';
+import {editPost} from '../../actions';
 import PostsForm from './PostsForm'
 import Comments from './Comments'
 import firebase from 'firebase';
-import {Card, Feed, Grid, Button} from 'semantic-ui-react';
-function mapStateToProps({posts}) {
-    return {posts}
-}
+// function mapStateToProps({posts}) {
+//     return {posts}
+// }
 class Feeds extends Component {
     constructor(props) {
         super(props)
@@ -21,6 +22,7 @@ class Feeds extends Component {
         if (commentObject) {
             const comments = Object.values(commentObject);
             return comments.map((comment, i) => {
+             console.log('commentObject inside of feed is ', commentObject);
                 return (
                     <Grid.Row className='commentRow'>
                         <Grid.Column width={6} verticalAlign='middle'>
@@ -36,8 +38,6 @@ class Feeds extends Component {
                                     </Feed.Content>
                                 </Feed.Event>
                             </Card>
-                            <Button>Edit</Button>
-                            <Button>Delete</Button>
                         </Grid.Column>
                     </Grid.Row>
                 )
@@ -48,7 +48,6 @@ class Feeds extends Component {
         const Posts = this.props.posts.map((post, ind) => {
             return (
                 <Feed >
-
                     <div key={post.postKey + ind}>
                         <Grid>
                             <Grid.Row>
@@ -68,8 +67,10 @@ class Feeds extends Component {
                                             </Feed.Event>
                                         </Card.Content>
                                     </Card>
-                                    <Button>Edit</Button>
-                                    <Button>Delete</Button>
+                                    <Button type="submit" onClick={(e) => {
+                                        e.preventDefault();
+                                        editPost(post)
+                                    }}>Delete</Button>
                                 </Grid.Column>
                             </Grid.Row>
 
@@ -93,4 +94,4 @@ class Feeds extends Component {
     </Grid.Column> */
 }
 
-export default connect(({posts}) => ({posts}), {fetchPosts})(Feeds);
+export default connect(({posts}) => ({posts}), {fetchPosts, editPost})(Feeds);

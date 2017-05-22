@@ -4,7 +4,6 @@ import axios from 'axios';
 
 const addNonExistingUsers = (userObject) => {
   const { displayName, email, photoURL } = userObject;
-  console.log('userObject', userObject, displayName);
   const userInFireBase = firebase.database().ref(`users/${displayName}`);
   return userInFireBase.once('value').then((snapshot) => {
     if (!snapshot.exists()) {
@@ -23,7 +22,6 @@ const addNonExistingUsers = (userObject) => {
       return newUser;
     }
     const registeredUser = snapshot.val();
-    console.log('registeredUser.projects', registeredUser.projects, registeredUser.skills);
     registeredUser.projects = Object.values(registeredUser.projects);
     registeredUser.skills = Object.values(registeredUser.skills);
     return registeredUser;
@@ -140,9 +138,15 @@ const addCommentsToPost = (userData, comment, postKey, postIndex) => {
     time: new Date().toString(),
     photo: userData.photo,
     postIndex,
+    postKey,
   };
   addCommentToFB(commentInfo, postKey);
   return commentInfo;
+};
+
+
+const deletePost = (posts) => {
+  console.log('Post object is ========= ', posts);
 };
 
 
@@ -190,3 +194,7 @@ export const addSocialLinks = (userData, SocialInks) => ({
 });
 
 export const fetchSocial = SocialInks => ({ type: 'FETCH_LINKS', payload: SocialInks });
+
+export const editPost = posts => ({
+  type: 'DELETE_COMMENT', payload: deletePost(posts),
+});
