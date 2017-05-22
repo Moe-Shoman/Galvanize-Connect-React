@@ -145,10 +145,7 @@ const addCommentsToPost = (userData, comment, postKey, postIndex) => {
 };
 
 
-const deletePost = (posts) => {
-  console.log('postkey is ============== ', posts.postKey);
-  return firebase.database().ref(`feed/posts/${posts.postKey}`).remove();
-};
+const deletePost = posts => firebase.database().ref(`feed/posts/${posts.postKey}`).remove();
 
 
 // ACTION CREATORS

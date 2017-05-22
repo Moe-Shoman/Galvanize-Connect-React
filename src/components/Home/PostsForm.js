@@ -22,7 +22,8 @@ class PostForm extends Component {
                         Add Post
                     </h3>
                 </label>
-                <TextArea name="post" onChange={this.updateInput} value={this.state.input} type="text" autoHeight/>
+                {/* <TextArea name="post" onChange={this.updateInput} value={this.state.input} type="text" autoHeight/> */}
+                <input  name="post" onChange={this.updateInput} value={this.state.input} type="text"/>
                 <Button type="submit" onClick={(e) => {
                     e.preventDefault();
                     addPost(userData, this.state.input)

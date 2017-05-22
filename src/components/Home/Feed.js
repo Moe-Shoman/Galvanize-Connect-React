@@ -6,9 +6,7 @@ import {editPost} from '../../actions';
 import PostsForm from './PostsForm'
 import Comments from './Comments'
 import firebase from 'firebase';
-// function mapStateToProps({posts}) {
-//     return {posts}
-// }
+
 class Feeds extends Component {
     constructor(props) {
         super(props)
@@ -22,7 +20,6 @@ class Feeds extends Component {
         if (commentObject) {
             const comments = Object.values(commentObject);
             return comments.map((comment, i) => {
-             console.log('commentObject inside of feed is ', commentObject);
                 return (
                     <Grid.Row className='commentRow'>
                         <Grid.Column width={6} verticalAlign='middle'>
@@ -87,11 +84,6 @@ class Feeds extends Component {
             </div>
         )
     }
-}
-
-{/* <Grid.Column width={8}>
-      <Segment>2</Segment>
-    </Grid.Column> */
 }
 
 export default connect(({posts}) => ({posts}), {fetchPosts, editPost})(Feeds);
