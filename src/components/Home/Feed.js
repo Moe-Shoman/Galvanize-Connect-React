@@ -49,7 +49,7 @@ class Feeds extends Component {
                         <Grid>
                             <Grid.Row>
 
-                                <Grid.Column width={14}>
+                                <Grid.Column width={10}>
                                     <Card fluid className='posts'>
                                         <Card.Content>
                                             <Feed.Event>
@@ -66,7 +66,7 @@ class Feeds extends Component {
                                     </Card>
                                     <Button type="submit" onClick={(e) => {
                                         e.preventDefault();
-                                        editPost(post)
+                                        this.props.editPost(post)
                                     }}>Delete</Button>
                                 </Grid.Column>
                             </Grid.Row>
