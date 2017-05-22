@@ -70,7 +70,6 @@ class Feeds extends Component {
                                     }}>Delete</Button>
                                 </Grid.Column>
                             </Grid.Row>
-
                             {this.renderComments(post.comments)}
                             <Comments postKey={post.postKey} postIndex={ind}/> {/* </Segment.Group> */}
                         </Grid>

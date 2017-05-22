@@ -15,19 +15,18 @@ export default function (posts = initialState.posts, action) {
       const specificPost = newPosts[action.payload.postIndex];
       newPosts[action.payload.postIndex] = { ...specificPost, comments: [...specificPost.comments, action.payload] };
       return newPosts;
-//     case 'ADD_COMMENTS': {
-//       const newPosts = [...posts];
-//       const specificPost = newPosts[action.payload.postIndex];
-//       newPosts[action.payload.postIndex] = {
-//         ...specificPost,
-//         comments: [
-//           ...specificPost.comments,
-//           action.payload,
-//         ],
-//       };
-//       return newPosts;
-//     }
-// // >>>>>>> e625510d014c2b33906eb43e23dca3b541b836e0
+    case 'ADD_COMMENTS': {
+      const newPosts = [...posts];
+      const specificPost = newPosts[action.payload.postIndex];
+      newPosts[action.payload.postIndex] = {
+        ...specificPost,
+        comments: [
+          ...specificPost.comments,
+          action.payload,
+        ],
+      };
+      return newPosts;
+    }
     default:
       return posts;
   }
