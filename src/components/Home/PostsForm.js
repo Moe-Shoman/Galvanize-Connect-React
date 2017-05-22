@@ -27,6 +27,7 @@ class PostForm extends Component {
                 <Button type="submit" onClick={(e) => {
                     e.preventDefault();
                     addPost(userData, this.state.input)
+                    this.state.input = '';
                 }}>Submit</Button>
             </Form>
         )
