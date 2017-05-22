@@ -8,21 +8,22 @@
     margin-bottom: 150px;
     margin-top: 0px;
     font-style: oblique;
-    font-size: 4em;
+    /*font-size: 2em;*/
     width:100%;
     float: right;
     border: 10px;
     border-color: black;
 }
-h1 {
-  font-size: 6rem;
+.userName {
+  font-size: 4rem;
+  font-family:fantasy;
   color: white;
    align: center;
    padding-top: 20px;
 }
 .imgPro.ui {
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
     font-size: 1em;
     background-image: url("Icon-user.jpeg");
     background-size: cover;

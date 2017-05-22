@@ -3,12 +3,12 @@ import './projectform.css';
 import {addProject} from '../../actions';
 import {connect} from 'react-redux';
 
-function mapStateToProps({userData, projects}) {
-    return {
-      userData,
-      projects
-    }
-}
+// function mapStateToProps({userData, projects}) {
+//     return {
+//       userData,
+//       projects
+//     }
+// }
 
 class AddProjectForm extends Component {
     constructor(props) {
@@ -70,4 +70,6 @@ class AddProjectForm extends Component {
     }
 }
 
-export default connect(mapStateToProps, {addProject})(AddProjectForm)
+export default connect(({ userData, projects }) => ({ userData, projects}), {addProject})(AddProjectForm);
+//reference
+// export default connect(({ cohortVal, userData }) => ({ cohortVal, userData }), { fetchCohort })(MemberCards);
