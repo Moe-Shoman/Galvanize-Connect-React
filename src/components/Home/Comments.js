@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {addComment} from '../../actions';
 import { Button, Form } from 'semantic-ui-react';
+import {addComment} from '../../actions';
 
 class Comments extends Component {
   constructor(props) {

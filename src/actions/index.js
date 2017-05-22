@@ -194,5 +194,5 @@ export const addSocialLinks = (userData, SocialInks) => ({
 export const fetchSocial = SocialInks => ({ type: 'FETCH_LINKS', payload: SocialInks });
 
 export const editPost = posts => ({
-  type: 'DELETE_COMMENT', payload: deletePost(posts),
+  type: 'DELETE_POST', payload: deletePost(posts),
 });
