@@ -147,7 +147,7 @@ const addCommentsToPost = (userData, comment, postKey, postIndex) => {
 
 const deletePost = (posts) => {
   firebase.database().ref(`feed/posts/${posts.postKey}`).remove();
-  return posts;
+  return posts.postKey;
 };
 
 
@@ -207,6 +207,5 @@ export const addSocialLinks = (userData, SocialInks) => ({
 export const fetchSocial = SocialInks => ({ type: 'FETCH_LINKS', payload: SocialInks });
 
 export const editPost = posts => ({
-  // type: 'DELETE_POST', payload: {},
   type: 'DELETE_POST', payload: deletePost(posts),
 });

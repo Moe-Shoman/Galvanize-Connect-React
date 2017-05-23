@@ -10,8 +10,11 @@ export default function (posts = initialState.posts, action) {
     }
     case 'FETCH_POSTS':
       return action.payload;
+    case 'DELETE_POST': {
+      const postId = action.payload;
+      return posts.filter(post => post.postKey !== postId);
+    }
     case 'ADD_COMMENTS': {
-      console.log('am i here?');
       const newPosts = [...posts];
       const specificPost = newPosts[action.payload.postIndex];
       newPosts[action.payload.postIndex] = {
@@ -23,21 +26,7 @@ export default function (posts = initialState.posts, action) {
       };
       return newPosts;
     }
-    case 'DELETE_POST': {
-      const postId = action.payload.postIndex;
-      return posts.filter(post => post.postIndex !== postId);
-    }
     default:
       return posts;
   }
 }
-
-
-// case 'DELETE_COMMENT':
-//   const commentId = action.data;
-//   return state.filter(comment => comment.id !== commentId);
-
-
-// case 'DELETE_POST':
-//   const postId = action.payload.postIndex;
-//   return posts.filter(post => post.postIndex !== postId);
