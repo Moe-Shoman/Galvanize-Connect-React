@@ -8,39 +8,39 @@ import Comments from './Comments'
 import firebase from 'firebase';
 
 class Feeds extends Component {
-    constructor(props) {
-        super(props)
-    }
-    componentDidMount() {
-        firebase.database().ref('feed/posts').once("value", (snapshot) => {
-            return this.props.fetchPosts(snapshot.val());
-        })
-    }
-    renderComments = (commentObject) => {
-        if (commentObject) {
-            const comments = Object.values(commentObject);
-            return comments.map((comment, i) => {
-                return (
-                    <Grid.Row className='commentRow'>
-                        <Grid.Column width={6} verticalAlign='middle'>
-                            <Card fluid key={i + comment.comment} className='comments'>
-                                <Feed.Event>
-                                    <Feed.Label image={comment.photo}/>
-                                    <Feed.Content>
-                                        <Feed.Date content={comment.time}/>
-                                        <Feed.Summary>
-                                            <Card.Header>{comment.name}</Card.Header>
-                                            {comment.comment}
-                                        </Feed.Summary>
-                                    </Feed.Content>
-                                </Feed.Event>
-                            </Card>
-                        </Grid.Column>
-                    </Grid.Row>
-                )
-            })
-        }
-    }
+  constructor(props) {
+    super(props)
+  }
+  componentWillMount() {
+    firebase.database().ref('feed/posts').once("value", (snapshot) => {
+        return this.props.fetchPosts(snapshot.val());
+    })
+  }
+  renderComments = (commentObject) => {
+     if (commentObject) {
+       const comments = Object.values(commentObject);
+       return comments.map((comment, i) => {
+           return (
+               <Grid.Row className='commentRow'>
+                   <Grid.Column width={6} verticalAlign='middle'>
+                       <Card fluid key={i + comment.comment} className='comments'>
+                           <Feed.Event>
+                               <Feed.Label image={comment.photo}/>
+                               <Feed.Content>
+                                   <Feed.Date content={comment.time}/>
+                                   <Feed.Summary>
+                                       <Card.Header>{comment.name}</Card.Header>
+                                       {comment.comment}
+                                   </Feed.Summary>
+                               </Feed.Content>
+                           </Feed.Event>
+                       </Card>
+                   </Grid.Column>
+               </Grid.Row>
+           )
+       })
+     }
+  }
     render() {
         const Posts = this.props.posts.map((post, ind) => {
             return (
@@ -48,7 +48,6 @@ class Feeds extends Component {
                     <div key={post.postKey + ind}>
                         <Grid>
                             <Grid.Row>
-
                                 <Grid.Column width={10}>
                                     <Card fluid className='posts'>
                                         <Card.Content>

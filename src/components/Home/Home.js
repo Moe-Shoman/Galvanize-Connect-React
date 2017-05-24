@@ -4,7 +4,7 @@ import Feeds from './Feed';
 import { Segment, Sidebar } from 'semantic-ui-react';
 
 
-const home = () => (
+const Home = () => (
   <Sidebar.Pusher>
     <Segment basic>
       <div className="ui grid">
@@ -19,4 +19,4 @@ const home = () => (
   </Sidebar.Pusher>
    );
 
-export default home;
+export default Home;

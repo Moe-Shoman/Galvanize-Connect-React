@@ -6,7 +6,8 @@ import { addPost, addInfoToPost } from '../../actions';
 import { Button, Form } from 'semantic-ui-react';
 
 
-const postForm = ({userData, addPost}) => (render() {
+const postForm = ({userData, addPost}) => (
+    render() {
     const {userData, addPost} = this.props;
     return (
         <Form>

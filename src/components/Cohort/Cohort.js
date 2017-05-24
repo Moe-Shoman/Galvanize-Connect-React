@@ -2,7 +2,7 @@ import React from 'react';
 import { Sidebar } from 'semantic-ui-react';
 import MemberCards from './MemberCards';
 
-const cohort = () => (
+const Cohort = () => (
   <Sidebar.Pusher>
     <div>
       <div>
@@ -12,7 +12,7 @@ const cohort = () => (
   </Sidebar.Pusher>
    );
 
-export default cohort;
+export default Cohort;
 
 
 // const component = ({destructor if need new}) => (

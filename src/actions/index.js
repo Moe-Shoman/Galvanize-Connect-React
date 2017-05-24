@@ -66,7 +66,6 @@ function restructurePostsAndComments(PostsInFireBase) {
   const restructuredPosts = restructureFetchedFireBaseObjects(PostsInFireBase);
   restructuredPosts.forEach((post) => {
     if (post.comments) {
-      // console.log(post.comments);
       post.comments = Object.values(post.comments);
     }
   });
@@ -109,38 +108,28 @@ function updateLinksAndSendToBD(userData, SocialInks) {
   return SocialInks;
 }
 
-// export const addReplyToPost = (userData, comment, postKey, postIndex) => {
-//   const commentInfo = {
-//     comment,
-//     name: userData.name,
-//     time: (new Date()).toString(),
-//     photo: userData.photo,
-//     postIndex,
-//   };
-//   addCommentToFB(commentInfo, postKey);
-//   return commentInfo;
-// };
-
 function addCohortToFireBase(userData, cohort) {
   const userCohortInFireBase = firebase.database();
   userCohortInFireBase.ref('users').child(`${userData.name}`).update({ cohort });
   userCohortInFireBase.ref('cohorts').child(`${cohort}`).push().set({ name: userData.name, photo: userData.photo });
 }
 
-const addCommentToFB = (commentObj, postKey) => {
-  const comments = firebase.database().ref(`feed/posts/${postKey}/comments`).push();
+const addCommentToFB = (commentObj, postKey, commentKeyInFireBase) => {
+  const comments = firebase.database().ref(`feed/posts/${postKey}/comments/${commentKeyInFireBase}`).push();
   comments.set(commentObj);
 };
 const addCommentsToPost = (userData, comment, postKey, postIndex) => {
+  const commentKeyInFireBase = firebase.database().ref(`feed/posts/${postKey}/comments`).push().key;
+  console.log('commentKeyInFireBase is ========= ', commentKeyInFireBase);
   const commentInfo = {
     comment,
     name: userData.name,
     time: new Date().toString(),
     photo: userData.photo,
-    postIndex,
     postKey,
+    commentKeyInFireBase,
   };
-  addCommentToFB(commentInfo, postKey);
+  addCommentToFB(commentInfo, postKey, commentKeyInFireBase);
   return commentInfo;
 };
 
