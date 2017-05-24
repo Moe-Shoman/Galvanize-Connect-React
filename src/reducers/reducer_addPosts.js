@@ -16,6 +16,7 @@ export default function (posts = initialState.posts, action) {
     }
     case 'ADD_COMMENTS': {
       const newPosts = [...posts];
+      // console.log(newPosts[action.payload.postIndex]);
       const specificPost = newPosts[action.payload.postIndex];
       newPosts[action.payload.postIndex] = {
         ...specificPost,

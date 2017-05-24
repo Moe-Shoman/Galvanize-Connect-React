@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Card, Feed, Grid, Button} from 'semantic-ui-react';
 import {fetchPosts} from '../../actions';
-import {editPost} from '../../actions';
+import {editPost, editComment} from '../../actions';
 import PostsForm from './PostsForm'
 import Comments from './Comments'
 import firebase from 'firebase';
@@ -13,7 +13,7 @@ class Feeds extends Component {
   }
   componentWillMount() {
     firebase.database().ref('feed/posts').once("value", (snapshot) => {
-        return this.props.fetchPosts(snapshot.val());
+      return this.props.fetchPosts(snapshot.val());
     })
   }
   renderComments = (commentObject) => {
@@ -35,6 +35,10 @@ class Feeds extends Component {
                                </Feed.Content>
                            </Feed.Event>
                        </Card>
+                       <Button type="submit" onClick={(e) => {
+                           e.preventDefault();
+                           this.props.editComment(comment)
+                       }}>Delete</Button>
                    </Grid.Column>
                </Grid.Row>
            )
@@ -84,4 +88,4 @@ class Feeds extends Component {
     }
 }
 
-export default connect(({posts}) => ({posts}), {fetchPosts, editPost})(Feeds);
+export default connect(({posts}) => ({posts}), {fetchPosts, editPost, editComment})(Feeds);
