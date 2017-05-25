@@ -10,24 +10,25 @@ export default function (posts = initialState.posts, action) {
     }
     case 'FETCH_POSTS':
       return action.payload;
-    case 'ADD_COMMENTS':
+    case 'DELETE_POST': {
+      const postId = action.payload;
+      return posts.filter(post => post.postKey !== postId);
+    }
+    case 'DELETE_COMMENT': {
+      // console.log(action.payload);
+    }
+    case 'ADD_COMMENTS': {
       const newPosts = [...posts];
       const specificPost = newPosts[action.payload.postIndex];
-      newPosts[action.payload.postIndex] = { ...specificPost, comments: [...specificPost.comments, action.payload] };
+      newPosts[action.payload.postIndex] = {
+        ...specificPost,
+        comments: [
+          ...specificPost.comments,
+          action.payload,
+        ],
+      };
       return newPosts;
-//     case 'ADD_COMMENTS': {
-//       const newPosts = [...posts];
-//       const specificPost = newPosts[action.payload.postIndex];
-//       newPosts[action.payload.postIndex] = {
-//         ...specificPost,
-//         comments: [
-//           ...specificPost.comments,
-//           action.payload,
-//         ],
-//       };
-//       return newPosts;
-//     }
-// // >>>>>>> e625510d014c2b33906eb43e23dca3b541b836e0
+    }
     default:
       return posts;
   }

@@ -1,25 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import firebase from 'firebase';
-import { fetchCohort } from '../../actions';
 import { Card, Image } from 'semantic-ui-react';
+import { fetchCohort } from '../../actions';
 import './cohort.css';
-import AddCohort from '../Profile/add_cohort';
-
-// function mapStateToProps({ cohortVal, userData }) {
-//   return { cohortVal, userData };
-// }
+import AddCohort from '../Profile/AddCohort';
 
 class MemberCards extends Component {
   constructor(props) {
     super(props);
   }
-  componentDidMount() {
+  componentWillMount() {
     firebase.database().ref(`cohorts/${this.props.userData.cohort}`).once('value', snapshot => this.props.fetchCohort(snapshot.val()));
   }
 
   render() {
-    if (!this.props.userData.cohort) {
+    const { cohortVal, userData } = this.props;
+    if (!userData.cohort) {
       return (
         <div>
           <p>Please add your cohort in order to view this page</p>
@@ -27,7 +24,7 @@ class MemberCards extends Component {
         </div>
       );
     }
-    const members = Object.values(this.props.cohortVal);
+    const members = Object.values(cohortVal);
     const cohortUser = members.map(cohort => (
       <div className="card">
         <Card>

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {addPost} from '../../actions';
-import {Button, Form, TextArea} from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import { Button, Form, TextArea } from 'semantic-ui-react';
+import { addPost } from '../../actions';
 
 class PostForm extends Component {
     constructor(props) {
@@ -11,10 +11,12 @@ class PostForm extends Component {
         }
     }
     updateInput = (event) => {
-        this.setState({input: event.target.value})
+        this.setState({
+         input: event.target.value
+        })
     }
     render() {
-        const {userData, addPost, form} = this.props;
+        const { userData, addPost } = this.props;
         return (
             <Form id='postForm'>
                 <label htmlFor="post">
@@ -22,14 +24,15 @@ class PostForm extends Component {
                         Add Post
                     </h3>
                 </label>
-                <TextArea name="post" onChange={this.updateInput} value={this.state.input} type="text" autoHeight/>
+                <input  name="post" onChange={this.updateInput} value={this.state.input} type="text"/>
                 <Button type="submit" onClick={(e) => {
                     e.preventDefault();
                     addPost(userData, this.state.input)
+                    this.state.input = '';
                 }}>Submit</Button>
             </Form>
         )
     }
 }
 
-export default connect(({ userData, posts, form }) => ({ userData, posts, form }), { addPost })(PostForm)
+export default connect(({ userData, posts }) => ({ userData, posts }), { addPost })(PostForm)

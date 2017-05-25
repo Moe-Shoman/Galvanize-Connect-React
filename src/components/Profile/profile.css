@@ -2,7 +2,7 @@
 .userPro {
     text-align: center;
     height: 500px;
-    background-image: url("macbook.jpeg");
+    background-image: url("../../assets/profileAssets/macbook.jpeg");
     background-size: cover;
     position: relative;
     margin-bottom: 150px;
@@ -25,7 +25,7 @@
     width: 200px;
     height: 200px;
     font-size: 1em;
-    background-image: url("Icon-user.jpeg");
+    background-image: url("../../assets/profileAssets/Icon-user.jpeg");
     background-size: cover;
     border: 5px solid;
     border-color: white;

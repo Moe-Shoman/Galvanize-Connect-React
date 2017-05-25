@@ -1,43 +1,8 @@
 // Helper functions
+export * from './authentication';
+export * from './jobs';
 import firebase from 'firebase';
-import axios from 'axios';
 
-const addNonExistingUsers = (userObject) => {
-  const { displayName, email, photoURL } = userObject;
-  const userInFireBase = firebase.database().ref(`users/${displayName}`);
-  return userInFireBase.once('value').then((snapshot) => {
-    if (!snapshot.exists()) {
-      const newUser = {
-        name: displayName,
-        email,
-        photo: photoURL,
-        linkedIn: null,
-        gitHub: null,
-        twitter: null,
-        projects: '',
-        skills: '',
-      };
-      userInFireBase.set(newUser);
-      return newUser;
-    }
-    const registeredUser = snapshot.val();
-    registeredUser.projects = Object.values(registeredUser.projects);
-    registeredUser.skills = Object.values(registeredUser.skills);
-    return registeredUser;
-  });
-};
-const loginRequest = () => {
-  const provider = new firebase.auth.GoogleAuthProvider();
-  provider.addScope('profile');
-  provider.addScope('email');
-  provider.addScope('https://www.googleapis.com/auth/plus.login');
-  return firebase.auth().signInWithPopup(provider).then((res) => {
-    const user = res.user;
-    return addNonExistingUsers(user);
-  }).catch(err => (err));
-};
-
-const getJobsRequest = () => axios.get('http://service.dice.com/api/rest/jobsearch/v1/simple.json?text=javascript&city=94102&pgcnt=20').then(res => res.data.resultItemList);
 
 const addPostToFireBase = (postObject, postKey) => {
   const PostsInFireBase = firebase.database().ref(`feed/posts/${postKey}`);
@@ -66,7 +31,6 @@ function restructurePostsAndComments(PostsInFireBase) {
   const restructuredPosts = restructureFetchedFireBaseObjects(PostsInFireBase);
   restructuredPosts.forEach((post) => {
     if (post.comments) {
-      // console.log(post.comments);
       post.comments = Object.values(post.comments);
     }
   });
@@ -109,47 +73,47 @@ function updateLinksAndSendToBD(userData, SocialInks) {
   return SocialInks;
 }
 
-export const addReplyToPost = (userData, comment, postKey, postIndex) => {
-  const commentInfo = {
-    comment,
-    name: userData.name,
-    time: (new Date()).toString(),
-    photo: userData.photo,
-    postIndex,
-  };
-  addCommentToFB(commentInfo, postKey);
-  return commentInfo;
-};
-
 function addCohortToFireBase(userData, cohort) {
   const userCohortInFireBase = firebase.database();
   userCohortInFireBase.ref('users').child(`${userData.name}`).update({ cohort });
   userCohortInFireBase.ref('cohorts').child(`${cohort}`).push().set({ name: userData.name, photo: userData.photo });
 }
 
-const addCommentToFB = (commentObj, postKey) => {
-  const comments = firebase.database().ref(`feed/posts/${postKey}/comments`).push();
+const addCommentToFB = (commentObj, postKey, commentKeyInFireBase) => {
+  const comments = firebase.database().ref(`feed/posts/${postKey}/comments/${commentKeyInFireBase}`).push();
   comments.set(commentObj);
 };
 const addCommentsToPost = (userData, comment, postKey, postIndex) => {
+  const commentKeyInFireBase = firebase.database().ref(`feed/posts/${postKey}/comments`).push().key;
   const commentInfo = {
     comment,
     name: userData.name,
-    time: (new Date()).toString(),
+    time: new Date().toString(),
     photo: userData.photo,
+    postKey,
+    commentKeyInFireBase,
     postIndex,
   };
-  addCommentToFB(commentInfo, postKey);
+  addCommentToFB(commentInfo, postKey, commentKeyInFireBase);
   return commentInfo;
 };
 
 
-// ACTION CREATORS
-export const login = () => ({
-  type: 'LOGIN',
-  payload: loginRequest(),
-});
+const deletePost = (posts) => {
+  firebase.database().ref(`feed/posts/${posts.postKey}`).remove();
+  return posts.postKey;
+};
 
+const deleteComment = (comment, postKey) => {
+  console.log('comment is ', comment);
+  console.log('postKey is ', postKey);
+  // console.log('comment.commentKeyInFireBase is ', postKey);
+  // firebase.database().ref(`feed/posts/${postKey}/comment/${comment.commentKeyInFireBase}`).remove();
+  // return comment.commentKeyInFireBase;
+};
+
+
+// ACTION CREATORS
 export const addProject = (userData, project) => ({
   type: 'ADD_PROJECT',
   payload: updateProjectsAndSendToDB(userData, project),
@@ -160,10 +124,6 @@ export const addPost = (userData, input) => ({
   payload: addInfoToPost(userData, input),
 });
 
-export const getJobs = () => ({
-  type: 'GET_JOBS',
-  payload: getJobsRequest(),
-});
 
 export const fetchPosts = posts => ({
   type: 'FETCH_POSTS',
@@ -198,3 +158,11 @@ export const addSocialLinks = (userData, SocialInks) => ({
 });
 
 export const fetchSocial = SocialInks => ({ type: 'FETCH_LINKS', payload: SocialInks });
+
+export const editPost = posts => ({
+  type: 'DELETE_POST', payload: deletePost(posts),
+});
+
+export const editComment = (comment, postKey) => ({
+  type: 'DELETE_COMMENT', payload: deleteComment(comment, postKey),
+});

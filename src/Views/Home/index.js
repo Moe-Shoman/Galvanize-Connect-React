@@ -1,17 +1,17 @@
 import React from 'react';
-import Jobs from './Jobs';
-import Feeds from './Feed';
+import Jobs from '../../components/Home/Jobs';
+import Feeds from '../../components/Home/Feed';
 import { Segment, Sidebar } from 'semantic-ui-react';
 
 
-const home = () => (
+const Home = () => (
   <Sidebar.Pusher>
     <Segment basic>
       <div className="ui grid">
-        <div className="two wide column">
+        <div className="eight wide column">
           <Feeds />
         </div>
-        <div className="eight wide column">
+        <div className="five wide column">
           <Jobs />
         </div>
       </div>
@@ -19,4 +19,4 @@ const home = () => (
   </Sidebar.Pusher>
    );
 
-export default home;
+export default Home;

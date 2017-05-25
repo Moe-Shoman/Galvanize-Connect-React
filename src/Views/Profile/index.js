@@ -1,16 +1,16 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import Chip from 'material-ui/Chip';
 // import semantic from 'semantic-ui-react';
-import './profile.css';
-import ProjectsList from '../Projects/projects_list';
+import '../../components/Profile/profile.css';
+import ProjectsList from '../../components/Profile/Projects/ProjectsList';
 // import SkillsList from '../Skills/skills_list';
-import AddProjectForm from '../AddProject/add_project_form';
+import AddProjectForm from '../../components/Profile/AddProject/AddProjectForm';
 // import firebase from 'firebase';
-import AddSkillsForm from '../Skills/skills_form';
-import AddCohort from './add_cohort';
-// import SocialLinks from './add_social';
-import ListOfSocialLinks from './social_list';
+import AddSkillsForm from '../../components/Profile/Skills/SkillsForm';
+import AddCohort from '../../components/Profile/AddCohort';
+import SocialLinks from '../../components/Profile/AddSocial';
+import ListOfSocialLinks from '../../components/Profile/SocialLinks';
 import { Sidebar } from 'semantic-ui-react';
 
 
@@ -23,7 +23,7 @@ class Profile extends Component {
             <div className="userName">
               {/* <h2>{renderUserName(this.props.userData)}</h2> */}
               <p className="userName">{this.props.userData.name}</p>
-              <img className="ui circular image imgPro" src={this.props.userData.photo}></img>
+              <img className="ui circular image imgPro" src={this.props.userData.photo} />
             </div>
             <div className="cohortStyle">
               <h3 className="numStyle">{this.props.userData.cohort}</h3>
@@ -33,9 +33,9 @@ class Profile extends Component {
             </div>
             <div>
               <ListOfSocialLinks />
-              {/* <div>
+              <div>
                 <SocialLinks />
-                </div> */}
+              </div>
             </div>
           </div>
 
@@ -59,5 +59,5 @@ class Profile extends Component {
 }
 
 export default connect(({ userData }) => ({ userData }))(Profile);
-//reference
+// reference
 // export default connect(({ cohortVal, userData }) => ({ cohortVal, userData }), { fetchCohort })(MemberCards);

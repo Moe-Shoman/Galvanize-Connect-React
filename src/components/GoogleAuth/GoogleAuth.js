@@ -4,13 +4,13 @@ import { login } from '../../actions';
 import { Redirect } from 'react-router-dom';
 import { Button, Sidebar, Segment } from 'semantic-ui-react';
 import './GoogleAuth.css';
-import logo from './g-logo.png';
-import googleB from './google-logo.png';
+import logo from '../../assets/googleAssets/g-logo.png';
+import googleB from '../../assets/googleAssets/google-logo.png';
 
 
 class GoogleAuthentication extends Component {
   render() {
-    const { userData, login } = this.props;
+    const { userData } = this.props;
     if (userData.name) {
       return (<Redirect to="/Home" />);
     }
@@ -27,7 +27,7 @@ class GoogleAuthentication extends Component {
               </div>
             </div>
             <h2>SIGN IN WITH GOOGLE</h2>
-            <Button onClick={login} size="massive"circular icon>
+            <Button onClick={this.props.login} size="massive"circular icon>
               <img style={{ width: '50px', height: '50px' }} src={googleB} alt="" />
 
             </Button>

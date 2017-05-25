@@ -1,18 +1,17 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {Card, Feed, Grid, Button} from 'semantic-ui-react';
 import {fetchPosts} from '../../actions';
+import {editPost, editComment} from '../../actions';
 import PostsForm from './PostsForm'
 import Comments from './Comments'
 import firebase from 'firebase';
-import {Card, Feed, Grid} from 'semantic-ui-react';
-function mapStateToProps({posts}) {
-    return {posts}
-}
+
 class Feeds extends Component {
     constructor(props) {
         super(props)
     }
-    componentDidMount() {
+    componentWillMount() {
         firebase.database().ref('feed/posts').once("value", (snapshot) => {
             return this.props.fetchPosts(snapshot.val());
         })
@@ -21,6 +20,7 @@ class Feeds extends Component {
         if (commentObject) {
             const comments = Object.values(commentObject);
             return comments.map((comment, i) => {
+                console.log('comment is ', comment);
                 return (
                     <Grid.Row className='commentRow'>
                         <Grid.Column width={6} verticalAlign='middle'>
@@ -28,7 +28,7 @@ class Feeds extends Component {
                                 <Feed.Event>
                                     <Feed.Label image={comment.photo}/>
                                     <Feed.Content>
-                                        <Feed.Date content={comment.date}/>
+                                        <Feed.Date content={comment.time}/>
                                         <Feed.Summary>
                                             <Card.Header>{comment.name}</Card.Header>
                                             {comment.comment}
@@ -36,22 +36,24 @@ class Feeds extends Component {
                                     </Feed.Content>
                                 </Feed.Event>
                             </Card>
+                            <Button type="submit" onClick={(e) => {
+                                e.preventDefault();
+                                this.props.editComment(comment.commentKeyInFireBase, comment.postKey)
+                            }}>Delete</Button>
                         </Grid.Column>
                     </Grid.Row>
                 )
-            })
+            });
         }
     }
     render() {
         const Posts = this.props.posts.map((post, ind) => {
             return (
                 <Feed >
-
                     <div key={post.postKey + ind}>
                         <Grid>
                             <Grid.Row>
-
-                                <Grid.Column width={8}>
+                                <Grid.Column width={10}>
                                     <Card fluid className='posts'>
                                         <Card.Content>
                                             <Feed.Event>
@@ -66,9 +68,12 @@ class Feeds extends Component {
                                             </Feed.Event>
                                         </Card.Content>
                                     </Card>
+                                    <Button type="submit" onClick={(e) => {
+                                        e.preventDefault();
+                                        this.props.editPost(post)
+                                    }}>Delete</Button>
                                 </Grid.Column>
                             </Grid.Row>
-
                             {this.renderComments(post.comments)}
                             <Comments postKey={post.postKey} postIndex={ind}/> {/* </Segment.Group> */}
                         </Grid>
@@ -84,9 +89,4 @@ class Feeds extends Component {
     }
 }
 
-{/* <Grid.Column width={8}>
-      <Segment>2</Segment>
-    </Grid.Column> */
-}
-
-export default connect(({posts}) => ({posts}), {fetchPosts})(Feeds);
+export default connect(({posts}) => ({posts}), {fetchPosts, editPost, editComment})(Feeds);
