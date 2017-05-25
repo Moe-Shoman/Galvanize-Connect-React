@@ -139,10 +139,12 @@ const deletePost = (posts) => {
   return posts.postKey;
 };
 
-const deleteComment = (comment) => {
-  console.log('inside of deleteComment');
-  // firebase.database().ref(`feed/comment/${posts.postKey}`).remove();
-  // return posts.postKey;
+const deleteComment = (comment, postKey) => {
+  console.log('comment is ', comment);
+  console.log('postKey is ', postKey);
+  // console.log('comment.commentKeyInFireBase is ', postKey);
+  // firebase.database().ref(`feed/posts/${postKey}/comment/${comment.commentKeyInFireBase}`).remove();
+  // return comment.commentKeyInFireBase;
 };
 
 
@@ -205,6 +207,6 @@ export const editPost = posts => ({
   type: 'DELETE_POST', payload: deletePost(posts),
 });
 
-export const editComment = comment => ({
-  type: 'DELETE-COMMENT', payload: deleteComment(comment),
+export const editComment = (comment, postKey) => ({
+  type: 'DELETE_COMMENT', payload: deleteComment(comment, postKey),
 });

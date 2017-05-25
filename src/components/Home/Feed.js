@@ -20,6 +20,7 @@ class Feeds extends Component {
      if (commentObject) {
        const comments = Object.values(commentObject);
        return comments.map((comment, i) => {
+        console.log('comment is ', comment);
            return (
                <Grid.Row className='commentRow'>
                    <Grid.Column width={6} verticalAlign='middle'>
@@ -37,12 +38,12 @@ class Feeds extends Component {
                        </Card>
                        <Button type="submit" onClick={(e) => {
                            e.preventDefault();
-                           this.props.editComment(comment)
+                           this.props.editComment(comment.commentKeyInFireBase, comment.postKey)
                        }}>Delete</Button>
                    </Grid.Column>
                </Grid.Row>
            )
-       })
+       });
      }
   }
     render() {
