@@ -1,14 +1,32 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { login } from '../../actions';
+import { login, authenticate } from '../../actions';
 import { Redirect } from 'react-router-dom';
 import { Button, Sidebar, Segment } from 'semantic-ui-react';
 import './GoogleAuth.css';
 import logo from '../../assets/googleAssets/g-logo.png';
 import googleB from '../../assets/googleAssets/google-logo.png';
+import firebase from 'firebase';
 
 
 class GoogleAuthentication extends Component {
+ static contextTypes = {
+  router: React.PropType.object,
+   }
+
+ componentWillMount = () => {
+  firebase.auth().onAuthStateChange(user => {
+   if(user) {
+    this.props.authenticate(true);
+    this.redirect();
+   }
+  })
+ }
+
+ redirect = () => {
+  this.context.router.history.push('/Home')
+ }
+
   render() {
     const { userData } = this.props;
     if (userData.name) {
@@ -37,4 +55,4 @@ class GoogleAuthentication extends Component {
     );
   }
 }
-export default connect(({ userData }) => ({ userData }), { login })(GoogleAuthentication);
+export default connect(({ userData }) => ({ userData }), { login, authenticate })(GoogleAuthentication);

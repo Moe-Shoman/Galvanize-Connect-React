@@ -44,3 +44,5 @@ export const login = () => ({
   type: 'LOGIN',
   payload: loginRequest(),
 });
+
+export const authenticate = payload => ({ type: 'AUTHENTICATE', payload });
