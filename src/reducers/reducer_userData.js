@@ -24,6 +24,7 @@ export default (state = initialState.userData, action) => {
       return Object.assign({}, state, action.payload);
     }
     case 'FETCH_LINKS': {
+      console.log('FETCH_LINKS are ======= ', action.payload);
       return Object.assign({}, state, {
         LinkedIn: action.payload.LinkedIn,
         GitHub: action.payload.GitHub,
