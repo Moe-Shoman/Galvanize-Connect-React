@@ -2,10 +2,7 @@
 export * from './authentication';
 export * from './jobs';
 import firebase from 'firebase';
-import axios from 'axios';
 
-
-const getJobsRequest = () => axios.get('http://service.dice.com/api/rest/jobsearch/v1/simple.json?text=javascript&city=94102&pgcnt=20').then(res => res.data.resultItemList);
 
 const addPostToFireBase = (postObject, postKey) => {
   const PostsInFireBase = firebase.database().ref(`feed/posts/${postKey}`);
@@ -127,10 +124,6 @@ export const addPost = (userData, input) => ({
   payload: addInfoToPost(userData, input),
 });
 
-export const getJobs = () => ({
-  type: 'GET_JOBS',
-  payload: getJobsRequest(),
-});
 
 export const fetchPosts = posts => ({
   type: 'FETCH_POSTS',
