@@ -1,41 +1,42 @@
 // Helper functions
+export * from './authentication';
 import firebase from 'firebase';
 import axios from 'axios';
 
-const addNonExistingUsers = (userObject) => {
-  const { displayName, email, photoURL } = userObject;
-  const userInFireBase = firebase.database().ref(`users/${displayName}`);
-  return userInFireBase.once('value').then((snapshot) => {
-    if (!snapshot.exists()) {
-      const newUser = {
-        name: displayName,
-        email,
-        photo: photoURL,
-        linkedIn: null,
-        gitHub: null,
-        twitter: null,
-        projects: '',
-        skills: '',
-      };
-      userInFireBase.set(newUser);
-      return newUser;
-    }
-    const registeredUser = snapshot.val();
-    registeredUser.projects = Object.values(registeredUser.projects);
-    registeredUser.skills = Object.values(registeredUser.skills);
-    return registeredUser;
-  });
-};
-const loginRequest = () => {
-  const provider = new firebase.auth.GoogleAuthProvider();
-  provider.addScope('profile');
-  provider.addScope('email');
-  provider.addScope('https://www.googleapis.com/auth/plus.login');
-  return firebase.auth().signInWithPopup(provider).then((res) => {
-    const user = res.user;
-    return addNonExistingUsers(user);
-  }).catch(err => (err));
-};
+// const addNonExistingUsers = (userObject) => {
+//   const { displayName, email, photoURL } = userObject;
+//   const userInFireBase = firebase.database().ref(`users/${displayName}`);
+//   return userInFireBase.once('value').then((snapshot) => {
+//     if (!snapshot.exists()) {
+//       const newUser = {
+//         name: displayName,
+//         email,
+//         photo: photoURL,
+//         linkedIn: null,
+//         gitHub: null,
+//         twitter: null,
+//         projects: '',
+//         skills: '',
+//       };
+//       userInFireBase.set(newUser);
+//       return newUser;
+//     }
+//     const registeredUser = snapshot.val();
+//     registeredUser.projects = Object.values(registeredUser.projects);
+//     registeredUser.skills = Object.values(registeredUser.skills);
+//     return registeredUser;
+//   });
+// };
+// const loginRequest = () => {
+//   const provider = new firebase.auth.GoogleAuthProvider();
+//   provider.addScope('profile');
+//   provider.addScope('email');
+//   provider.addScope('https://www.googleapis.com/auth/plus.login');
+//   return firebase.auth().signInWithPopup(provider).then((res) => {
+//     const user = res.user;
+//     return addNonExistingUsers(user);
+//   }).catch(err => (err));
+// };
 
 const getJobsRequest = () => axios.get('http://service.dice.com/api/rest/jobsearch/v1/simple.json?text=javascript&city=94102&pgcnt=20').then(res => res.data.resultItemList);
 
@@ -149,10 +150,10 @@ const deleteComment = (comment, postKey) => {
 
 
 // ACTION CREATORS
-export const login = () => ({
-  type: 'LOGIN',
-  payload: loginRequest(),
-});
+// export const login = () => ({
+//   type: 'LOGIN',
+//   payload: loginRequest(),
+// });
 
 export const addProject = (userData, project) => ({
   type: 'ADD_PROJECT',

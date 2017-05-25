@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import { Item } from 'semantic-ui-react';
 // import firebase from 'firebase';
-import { fetchProjects } from '../../actions';
+import { fetchProjects } from '../../../actions';
 import './project.css';
 
 

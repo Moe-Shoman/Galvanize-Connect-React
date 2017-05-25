@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {Button, Form, TextArea} from 'semantic-ui-react';
-import {addPost} from '../../actions';
+import { connect } from 'react-redux';
+import { Button, Form, TextArea } from 'semantic-ui-react';
+import { addPost } from '../../actions';
 
 class PostForm extends Component {
     constructor(props) {
@@ -16,7 +16,7 @@ class PostForm extends Component {
         })
     }
     render() {
-        const {userData, addPost} = this.props;
+        const { userData, addPost } = this.props;
         return (
             <Form id='postForm'>
                 <label htmlFor="post">

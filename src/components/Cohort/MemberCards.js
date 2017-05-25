@@ -4,7 +4,7 @@ import firebase from 'firebase';
 import { Card, Image } from 'semantic-ui-react';
 import { fetchCohort } from '../../actions';
 import './cohort.css';
-import AddCohort from '../Profile/add_cohort';
+import AddCohort from '../Profile/AddCohort';
 
 class MemberCards extends Component {
   constructor(props) {
@@ -15,7 +15,8 @@ class MemberCards extends Component {
   }
 
   render() {
-    if (!this.props.userData.cohort) {
+    const { cohortVal, userData } = this.props;
+    if (!userData.cohort) {
       return (
         <div>
           <p>Please add your cohort in order to view this page</p>
@@ -23,7 +24,7 @@ class MemberCards extends Component {
         </div>
       );
     }
-    const members = Object.values(this.props.cohortVal);
+    const members = Object.values(cohortVal);
     const cohortUser = members.map(cohort => (
       <div className="card">
         <Card>

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import GoogleAuthentication from './components/GoogleAuth/GoogleAuth';
 import { BrowserRouter as Router, Route, Redirect, Link } from 'react-router-dom';
-import Cohort from './components/Cohort/Cohort';
-import Profile from './components/Profile/Profile';
-import Home from './components/Home/Home';
+import Cohort from './Views/Cohort';
+import Profile from './Views/Profile';
+import Home from './Views/Home';
 import './App.css';
 import firebase from 'firebase';
 import { connect } from 'react-redux';
@@ -42,14 +42,7 @@ class App extends Component {
       <Router class="ui five item menu">
         <div>
           <Sidebar as={Menu} animation="push" width="thin" visible icon="labeled" vertical inverted>
-            {/* <Menu.Item name="login">
-              <Link to="/">
-                <Icon name="sign in" size="huge" />
-                <h3>
-                              Login
-                            </h3>
-              </Link>
-            </Menu.Item> */}
+
             <Menu.Item name="home">
               <Link to="/Home">
                 <Icon name="home" size="medium" />

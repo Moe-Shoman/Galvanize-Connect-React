@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { addSkill } from '../../actions';
+import { addSkill } from '../../../actions';
 import { connect } from 'react-redux';
 import './skill.css';
 
@@ -57,5 +57,3 @@ class AddSkillsForm extends Component {
 }
 
 export default connect(({ userData, skills }) => ({ userData, skills }), { addSkill })(AddSkillsForm)
-//reference
-// export default connect(({ cohortVal, userData }) => ({ cohortVal, userData }), { fetchCohort })(MemberCards);

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './projectform.css';
-import {addProject} from '../../actions';
+import {addProject} from '../../../actions';
 import {connect} from 'react-redux';
 
 // function mapStateToProps({userData, projects}) {
