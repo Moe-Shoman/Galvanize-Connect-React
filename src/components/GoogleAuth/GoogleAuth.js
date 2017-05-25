@@ -4,8 +4,8 @@ import { login } from '../../actions';
 import { Redirect } from 'react-router-dom';
 import { Button, Sidebar, Segment } from 'semantic-ui-react';
 import './GoogleAuth.css';
-import logo from './g-logo.png';
-import googleB from './google-logo.png';
+import logo from '../../assets/googleAssets/g-logo.png';
+import googleB from '../../assets/googleAssets/google-logo.png';
 
 
 class GoogleAuthentication extends Component {
