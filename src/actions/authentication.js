@@ -39,6 +39,11 @@ export const loginRequest = () => {
   }).catch(err => (err));
 };
 
+export const destructUser = (user) => {
+  console.log('inside of destructUser');
+  return user;
+};
+
 // action creator
 export const login = () => ({
   type: 'LOGIN',
@@ -46,3 +51,5 @@ export const login = () => ({
 });
 
 export const authenticate = payload => ({ type: 'AUTHENTICATE', payload });
+
+export const addToReduxStore = user => ({ type: 'ADD_TO_STORE', payload: destructUser(user) });

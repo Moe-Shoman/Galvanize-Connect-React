@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { login, authenticate } from '../../actions/authentication';
+import { login, authenticate, addToReduxStore } from '../../actions/authentication';
 import { Redirect } from 'react-router-dom';
 import { Button, Sidebar, Segment } from 'semantic-ui-react';
 import './GoogleAuth.css';
@@ -17,7 +17,7 @@ class GoogleAuthentication extends Component {
  componentWillMount = () => {
   firebase.auth().onAuthStateChanged(user => {
    if(user) {
-    console.log(user, `i'm the user!`)
+    this.props.addToReduxStore(user)
     this.props.authenticate(true)
     this.redirect();
    }
@@ -58,4 +58,4 @@ class GoogleAuthentication extends Component {
     );
   }
 }
-export default connect(({ userData }) => ({ userData }), { login, authenticate })(GoogleAuthentication);
+export default connect(({ userData }) => ({ userData }), { login, authenticate, addToReduxStore })(GoogleAuthentication);
