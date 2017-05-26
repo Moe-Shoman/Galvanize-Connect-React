@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { login, authenticate } from '../../actions';
+import { login, authenticate } from '../../actions/authentication';
 import { Redirect } from 'react-router-dom';
 import { Button, Sidebar, Segment } from 'semantic-ui-react';
 import './GoogleAuth.css';
@@ -17,6 +17,7 @@ class GoogleAuthentication extends Component {
  componentWillMount = () => {
   firebase.auth().onAuthStateChanged(user => {
    if(user) {
+    console.log(user, `i'm the user!`)
     this.props.authenticate(true)
     this.redirect();
    }
@@ -32,6 +33,7 @@ class GoogleAuthentication extends Component {
     if (userData.name) {
       return (<Redirect to="/Home" />);
     }
+    // debugger
     return (
       <Sidebar.Pusher>
         <Segment basic>
@@ -44,6 +46,7 @@ class GoogleAuthentication extends Component {
                 </h2>
               </div>
             </div>
+
             <h2>SIGN IN WITH GOOGLE</h2>
             <Button onClick={this.props.login} size="massive"circular icon>
               <img style={{ width: '50px', height: '50px' }} src={googleB} alt="" />
