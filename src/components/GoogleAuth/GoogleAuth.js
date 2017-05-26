@@ -11,13 +11,13 @@ import firebase from 'firebase';
 
 class GoogleAuthentication extends Component {
  static contextTypes = {
-  router: React.PropType.object,
+  router: React.PropTypes.object,
    }
 
  componentWillMount = () => {
   firebase.auth().onAuthStateChange(user => {
    if(user) {
-    this.props.authenticate(true);
+    this.props.authenticate(true)
     this.redirect();
    }
   })

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 export default function (ComposedComponent) {
  class Authentication extends Component {
   static contextTypes = {
-   router: React.PropTypes.object;
+   router: React.PropTypes.object
   }
   componentWillMount = () => {
     if(!this.props.authentication) {
@@ -27,7 +27,7 @@ export default function (ComposedComponent) {
    }
 
    return (
-    <ComposedComponent { ...this.props } />;
+    <ComposedComponent { ...this.props } />
    )
   }
  }
