@@ -40,8 +40,19 @@ export const loginRequest = () => {
 };
 
 export const destructUser = (user) => {
-  console.log('inside of destructUser');
-  return user;
+  console.log(user, '====== user is ');
+  console.log(user.photoURL, '====== user is ');
+  const userInfo = {
+    name: user.displayName,
+    email: user.email,
+    photo: user.photoURL,
+    linkedIn: null,
+    gitHub: null,
+    twitter: null,
+    projects: '',
+    skills: '',
+  };
+  return userInfo;
 };
 
 // action creator
