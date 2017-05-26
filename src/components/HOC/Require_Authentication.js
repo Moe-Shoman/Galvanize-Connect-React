@@ -12,16 +12,16 @@ export default function (ComposedComponent) {
   static contextTypes = {
    router: React.PropTypes.object,
   }
-  componentWillMount = () => {
-    if(!this.props.authentication) {
-     this.redirect();
-    }
-  }
-  componentWillUpdate = () => {
-   if(!this.props.authentication) {
-    this.redirect();
-   }
-  }
+  // componentWillMount = () => {
+  //   if(!this.props.authentication) {
+  //    this.redirect();
+  //   }
+  // }
+  // componentWillUpdate = () => {
+  //  if(!this.props.authentication) {
+  //   this.redirect();
+  //  }
+  // }
 
   redirect = () => {
    // const { name } = this.props.userData;
@@ -32,8 +32,8 @@ export default function (ComposedComponent) {
   }
 
   render() {
-   if(!this.props.authentication) {
-    this.redirect();
+   if(!this.props.userData || !this.props.userData.name) {
+    return <Redirect to="/Login" />;
    }
 
    return (

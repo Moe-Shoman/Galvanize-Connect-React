@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { login, authenticate, addToReduxStore } from '../../actions/authentication';
+import { login, authenticate, addToReduxStore, checkForAuthenticatedUser } from '../../actions/authentication';
 import { Redirect } from 'react-router-dom';
 import { Button, Sidebar, Segment } from 'semantic-ui-react';
 import './GoogleAuth.css';
@@ -15,13 +15,9 @@ class GoogleAuthentication extends Component {
    }
 
  componentWillMount = () => {
-  firebase.auth().onAuthStateChanged(user => {
-   if(user) {
-    this.props.addToReduxStore(user)
-    this.props.authenticate(true)
-    this.redirect();
-   }
-  })
+  if (!this.props.userData || !this.props.userData.name) {
+   this.props.checkForAuthenticatedUser();
+  }
  }
 
  redirect = () => {
@@ -30,8 +26,10 @@ class GoogleAuthentication extends Component {
 
   render() {
     const { userData } = this.props;
-    if (userData.name) {
-      return (<Redirect to="/Home" />);
+    if (userData && userData.name) {
+      console.log('>>>>>>>>>>> user exists');
+      return <div style={{ color: 'red', textAlign: 'right' }}>{userData.name}</div>;
+      // return (<Redirect to="/Home" />);
     }
     // debugger
     return (
@@ -58,4 +56,5 @@ class GoogleAuthentication extends Component {
     );
   }
 }
-export default connect(({ userData }) => ({ userData }), { login, authenticate, addToReduxStore })(GoogleAuthentication);
+
+export default connect(({ userData }) => ({ userData }), { login, authenticate, addToReduxStore, checkForAuthenticatedUser })(GoogleAuthentication);
