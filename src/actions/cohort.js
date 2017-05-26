@@ -11,7 +11,6 @@ export const addCohortToFireBase = (userData, cohort) => {
   userCohortInFireBase.ref('cohorts').child(`${cohort}`).push().set({ name: userData.name, photo: userData.photo });
 };
 
-
 // action CREATORS
 
 export const addCohort = (userData, cohort) => ({

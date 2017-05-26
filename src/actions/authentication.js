@@ -39,6 +39,22 @@ export const loginRequest = () => {
   }).catch(err => (err));
 };
 
+export const destructUser = (user) => {
+  console.log(user, '====== user is ');
+  console.log(user.photoURL, '====== user is ');
+  const userInfo = {
+    name: user.displayName,
+    email: user.email,
+    photo: user.photoURL,
+    linkedIn: null,
+    gitHub: null,
+    twitter: null,
+    projects: '',
+    skills: '',
+  };
+  return userInfo;
+};
+
 // action creator
 export const login = () => ({
   type: 'LOGIN',
@@ -46,3 +62,20 @@ export const login = () => ({
 });
 
 export const authenticate = payload => ({ type: 'AUTHENTICATE', payload });
+
+export const addToReduxStore = user => ({ type: 'ADD_TO_STORE', payload: destructUser(user) });
+
+export const checkForAuthenticatedUser = () => ({
+  type: 'CHECK_FOR_AUTHENTICATED_USER',
+  payload: new Promise((resolve, reject) => {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        console.log(user);
+        resolve(user);
+     // this.props.login()
+     // this.props.authenticate(true)
+     // this.redirect();
+      }
+    });
+  }),
+});

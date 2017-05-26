@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import GoogleAuthentication from './components/GoogleAuth/GoogleAuth';
+import GoogleAuthentication from './Views/Login';
 import { BrowserRouter as Router, Route, Redirect, Link } from 'react-router-dom';
 import Cohort from './Views/Cohort';
 import Profile from './Views/Profile';
@@ -68,7 +68,7 @@ class App extends Component {
           </Menu.Item>
 
           <Menu.Item name="login">
-            <Link to="/">
+            <Link to="/Login">
               <Icon name="sign in" size="medium" />
               <h3>
                               Login

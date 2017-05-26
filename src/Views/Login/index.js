@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { login, authenticate } from '../../actions';
+import { login, authenticate, addToReduxStore, checkForAuthenticatedUser } from '../../actions/authentication';
 import { Redirect } from 'react-router-dom';
 import { Button, Sidebar, Segment } from 'semantic-ui-react';
 import './GoogleAuth.css';
@@ -15,12 +15,9 @@ class GoogleAuthentication extends Component {
    }
 
  componentWillMount = () => {
-  firebase.auth().onAuthStateChanged(user => {
-   if(user) {
-    this.props.authenticate(true)
-    this.redirect();
-   }
-  })
+  if (!this.props.userData || !this.props.userData.name) {
+   this.props.checkForAuthenticatedUser();
+  }
  }
 
  redirect = () => {
@@ -29,9 +26,12 @@ class GoogleAuthentication extends Component {
 
   render() {
     const { userData } = this.props;
-    if (userData.name) {
-      return (<Redirect to="/Home" />);
+    if (userData && userData.name) {
+      console.log('>>>>>>>>>>> user exists');
+      return <div style={{ color: 'red', textAlign: 'right' }}>{userData.name}</div>;
+      // return (<Redirect to="/Home" />);
     }
+    // debugger
     return (
       <Sidebar.Pusher>
         <Segment basic>
@@ -44,6 +44,7 @@ class GoogleAuthentication extends Component {
                 </h2>
               </div>
             </div>
+
             <h2>SIGN IN WITH GOOGLE</h2>
             <Button onClick={this.props.login} size="massive"circular icon>
               <img style={{ width: '50px', height: '50px' }} src={googleB} alt="" />
@@ -55,4 +56,5 @@ class GoogleAuthentication extends Component {
     );
   }
 }
-export default connect(({ userData }) => ({ userData }), { login, authenticate })(GoogleAuthentication);
+
+export default connect(({ userData }) => ({ userData }), { login, authenticate, addToReduxStore, checkForAuthenticatedUser })(GoogleAuthentication);
