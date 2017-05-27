@@ -1,14 +1,5 @@
 export default {
-  userData: {
-    name: null,
-    email: null,
-    photo: null,
-    linkedIn: null,
-    gitHub: null,
-    twitter: null,
-    projects: [],
-    skills: [],
-  },
+  userData: {},
   jobs: [],
   posts: [],
   comments: [],

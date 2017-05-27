@@ -39,50 +39,38 @@ class App extends Component {
     const { name } = this.props.userData;
         // console.log(name, 'me mayne');
     return (
-      <div>
-        <Sidebar as={Menu} animation="push" width="thin" visible icon="labeled" vertical inverted>
+      <Sidebar as={Menu} animation="push" width="thin" visible icon="labeled" vertical inverted>
 
-          <Menu.Item name="home">
-            <Link to="/Home">
-              <Icon name="home" size="medium" />
-              <h3>
-                              Home
-                            </h3>
-            </Link>
-          </Menu.Item>
-          <Menu.Item name="cohort">
-            <Link to="/Cohort">
-              <Icon name="users" size="medium" />
-              <h3>
-                              Cohort
-                            </h3>
-            </Link>
-          </Menu.Item>
-          <Menu.Item name="profile">
-            <Link to="/Profile">
-              <Icon name="user" size="medium" />
-              <h3>
-                                  Profile
-                                </h3>
-            </Link>
-          </Menu.Item>
+        <Menu.Item name="home">
+          <Link to="/Home">
+            <Icon name="home" size="medium" />
+            <h3>Home</h3>
+          </Link>
+        </Menu.Item>
 
-          <Menu.Item name="login">
-            <Link to="/Login">
-              <Icon name="sign in" size="medium" />
-              <h3>
-                              Login
-                            </h3>
-            </Link>
-          </Menu.Item>
-        </Sidebar>
+        <Menu.Item name="cohort">
+          <Link to="/Cohort">
+            <Icon name="users" size="medium" />
+            <h3>Cohort</h3>
+          </Link>
+        </Menu.Item>
 
+        <Menu.Item name="profile">
+          <Link to="/Profile">
+            <Icon name="user" size="medium" />
+            <h3>Profile</h3>
+          </Link>
+        </Menu.Item>
 
-      </div>
-
+        <Menu.Item name="login">
+          <Link to="/Login">
+            <Icon name="sign in" size="medium" />
+            <h3>Login</h3>
+          </Link>
+        </Menu.Item>
+      </Sidebar>
     );
   }
-
 }
 
 export default connect(({ userData }) => ({ userData }))(App);

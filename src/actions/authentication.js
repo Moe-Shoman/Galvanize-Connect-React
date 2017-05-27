@@ -4,6 +4,8 @@ import axios from 'axios';
 
 export const addNonExistingUsers = (userObject) => {
   const { displayName, email, photoURL } = userObject;
+ // const userKey = firebase.database().ref('users').push().key;
+  // const userInFireBase = firebase.database().ref(`users/${userKey}`);
   const userInFireBase = firebase.database().ref(`users/${displayName}`);
   return userInFireBase.once('value').then((snapshot) => {
     if (!snapshot.exists()) {
@@ -34,14 +36,16 @@ export const loginRequest = () => {
   provider.addScope('email');
   provider.addScope('https://www.googleapis.com/auth/plus.login');
   return firebase.auth().signInWithPopup(provider).then((res) => {
+    // let token = res.credential.accessToken;
+    // console.log('token is ============ ', token);
     const user = res.user;
+    console.log(user, '====== user is ');
     return addNonExistingUsers(user);
   }).catch(err => (err));
 };
 
 export const destructUser = (user) => {
-  console.log(user, '====== user is ');
-  console.log(user.photoURL, '====== user is ');
+// console.log(user, `====== user is `);
   const userInfo = {
     name: user.displayName,
     email: user.email,
@@ -68,14 +72,24 @@ export const addToReduxStore = user => ({ type: 'ADD_TO_STORE', payload: destruc
 export const checkForAuthenticatedUser = () => ({
   type: 'CHECK_FOR_AUTHENTICATED_USER',
   payload: new Promise((resolve, reject) => {
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        console.log(user);
-        resolve(user);
-     // this.props.login()
-     // this.props.authenticate(true)
-     // this.redirect();
-      }
-    });
+
+   // return firebase.auth().getRedirectResult().then((res) => {
+   //   if(res.credintial) {
+   //    let token = res.credintial.accessToken;
+   //   }
+   //   let user = res.user;
+   // })
+   //  .catch((err) => {
+   //    throw err;
+   //  })
+
+   //  firebase.auth().onAuthStateChanged(user => {
+   //  if(user) {
+   //   resolve(user);
+   //   // this.props.login()
+   //   // this.props.authenticate(true)
+   //   // this.redirect();
+   //  }
+   // });
   }),
 });
