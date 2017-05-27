@@ -39,7 +39,6 @@ class App extends Component {
     const { name } = this.props.userData;
         // console.log(name, 'me mayne');
     return (
-      <div>
         <Sidebar as={Menu} animation="push" width="thin" visible icon="labeled" vertical inverted>
 
           <Menu.Item name="home">
@@ -76,10 +75,6 @@ class App extends Component {
             </Link>
           </Menu.Item>
         </Sidebar>
-
-
-      </div>
-
     );
   }
 

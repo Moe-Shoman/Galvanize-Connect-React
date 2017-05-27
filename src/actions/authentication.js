@@ -35,6 +35,7 @@ export const loginRequest = () => {
   provider.addScope('https://www.googleapis.com/auth/plus.login');
   return firebase.auth().signInWithPopup(provider).then((res) => {
     const user = res.user;
+    console.log(">>>>>>>>>>>>>>>>>>>", user);
     return addNonExistingUsers(user);
   }).catch(err => (err));
 };
