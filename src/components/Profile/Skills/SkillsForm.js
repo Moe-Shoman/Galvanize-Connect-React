@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { addSkill } from '../../../actions';
 import { connect } from 'react-redux';
+import {Button, Form, TextArea, Modal, Header } from 'semantic-ui-react';
 import './skill.css';
 
 
@@ -9,51 +10,55 @@ class AddSkillsForm extends Component {
     super(props)
     this.state = {
       skill: '',
-      showForn: false
+      modalOpen: false,
     }
   }
+
+  handleOpen = (e) => this.setState({
+  modalOpen: true,
+  })
+
+  handleClose = (e) => this.setState({
+    modalOpen: false,
+  })
+
   updateInput = (event) => {
     this.setState({
       skill: event.target.value
     })
   }
 
-  toggleForm = () => {
-    this.setState((prevState) => {
-      return {showForm: !prevState.showForm}
-    })
-  }
   render() {
    const { userData, addSkill } = this.props;
-    if (this.state.showForm) {
       return (
-       <form className="theForm ui form">
-         <div>
-           <div>
-              <label htmlFor="skillName">Add Skill</label>
-              <input className="skillName" name="skill" type="text" onChange={this.updateInput}/>
-            </div>
-          </div>
-         <button className="ui button" type="submit" onClick={(e) => {
-           e.preventDefault();
-           addSkill(userData, this.state.skill);
-           this.toggleForm()
-         }}>Submit</button>
-         <div>
-           <button className='ui button' type="cancel" onClick={(e) =>{
-             e.preventDefault();
-             this.toggleForm()
-           }}>Cancel</button>
-         </div>
-       </form>
+        <Modal trigger={<Button onClick={this.handleOpen} >Add Skill</Button>} open={this.state.modalOpen}>
+          <Modal.Content>
+            <Header>
+              <h3>Enter A Skill</h3>
+            </Header>
+            <Form className="theForm ui form">
+                <TextArea className="skillName" name="skill" type="text" onChange={this.updateInput} autoHeight/>
+              <Button
+                 className="ui button" type="submit"
+                 onClick={(e) => {
+                 e.preventDefault();
+                 addSkill(userData, this.state.skill);
+                 this.handleClose();
+                  }}
+                  >
+                Submit
+              </Button>
+                <Button className="ui button" type="cancel" onClick={(e) =>{
+                 e.preventDefault()
+                 this.handleClose();
+                 }}>
+                 Cancel
+               </Button>
+            </Form>
+          </Modal.Content>
+        </Modal>
       )
     }
-      return (
-        <div>
-            <button onClick={this.toggleForm}>ADD SKILL</button>
-        </div>
-    )
   }
-}
 
-export default connect(({ userData, skills }) => ({ userData, skills }), { addSkill })(AddSkillsForm)
+export default connect(({ userData, skills }) => ({ userData, skills }), { addSkill })(AddSkillsForm);

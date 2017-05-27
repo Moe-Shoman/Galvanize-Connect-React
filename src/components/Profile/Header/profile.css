@@ -1,37 +1,36 @@
 
 .userPro {
     text-align: center;
-    height: 250px;
-    background-image: url("../../assets/profileAssets/macbook.jpeg");
+    height: 500px;
+    background-image: url("../../../assets/profileAssets/macbook.jpeg");
     background-size: cover;
     position: relative;
     margin-bottom: 150px;
     margin-top: 0px;
     font-style: oblique;
-    /*font-size: 2em;*/
+    font-size: 4em;
     width:100%;
     float: right;
     border: 10px;
     border-color: black;
 }
-.userName {
-  font-size: 4rem;
-  font-family:fantasy;
+h1 {
+  font-size: 6rem;
   color: white;
    align: center;
    padding-top: 20px;
 }
 .imgPro.ui {
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
     font-size: 1em;
-    background-image: url("../../assets/profileAssets/Icon-user.jpeg");
+    background-image: url("../../../assets/profileAssets/Icon-user.jpeg");
     background-size: cover;
-    border: 2px solid;
+    border: 5px solid;
     border-color: white;
     position: absolute;
     margin-top: 0px;
-    bottom: -100px;
+    bottom: -125px;
     left: calc(47% - 75px);
 }
 .styleLinks {
@@ -40,6 +39,7 @@
   padding: 20px;
   justify-content: center;
   align-items: center;
+
 }
 
 .userName {

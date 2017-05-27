@@ -2,14 +2,13 @@
 .projectItem {
   background-color: #F5F5F5;
   margin: 10px;
-  /*margin-top: relative;*/
-  /*height: auto;*/
   width: 80%;
   position: center;
   align-self: center;
   padding: 20px;
-  border: 5px solid;
+  border: 1px solid;
   border-color: #DCDCDC;
+  border-radius: 6px;
 }
 
 .projectTitle{
