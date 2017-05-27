@@ -24,10 +24,8 @@
   to { transform: rotate(360deg); }
 }
 
-/*#mainNav {
- height: 100%;
- position: fixed;
- padding-right: 55px;
+/*.jobCards {
+ float:right;
 }*/
 
 
