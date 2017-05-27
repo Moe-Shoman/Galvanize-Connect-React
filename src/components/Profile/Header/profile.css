@@ -1,0 +1,55 @@
+
+.userPro {
+    text-align: center;
+    height: 500px;
+    background-image: url("../../../assets/profileAssets/macbook.jpeg");
+    background-size: cover;
+    position: relative;
+    margin-bottom: 150px;
+    margin-top: 0px;
+    font-style: oblique;
+    font-size: 4em;
+    width:100%;
+    float: right;
+    border: 10px;
+    border-color: black;
+}
+h1 {
+  font-size: 6rem;
+  color: white;
+   align: center;
+   padding-top: 20px;
+}
+.imgPro.ui {
+    width: 250px;
+    height: 250px;
+    font-size: 1em;
+    background-image: url("../../../assets/profileAssets/Icon-user.jpeg");
+    background-size: cover;
+    border: 5px solid;
+    border-color: white;
+    position: absolute;
+    margin-top: 0px;
+    bottom: -125px;
+    left: calc(47% - 75px);
+}
+.styleLinks {
+  display: inline-flex;
+  flex-flow: row;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.userName {
+  padding-top: 35px;
+}
+.numStyle{
+  color: white;
+  font-size: 3rem;
+  padding-bottom: 10px;
+}
+.projectButton {
+  position: relative;
+}

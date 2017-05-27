@@ -1,40 +1,28 @@
-import React, {Component} from 'react';
-import { fetchSkills } from '../../actions';
-// import Skill from './skills_list_item';
-import {connect} from 'react-redux';
-import firebase from 'firebase';
-// import './skill.css';
-
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import './skill.css';
 
 class SkillsList extends Component {
   constructor(props){
     super(props)
   }
-  componentDidMount(){
-    firebase.database().ref(`users/${this.props.userData.name}/skills`).once("value", (snapshot) => {
-      // console.log('snap');
-      return this.props.fetchSkills(snapshot.val());
-    })
-  }
-
   renderSkills = (skills) => {
     if (skills) {
-      return skills.map((skill, i)=>{
+      return skills.map((skill, i) => {
         return (
           <div key={i}>
-            <div>
-              {skill}
+            <div className="skillFormat">
+              { skill }
             </div>
           </div>
         )
-      })
+      });
     }
   }
   render(){
-    const { skills } = this.props
+    const { skills } = this.props.userData;
     return(
       <div>
-        <p>hello!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</p>
         <div>
           {this.renderSkills(skills)}
         </div>
@@ -43,7 +31,4 @@ class SkillsList extends Component {
   }
 }
 
-export default connect(({ userData }) => ({ useData }), {fetchSkills})(SkillsList);
-
-//reference
-// export default connect(({ cohortVal, userData }) => ({ cohortVal, userData }), { fetchCohort })(MemberCards);
+export default connect(({ userData }) => ({ userData }))(SkillsList);
