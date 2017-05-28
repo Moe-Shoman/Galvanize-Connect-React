@@ -15,22 +15,6 @@ import ListOfSocialLinks from '../../components/Profile/SocialLinks';
 import { Sidebar } from 'semantic-ui-react';
 import { Grid } from 'semantic-ui-react';
 
-// import React, { Component } from 'react';
-// import { connect } from 'react-redux';
-// // import ProfileHeader from '../../components/Profile/Header/Header';
-// import '../../components/Profile/profile.css';
-// import ProjectsList from '../../components/Profile/Projects/ProjectsList';
-// import SkillsList from '../../components/Skills/skills_list';
-// import AddProjectForm from '../../components/Profile/AddProject/AddProjectForm';
-// // import firebase from 'firebase';
-// import AddSkillsForm from '../../components/Profile/Skills/SkillsForm';
-// import AddCohort from '../../components/Profile/AddCohort';
-// import SocialLinks from '../../components/Profile/AddSocial';
-// import ListOfSocialLinks from '../../components/Profile/SocialLinks';
-// import { Sidebar, Grid } from 'semantic-ui-react';
-
-
-
 class Profile extends Component {
   render() {
     return (
