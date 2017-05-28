@@ -28,7 +28,7 @@ class AddProjectForm extends Component {
     render() {
       const { userData, addProject } = this.props;
         return(
-        <Modal trigger={<Button onClick={this.handleOpen} >Add A Porject </Button>} open={this.state.modalOpen}>
+        <Modal trigger={<Button onClick={this.handleOpen} >Add A Project </Button>} open={this.state.modalOpen}>
           <Modal.Content>
             <Form className="theForm ui form">
               <Modal.Content>
