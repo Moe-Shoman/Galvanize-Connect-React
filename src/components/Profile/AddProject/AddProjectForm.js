@@ -52,7 +52,7 @@ class AddProjectForm extends Component {
                 <Button className='ui button' type="cancel" onClick={(e) =>{
                   e.preventDefault();
                   this.handleClose();
-                  }} >
+                  }}>
                   Cancel
                 </Button>
             </Form>
