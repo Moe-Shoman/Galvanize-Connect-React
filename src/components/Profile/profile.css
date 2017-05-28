@@ -1,7 +1,7 @@
 
 .userPro {
     text-align: center;
-    height: 500px;
+    height: 250px;
     background-image: url("../../assets/profileAssets/macbook.jpeg");
     background-size: cover;
     position: relative;
@@ -27,11 +27,11 @@
     font-size: 1em;
     background-image: url("../../assets/profileAssets/Icon-user.jpeg");
     background-size: cover;
-    border: 5px solid;
+    border: 2px solid;
     border-color: white;
     position: absolute;
     margin-top: 0px;
-    bottom: -125px;
+    bottom: -100px;
     left: calc(47% - 75px);
 }
 .styleLinks {
@@ -40,7 +40,6 @@
   padding: 20px;
   justify-content: center;
   align-items: center;
-
 }
 
 .userName {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import { Item } from 'semantic-ui-react';
 // import firebase from 'firebase';
-import { fetchProjects } from '../../../actions';
+// import { fetchProjects } from '../../../actions';
 import './project.css';
 
 
@@ -42,4 +42,6 @@ class ProjectsList extends Component {
   }
 }
 
-export default connect(({ userData }) => ({ userData }), { fetchProjects })(ProjectsList);
+//NOTE: the projects are not being fetched in this component.
+// export default connect(({ userData }) => ({ userData }), { fetchProjects })(ProjectsList);
+export default connect(({ userData }) => ({ userData }))(ProjectsList);
