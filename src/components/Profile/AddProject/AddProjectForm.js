@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './projectform.css';
 import {addProject} from '../../../actions';
 import {connect} from 'react-redux';
+import { Modal, Header, Button, Form, TextArea } from 'semantic-ui-react';
 
 class AddProjectForm extends Component {
     constructor(props) {
@@ -59,6 +60,7 @@ class AddProjectForm extends Component {
       </Modal>
       )
     }
+}
 }
 
 export default connect(({ userData, projects }) => ({ userData, projects}), {addProject})(AddProjectForm);
