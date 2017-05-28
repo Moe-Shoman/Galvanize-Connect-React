@@ -15,11 +15,12 @@ export default function (posts = initialState.posts, action) {
       return posts.filter(post => post.postKey !== postId);
     }
     case 'DELETE_COMMENT': {
-      // console.log(action.payload);
+      console.log(action.payload);
     }
     case 'ADD_COMMENTS': {
       const newPosts = [...posts];
-      const specificPost = newPosts[action.payload.postIndex];
+      console.log('new post are ', newPosts);
+      const specificPost = newPosts[action.payload];
       newPosts[action.payload.postIndex] = {
         ...specificPost,
         comments: [

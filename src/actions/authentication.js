@@ -4,12 +4,7 @@ import axios from 'axios';
 
 export const addNonExistingUsers = (userObject) => {
   const { displayName, email, photoURL } = userObject;
-  // const userKey = firebase.database().ref('users').push().key;
   const userID = firebase.auth().currentUser.uid;
-  console.log('userId is ============ ', userID);
-  localStorage.setItem('userKey', userID);
-  console.log(localStorage.getItem('userKey'));
-
   // const userInFireBase = firebase.database().ref(`users/${userKey}`);
   const userInFireBase = firebase.database().ref(`users/${userID}`);
 
@@ -29,7 +24,6 @@ export const addNonExistingUsers = (userObject) => {
       return newUser;
     }
     const registeredUser = snapshot.val();
-    console.log('registeredUser ============== ', registeredUser);
     registeredUser.projects = Object.values(registeredUser.projects);
     registeredUser.skills = Object.values(registeredUser.skills);
     return registeredUser;
@@ -44,7 +38,6 @@ export const loginRequest = () => {
   provider.addScope('https://www.googleapis.com/auth/plus.login');
   return firebase.auth().signInWithPopup(provider).then((res) => {
     const user = res.user;
-    console.log('user is ======== ', user);
     // let token = res.credential.accessToken;
     // localStorage.setItem('token', token);
     // localStorage.setItem('token', user.refreshToken);

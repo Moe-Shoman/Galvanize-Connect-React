@@ -12,7 +12,7 @@ class Feeds extends Component {
         super(props)
     }
     componentWillMount() {
-        firebase.database().ref('feed/posts').on("value", (snapshot) => {
+        firebase.database().ref('feed/posts').once("value", (snapshot) => {
             return this.props.fetchPosts(snapshot.val());
         })
     }
@@ -20,7 +20,6 @@ class Feeds extends Component {
         if (commentObject) {
             const comments = Object.values(commentObject);
             return comments.map((comment, i) => {
-             console.log('comments ======== ', comment);
                 return (
                     <Grid.Row className='commentRow'>
                         <Grid.Column width={6} verticalAlign='middle'>
