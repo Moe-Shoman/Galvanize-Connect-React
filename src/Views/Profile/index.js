@@ -40,6 +40,9 @@ class Profile extends Component {
             <ProfileHeader/>
           </Grid.Row>
           <Grid.Row>
+            <AddCohort/>
+          </Grid.Row>
+          <Grid.Row>
           <div className="styleLinks">
             <div>
             <ListOfSocialLinks />

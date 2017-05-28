@@ -27,39 +27,37 @@ class AddProjectForm extends Component {
       const {userData, addProject } = this.props;
       if (this.state.showForm) {
         return(
-        <form className="theForm ui form">
-          <div>
-            <div className="field">
-              <label htmlFor="projectName">Project Name</label>
-              <input className="proName" name="projectName" onChange={this.updateInput} type="text"/>
-            </div>
-            <div>
-              <div className="field">
-              <label htmlFor="description">Project Description</label>
-              <input className="proDesc" name="description" onChange={this.updateInput} type="text"/>
-            </div>
-            </div>
-          </div>
-          <button className="ui button" type="submit" onClick={(e) => {
-            e.preventDefault();
-            addProject(userData, {
-              projectName: this.state.projectName,
-              description: this.state.description
-            }); {this.toggleForm()}
-          }} >Submit</button>
-          <div>
-            <button className='ui button' type="cancel" onClick={(e) =>{
-              e.preventDefault();
-              {this.toggleForm()}
-            }} >Cancel</button>
-          </div>
-        </form>)
-      }
-        return (
-            <div>
-                <button onClick={this.toggleForm}>ADD PROJECT</button>
-            </div>
-        )
+        <Modal trigger={<Button onClick={this.handleOpen} >Add A Project </Button>} open={this.state.modalOpen}>
+          <Modal.Content>
+            <Form className="theForm ui form">
+              <Modal.Content>
+                <Header>Project Name </Header>
+                  <TextArea className="proName" name="projectName" onChange={this.updateInput} type="text" autoHeight/>
+                    <Header>Project Description</Header>
+                  <TextArea className="proDesc" name="description" onChange={this.updateInput} type="text" autoHeight/>
+              </Modal.Content>
+                <Button
+                  className="ui button" type="submit"
+                  onClick={(e) => {
+                  e.preventDefault();
+                  addProject(userData, {
+                  projectName: this.state.projectName,
+                  description: this.state.description
+                  });
+                  this.handleClose();
+                  }} >
+                  Submit
+                </Button>
+                <Button className='ui button' type="cancel" onClick={(e) =>{
+                  e.preventDefault();
+                  this.handleClose();
+                  }}>
+                  Cancel
+                </Button>
+            </Form>
+        </Modal.Content>
+      </Modal>
+      )
     }
 }
 
