@@ -2,7 +2,7 @@ import firebase from 'firebase';
 
 
 export const addCommentToFB = (commentObj, postKey, commentKeyInFireBase) => {
-  const comments = firebase.database().ref(`feed/posts/${postKey}/comments/${commentKeyInFireBase}`).push();
+  const comments = firebase.database().ref(`feed/posts/${postKey}/comments/${commentKeyInFireBase}`);
   comments.set(commentObj);
 };
 export const addCommentsToPost = (userData, comment, postKey, postIndex) => {
@@ -22,15 +22,14 @@ export const addCommentsToPost = (userData, comment, postKey, postIndex) => {
 
 
 export const deleteComment = (comment, postKey) => {
-  console.log('comment is ', comment);
-  console.log('postKey is ', postKey);
+  // console.log('comment is ', comment);
+  // console.log('postKey is ', postKey);
   // console.log('comment.commentKeyInFireBase is ', postKey);
   // firebase.database().ref(`feed/posts/${postKey}/comment/${comment.commentKeyInFireBase}`).remove();
   // return comment.commentKeyInFireBase;
 };
 
 // action creators
-
 export const addComment = (userData, comment, postKey, postIndex) => ({
   type: 'ADD_COMMENTS',
   payload: addCommentsToPost(userData, comment, postKey, postIndex),
