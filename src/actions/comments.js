@@ -2,7 +2,7 @@ import firebase from 'firebase';
 
 
 export const addCommentToFB = (commentObj, postKey, commentKeyInFireBase) => {
-  const comments = firebase.database().ref(`feed/posts/${postKey}/comments/${commentKeyInFireBase}`).push();
+  const comments = firebase.database().ref(`feed/posts/${postKey}/comments/${commentKeyInFireBase}`);
   comments.set(commentObj);
 };
 export const addCommentsToPost = (userData, comment, postKey, postIndex) => {
