@@ -88,5 +88,5 @@ class Feeds extends Component {
         )
     }
 }
-
+//
 export default connect(({posts}) => ({posts}), {fetchPosts, editPost, editComment})(Feeds);
