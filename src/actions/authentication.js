@@ -7,8 +7,8 @@ export const addNonExistingUsers = (userObject) => {
   // const userKey = firebase.database().ref('users').push().key;
   const userID = firebase.auth().currentUser.uid;
   console.log('userId is ============ ', userID);
-  // localStorage.setItem('userKey', userKey);
- // console.log(localStorage.getItem('userKey'));
+  localStorage.setItem('userKey', userID);
+  console.log(localStorage.getItem('userKey'));
 
   // const userInFireBase = firebase.database().ref(`users/${userKey}`);
   const userInFireBase = firebase.database().ref(`users/${userID}`);
