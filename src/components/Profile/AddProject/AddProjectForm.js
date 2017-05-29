@@ -10,13 +10,19 @@ class AddProjectForm extends Component {
         this.state = {
             projectName: '',
             description: '',
-            showForm: false
+            modalOpen: false,
         }
     }
+    //semantic helper functions.
+    handleOpen = (e) => this.setState({
+      modalOpen: true,
+    });
+    handleClose = (e) => this.setState({
+      modalOpen: false,
+    });
     updateInput = (event) => {
         const value = event.target.value;
-        const name = event.target.name
-        console.log("NAME in UPDATEINOUT", name);
+        const name = event.target.name;
         this.setState({[name]: value})
     }
     render() {
@@ -57,4 +63,4 @@ class AddProjectForm extends Component {
   }
 }
 
-export default connect(({ userData, projects }) => ({ userData, projects}), {addProject})(AddProjectForm);
+export default connect(({ userData }) => ({ userData }), {addProject})(AddProjectForm);
