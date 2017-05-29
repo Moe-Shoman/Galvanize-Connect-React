@@ -20,7 +20,6 @@ class Feeds extends Component {
         if (commentObject) {
             const comments = Object.values(commentObject);
             return comments.map((comment, i) => {
-             console.log('comments ======== ', comment);
                 return (
                     <Grid.Row className='commentRow'>
                         <Grid.Column width={6} verticalAlign='middle'>
