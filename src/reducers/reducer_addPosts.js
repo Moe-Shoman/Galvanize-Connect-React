@@ -18,14 +18,13 @@ export default function (posts = initialState.posts, action) {
       const commentId = action.payload;
       // console.log('posts =========== ', posts);
 
-      return posts.filter(item => item.comments.filter((comm) => {
-        console.log('comm =========== ', comm);
-        return comm.commentKeyInFireBase !== commentId;
-      }));
-      // return posts.forEach(item => item.comments.filter((comment) => {
-      //   console.log('comments are ', comment);
-      //   return comment.commentKeyInFireBase !== commentId;
+      // return posts.filter(item => item.comments.filter((comm) => {
+      //   console.log('comm =========== ', comm);
+      //   return comm.commentKeyInFireBase !== commentId;
       // }));
+      return posts.forEach((iteem) => {
+        console.log(iteem.comments);
+      });
     }
     case 'ADD_COMMENTS': {
       const newPosts = [...posts];
