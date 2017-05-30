@@ -30,6 +30,15 @@ export default (state = initialState.userData, action) => {
         Twitter: action.payload.Twitter,
       });
     }
+    case 'CHECK_FOR_AUTHENTICATED_USER_PENDING': {
+      return state;
+    }
+    case 'CHECK_FOR_AUTHENTICATED_USER_FULFILLED': {
+      return Object.assign({}, state, action.payload);
+    }
+    case 'CHECK_FOR_AUTHENTICATED_USER_REJECTED': {
+      return state;
+    }
     default:
       return state;
   }
