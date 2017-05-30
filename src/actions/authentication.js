@@ -7,7 +7,7 @@ export const addNonExistingUsers = (userObject) => {
   console.log('------------------- ', uid);
   // const userKey = firebase.database().ref('users').push().key;
   // const userID = firebase.auth().currentUser.uid;
-  localStorage.setItem('userKey', uid);
+  // localStorage.setItem('userKey', uid);
   // console.log('item in localStorage is ========= ', localStorage.getItem('userKey'));
   // const userInFireBase = firebase.database().ref(`users/${userKey}`);
   const userInFireBase = firebase.database().ref(`users/${uid}`);
@@ -41,15 +41,9 @@ export const loginRequest = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
   provider.addScope('profile');
   provider.addScope('email');
-  // provider.addScope('uid');
   provider.addScope('https://www.googleapis.com/auth/plus.login');
   return firebase.auth().signInWithPopup(provider).then((res) => {
     const user = res.user;
-    // console.log('user is ======== ', user);
-    // let token = res.credential.accessToken;
-    // localStorage.setItem('token', token);
-    // localStorage.setItem('token', user.refreshToken);
-    // console.log(localStorage.getItem('token'));
     return addNonExistingUsers(user);
   }).catch(err => (err));
 };
@@ -85,23 +79,10 @@ export const checkForAuthenticatedUser = () => ({
   type: 'CHECK_FOR_AUTHENTICATED_USER',
   payload: new Promise((res, rej) => {
     // console.log('item in localStorage is ========= ', localStorage.getItem('userKey'));
-   // return firebase.auth().getRedirectResult().then((res) => {
-   //   if(res.credintial) {
-   //    let token = res.credintial.accessToken;
-   //   }
-   //   let user = res.user;
-   // })
-   //  .catch((err) => {
-   //    throw err;
-   //  })
-
-   //  firebase.auth().onAuthStateChanged(user => {
-   //  if(user) {
-   //   resolve(user);
-   //   // this.props.login()
-   //   // this.props.authenticate(true)
-   //   // this.redirect();
-   //  }
-   // });
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        res(addNonExistingUsers(user));
+      }
+    });
   }),
 });
