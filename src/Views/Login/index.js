@@ -28,15 +28,7 @@ class GoogleAuthentication extends Component {
   render() {
     const { userData } = this.props;
     if (userData && userData.name) {
-      console.log('>>>>>>>>>>> user exists');
-      // return <div style={{ color: 'red', textAlign: 'right' }}>{userData.name}</div>;
-//       return (
-//           <div>
-//             <LearnMore />
-//           </div>
-//     )
-
-      // return (<Redirect to="/Home" />);
+      return (<Redirect to="/Home" />);
     }
     return (
       // <Sidebar.Pusher>
