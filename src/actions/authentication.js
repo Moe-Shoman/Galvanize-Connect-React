@@ -5,11 +5,6 @@ import axios from 'axios';
 export const addNonExistingUsers = (userObject) => {
   const { displayName, email, photoURL, uid } = userObject;
   console.log('------------------- ', uid);
-  // const userKey = firebase.database().ref('users').push().key;
-  // const userID = firebase.auth().currentUser.uid;
-  // localStorage.setItem('userKey', uid);
-  // console.log('item in localStorage is ========= ', localStorage.getItem('userKey'));
-  // const userInFireBase = firebase.database().ref(`users/${userKey}`);
   const userInFireBase = firebase.database().ref(`users/${uid}`);
 
   return userInFireBase.once('value').then((snapshot) => {
@@ -37,7 +32,6 @@ export const addNonExistingUsers = (userObject) => {
 
 
 export const loginRequest = () => {
-  console.log('item in localStorage is ========= ', localStorage.getItem('userKey'));
   const provider = new firebase.auth.GoogleAuthProvider();
   provider.addScope('profile');
   provider.addScope('email');
