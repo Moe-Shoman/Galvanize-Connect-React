@@ -30,15 +30,14 @@ class GoogleAuthentication extends Component {
     if (userData && userData.name) {
       console.log('>>>>>>>>>>> user exists');
       // return <div style={{ color: 'red', textAlign: 'right' }}>{userData.name}</div>;
-      return (
-          <div>
-            <LearnMore />
-          </div>
-    )
+//       return (
+//           <div>
+//             <LearnMore />
+//           </div>
+//     )
 
       // return (<Redirect to="/Home" />);
     }
-    // debugger
     return (
       // <Sidebar.Pusher>
         // <Segment basic>

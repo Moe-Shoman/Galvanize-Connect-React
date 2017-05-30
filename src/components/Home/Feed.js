@@ -20,6 +20,7 @@ class Feeds extends Component {
         if (commentObject) {
             const comments = Object.values(commentObject);
             return comments.map((comment, i) => {
+             console.log('comments ======== ', comment);
                 return (
                     <Grid.Row className='commentRow'>
                         <Grid.Column width={6} verticalAlign='middle'>
@@ -87,5 +88,5 @@ class Feeds extends Component {
         )
     }
 }
-
+//
 export default connect(({posts}) => ({posts}), {fetchPosts, editPost, editComment})(Feeds);

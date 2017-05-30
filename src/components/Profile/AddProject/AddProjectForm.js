@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './projectform.css';
-import { addProject } from '../../../actions';
-import { connect } from 'react-redux';
+import {addProject} from '../../../actions';
+import {connect} from 'react-redux';
 import { Modal, Header, Button, Form, TextArea } from 'semantic-ui-react';
 
 class AddProjectForm extends Component {
@@ -26,7 +26,8 @@ class AddProjectForm extends Component {
         this.setState({[name]: value})
     }
     render() {
-      const { userData, addProject } = this.props;
+      const {userData, addProject } = this.props;
+
         return(
         <Modal trigger={<Button onClick={this.handleOpen} >Add A Project </Button>} open={this.state.modalOpen}>
           <Modal.Content>
@@ -59,8 +60,7 @@ class AddProjectForm extends Component {
         </Modal.Content>
       </Modal>
       )
-    }
+  }
 }
+
 export default connect(({ userData }) => ({ userData }), {addProject})(AddProjectForm);
-//reference
-// export default connect(({ cohortVal, userData }) => ({ cohortVal, userData }), { fetchCohort })(MemberCards);
