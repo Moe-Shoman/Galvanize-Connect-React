@@ -5,7 +5,7 @@ import { Segment, Sidebar } from 'semantic-ui-react';
 
 
 const Home = () => (
-  <Sidebar.Pusher>
+  // <Sidebar.Pusher>
     <Segment basic>
       <div className="ui grid">
         <div className="eight wide column">
@@ -16,7 +16,7 @@ const Home = () => (
         </div>
       </div>
     </Segment>
-  </Sidebar.Pusher>
+  // </Sidebar.Pusher>
    );
 
 export default Home;

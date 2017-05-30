@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { fetchSocial } from '../../actions';
+import { fetchSocial } from '../../../actions';
 // import Skill from './skills_list_item';
 import { connect } from 'react-redux';
 import firebase from 'firebase';
@@ -9,7 +9,7 @@ import { Button, Icon, Size } from 'semantic-ui-react';
 const ListOfSocialLinks = ({ userData }) => {
   const { GitHub, LinkedIn, Twitter } = userData;
   return (
-    <div>
+    <div id="social">
       <div>
         <div className="styleLinks">
           <div className="github">

@@ -10,26 +10,10 @@ import AddProjectForm from '../../components/Profile/AddProject/AddProjectForm';
 // import firebase from 'firebase';
 import AddSkillsForm from '../../components/Profile/Skills/SkillsForm';
 import AddCohort from '../../components/Profile/AddCohort';
-import SocialLinks from '../../components/Profile/AddSocial';
-import ListOfSocialLinks from '../../components/Profile/SocialLinks';
+import SocialLinks from '../../components/Profile/Social/AddSocial';
+import ListOfSocialLinks from '../../components/Profile/Social/SocialLinks';
 import { Sidebar } from 'semantic-ui-react';
 import { Grid } from 'semantic-ui-react';
-
-// import React, { Component } from 'react';
-// import { connect } from 'react-redux';
-// // import ProfileHeader from '../../components/Profile/Header/Header';
-// import '../../components/Profile/profile.css';
-// import ProjectsList from '../../components/Profile/Projects/ProjectsList';
-// import SkillsList from '../../components/Skills/skills_list';
-// import AddProjectForm from '../../components/Profile/AddProject/AddProjectForm';
-// // import firebase from 'firebase';
-// import AddSkillsForm from '../../components/Profile/Skills/SkillsForm';
-// import AddCohort from '../../components/Profile/AddCohort';
-// import SocialLinks from '../../components/Profile/AddSocial';
-// import ListOfSocialLinks from '../../components/Profile/SocialLinks';
-// import { Sidebar, Grid } from 'semantic-ui-react';
-
-
 
 class Profile extends Component {
   render() {
@@ -53,9 +37,9 @@ class Profile extends Component {
           </div>
         </Grid.Row>
         <Grid.Row>
-          <div className="allskills">
+          {/* <div className="allskills"> */}
             <SkillsList />
-          </div>
+          {/* </div> */}
         </Grid.Row>
         <Grid.Row>
           <AddSkillsForm />

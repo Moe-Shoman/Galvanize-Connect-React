@@ -10,16 +10,12 @@
   background-size: cover;
 
 }
-img  {
+/*img  {
   height: 150px;
   width: 150px;
-}
+}*/
 #connectHeader {
   float: right;
   margin-top: 55px;
   font-size: 48px;
-}
-
-.hero{
-
 }
