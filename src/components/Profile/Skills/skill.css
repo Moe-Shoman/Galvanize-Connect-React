@@ -35,3 +35,9 @@
     background: grey;
     text-align: center;
 }
+.theSkills {
+  background: pink;
+  border-radius: 2px;
+  border: 5px;
+  border-color: grey;
+}

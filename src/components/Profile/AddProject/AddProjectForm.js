@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './projectform.css';
 import {addProject} from '../../../actions';
 import {connect} from 'react-redux';
+import { Modal, Header, Button, Form, TextArea } from 'semantic-ui-react';
 
 class AddProjectForm extends Component {
     constructor(props) {
@@ -9,23 +10,24 @@ class AddProjectForm extends Component {
         this.state = {
             projectName: '',
             description: '',
-            showForm: false
+            modalOpen: false,
         }
     }
+    //semantic helper functions.
+    handleOpen = (e) => this.setState({
+      modalOpen: true,
+    });
+    handleClose = (e) => this.setState({
+      modalOpen: false,
+    });
     updateInput = (event) => {
         const value = event.target.value;
-        const name = event.target.name
-        console.log("NAME in UPDATEINOUT", name);
+        const name = event.target.name;
         this.setState({[name]: value})
-    }
-    toggleForm = () => {
-        this.setState((prevState) => {
-          return {showForm: !prevState.showForm}
-        })
     }
     render() {
       const {userData, addProject } = this.props;
-      if (this.state.showForm) {
+
         return(
         <Modal trigger={<Button onClick={this.handleOpen} >Add A Project </Button>} open={this.state.modalOpen}>
           <Modal.Content>
@@ -58,9 +60,7 @@ class AddProjectForm extends Component {
         </Modal.Content>
       </Modal>
       )
-    }
+  }
 }
 
-export default connect(({ userData, projects }) => ({ userData, projects}), {addProject})(AddProjectForm);
-//reference
-// export default connect(({ cohortVal, userData }) => ({ cohortVal, userData }), { fetchCohort })(MemberCards);
+export default connect(({ userData }) => ({ userData }), {addProject})(AddProjectForm);

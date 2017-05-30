@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { addSocialLinks } from '../../actions';
+import { addSocialLinks } from '../../../actions';
 
 //*****************************************************
 import { Popup, Button, Header, Image, Modal, Form, TextArea } from 'semantic-ui-react'
