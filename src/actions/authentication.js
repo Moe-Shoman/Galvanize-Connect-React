@@ -48,21 +48,6 @@ export const loginRequest = () => {
   }).catch(err => (err));
 };
 
-// export const destructUser = (user) => {
-// // console.log(user, `====== user is `);
-// let userInfo ={
-//   name: user.displayName,
-//   email: user.email,
-//   photo: user.photoURL,
-//   linkedIn: null,
-//   gitHub: null,
-//   twitter: null,
-//   projects: '',
-//   skills: '',
-// }
-//  return userInfo;
-// }
-
 // action creator
 export const login = () => ({
   type: 'LOGIN',
@@ -78,7 +63,6 @@ export const authenticate = payload => ({ type: 'AUTHENTICATE', payload });
 export const checkForAuthenticatedUser = () => ({
   type: 'CHECK_FOR_AUTHENTICATED_USER',
   payload: new Promise((res, rej) => {
-    // console.log('item in localStorage is ========= ', localStorage.getItem('userKey'));
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         res(addNonExistingUsers(user));
