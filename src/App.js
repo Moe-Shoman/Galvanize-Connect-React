@@ -66,11 +66,9 @@ class App extends Component {
             <Link to="/About">
               <Menu.Item name='About' active={activeItem === '/About'} onClick={this.handleItemClick}/>
             </Link>
-
-               <Link to="/login">
-                 <Menu.Item name='login' active={activeItem === '/login'} onClick={this.handleItemClick}/>
-             </Link>
-
+              <Link to="/login">
+                <Menu.Item name='login' active={activeItem === '/login'} onClick={this.handleItemClick}/>
+              </Link>
             {/* <Link to ='/logout' position='right'> */}
               <Menu.Menu position='right'>
                 <Menu.Item name='logout' active={activeItem === 'logout'} onClick={this.handleItemClick} />

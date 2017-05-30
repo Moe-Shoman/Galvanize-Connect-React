@@ -5,7 +5,7 @@ export const addProjectToFireBase = (username, project) => {
   userProjectsInFireBase.set(project);
 };
 export const updateProjectsAndSendToDB = (userData, project) => {
-  const username = userData.name;
+  const username = userData.uid;
   addProjectToFireBase(username, project);
   return project;
 };
