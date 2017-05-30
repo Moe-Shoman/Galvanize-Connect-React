@@ -53,9 +53,9 @@ class Profile extends Component {
           </div>
         </Grid.Row>
         <Grid.Row>
-          <div className="allskills">
+          {/* <div className="allskills"> */}
             <SkillsList />
-          </div>
+          {/* </div> */}
         </Grid.Row>
         <Grid.Row>
           <AddSkillsForm />
