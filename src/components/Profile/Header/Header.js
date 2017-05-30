@@ -14,11 +14,11 @@ const ProfileHeader = ({ userData }) => {
           <h1 className="userName">{userData.name}</h1>
           <img className="ui circular image imgPro" src={userData.photo} alt={userData.name} />
         </div>
-      </Grid.Row>
-        <Grid.Row>
-        {/* <div className="cohortStyle"> */}
+      {/* </Grid.Row> */}
+        {/* <Grid.Row> */}
+        <div className="cohortStyle">
           <h1 className="numStyle">{userData.cohort}</h1>
-        {/* </div> */}
+        </div>
         </Grid.Row>
 
           <Grid.Row>

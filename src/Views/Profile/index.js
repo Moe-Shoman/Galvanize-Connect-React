@@ -10,8 +10,8 @@ import AddProjectForm from '../../components/Profile/AddProject/AddProjectForm';
 // import firebase from 'firebase';
 import AddSkillsForm from '../../components/Profile/Skills/SkillsForm';
 import AddCohort from '../../components/Profile/AddCohort';
-import SocialLinks from '../../components/Profile/AddSocial';
-import ListOfSocialLinks from '../../components/Profile/SocialLinks';
+import SocialLinks from '../../components/Profile/Social/AddSocial';
+import ListOfSocialLinks from '../../components/Profile/Social/SocialLinks';
 import { Sidebar } from 'semantic-ui-react';
 import { Grid } from 'semantic-ui-react';
 
