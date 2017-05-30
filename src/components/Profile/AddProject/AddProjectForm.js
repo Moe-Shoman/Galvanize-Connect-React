@@ -62,6 +62,6 @@ class AddProjectForm extends Component {
       )
   }
 }
-}
+
 
 export default connect(({ userData }) => ({ userData }), {addProject})(AddProjectForm);
