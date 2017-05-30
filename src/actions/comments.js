@@ -22,11 +22,8 @@ export const addCommentsToPost = (userData, comment, postKey, postIndex) => {
 
 
 export const deleteComment = (comment, postKey) => {
-  // console.log('comment is ', comment);
-  // console.log('postKey is ', postKey);
-  // console.log('comment.commentKeyInFireBase is ', postKey);
-  // firebase.database().ref(`feed/posts/${postKey}/comment/${comment.commentKeyInFireBase}`).remove();
-  // return comment.commentKeyInFireBase;
+  firebase.database().ref(`feed/posts/${postKey}/comments/${comment}`).remove();
+  return comment;
 };
 
 // action creators

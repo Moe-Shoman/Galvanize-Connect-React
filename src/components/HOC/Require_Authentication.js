@@ -24,11 +24,7 @@ export default function (ComposedComponent) {
   // }
 
   redirect = () => {
-   // const { name } = this.props.userData;
    this.context.router.history.push('/Login')
-   // <Route exact path='Login' render={() => (!name
-   //  (<Redirect to="/Login"/>)
-   // )}/>
   }
 
   render() {
