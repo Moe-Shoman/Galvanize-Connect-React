@@ -77,7 +77,7 @@ class App extends Component {
               </Menu.Menu>
             {/* </Link> */}
         </Menu>
-      
+
       </div>
     )
 
