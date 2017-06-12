@@ -10,15 +10,6 @@ import firebase from 'firebase';
 import { connect } from 'react-redux';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import { Menu, Segment } from 'semantic-ui-react'
-// import {
-//     Sidebar,
-//     Button,
-//     Menu,
-//     Image,
-//     Icon,
-//     Header,
-// } from 'semantic-ui-react';
-
 
 injectTapEventPlugin();
 
@@ -37,12 +28,6 @@ class App extends Component {
     };
     firebase.initializeApp(config);
   }
-
-//********************************************************************
-// import React, { Component } from 'react'
-// import { Menu, Segment } from 'semantic-ui-react'
-
-// export default class MenuExampleSecondaryPointing extends Component {
   state = { activeItem: 'home' }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
@@ -69,71 +54,10 @@ class App extends Component {
               <Link to="/login">
                 <Menu.Item name='login' active={activeItem === '/login'} onClick={this.handleItemClick}/>
               </Link>
-            {/* <Link to ='/logout' position='right'> */}
-              <Menu.Menu position='right'>
-                <Menu.Item name='logout' active={activeItem === 'logout'} onClick={this.handleItemClick} />
-              </Menu.Menu>
-            {/* </Link> */}
         </Menu>
-
       </div>
     )
-
-
   }
 }
-{/* <Menu.Item name="profile">
-//             <Link to="/Profile">
-//               <Icon name="user" size="medium" />
-//               <h3> Profile </h3>
-//             </Link>
-//           </Menu.Item> */}
-
-
-
-//   render() {
-//     const { name } = this.props.userData;
-//         // console.log(name, 'me mayne');
-//
-//
-//     return (
-//         <Sidebar as={Menu} animation="push" width="thin" visible icon="labeled" vertical inverted>
-//
-//           <Menu.Item name="home">
-//             <Link to="/Home">
-//               <Icon name="home" size="medium" />
-//               <h3>
-//                               Home
-//                             </h3>
-//             </Link>
-//           </Menu.Item>
-//           <Menu.Item name="cohort">
-//             <Link to="/Cohort">
-//               <Icon name="users" size="medium" />
-//               <h3>
-//                               Cohort
-//                             </h3>
-//             </Link>
-//           </Menu.Item>
-//           <Menu.Item name="profile">
-//             <Link to="/Profile">
-//               <Icon name="user" size="medium" />
-//               <h3> Profile </h3>
-//             </Link>
-//           </Menu.Item>
-//
-//           <Menu.Item name="login">
-//             <Link to="/Login">
-//               <Icon name="sign in" size="medium" />
-//               <h3>
-//                               Login
-//                             </h3>
-//             </Link>
-//           </Menu.Item>
-//         </Sidebar>
-//     );
-//   }
-//
-// }
 
 export default connect(({ userData }) => ({ userData }))(App);

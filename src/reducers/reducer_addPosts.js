@@ -15,7 +15,7 @@ export default function (posts = initialState.posts, action) {
       return posts.filter(post => post.postKey !== postId);
     }
     case 'DELETE_COMMENT': {
-      const commentId = action.payload;
+      // const commentId = action.payload;
       // console.log('posts =========== ', posts);
 
       // return posts.filter(item => item.comments.filter((comm) => {
@@ -33,6 +33,7 @@ export default function (posts = initialState.posts, action) {
           action.payload,
         ],
       };
+      console.log('-------------- ', newPosts);
       return newPosts;
     }
     default:

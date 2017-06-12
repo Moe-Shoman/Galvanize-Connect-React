@@ -49,10 +49,6 @@ export const login = () => ({
 
 export const authenticate = payload => ({ type: 'AUTHENTICATE', payload });
 
-// export const addToReduxStore = (user) => {
-//   return {type: 'ADD_TO_STORE', payload: destructUser(user)}
-// }
-
 export const checkForAuthenticatedUser = () => ({
   type: 'CHECK_FOR_AUTHENTICATED_USER',
   payload: new Promise((res, rej) => {
