@@ -11,7 +11,7 @@ class Feeds extends Component {
     constructor(props) {
         super(props)
     }
-    componentWillMount() {
+    componentDidMount() {
         firebase.database().ref('feed/posts').once("value", (snapshot) => {
             return this.props.fetchPosts(snapshot.val());
         })

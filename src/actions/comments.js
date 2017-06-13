@@ -8,6 +8,7 @@ export const addCommentToFB = (commentObj, postKey, commentKeyInFireBase) => {
 export const addCommentsToPost = (userData, comment, postKey, postIndex) => {
   const commentKeyInFireBase = firebase.database().ref(`feed/posts/${postKey}/comments`).push().key;
   const commentInfo = {
+    uid: userData.uid,
     comment,
     name: userData.name,
     time: new Date().toString(),

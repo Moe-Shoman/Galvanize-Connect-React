@@ -15,17 +15,21 @@ export default function (posts = initialState.posts, action) {
       return posts.filter(post => post.postKey !== postId);
     }
     case 'DELETE_COMMENT': {
-      // const commentId = action.payload;
-      // console.log('posts =========== ', posts);
+      const commentId = action.payload;
+      console.log('----------- ', posts);
 
-      // return posts.filter(item => item.comments.filter((comm) => {
-      //   console.log('comm =========== ', comm);
-      //   return comm.commentKeyInFireBase !== commentId;
-      // }));
+      return posts;
+      // const returnVal = posts.forEach()//post => post.comments.filter((comm) => {
+      // //   console.log('------------ ', commentId);
+      // //   return comm.commentKeyInFireBase === commentId;
+      // // }));
+      // console.log('return val is ', returnVal);
+      // return returnVal;
     }
     case 'ADD_COMMENTS': {
       const newPosts = [...posts];
       const specificPost = newPosts[action.payload.postIndex];
+      console.log('............ ', action.payload);
       newPosts[action.payload.postIndex] = {
         ...specificPost,
         comments: [
@@ -33,7 +37,6 @@ export default function (posts = initialState.posts, action) {
           action.payload,
         ],
       };
-      console.log('-------------- ', newPosts);
       return newPosts;
     }
     default:

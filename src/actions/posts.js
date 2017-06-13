@@ -9,6 +9,7 @@ export const addPostToFireBase = (postObject, postKey) => {
 export const addInfoToPost = (userData, input) => {
   const postKey = firebase.database().ref('feed').child('posts').push().key;
   const postInfo = {
+    uid: userData.uid,
     post: input,
     name: userData.name,
     photo: userData.photo,
