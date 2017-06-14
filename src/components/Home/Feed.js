@@ -37,7 +37,7 @@ class Feeds extends Component {
                             </Card>
                             <Button type="submit" onClick={(e) => {
                                 e.preventDefault();
-                                this.props.editComment(comment.commentKeyInFireBase, comment.postKey)
+                                this.props.editComment(comment.commentKeyInFireBase, comment.postKey, comment.postIndex)
                             }}>Delete</Button>
                         </Grid.Column>
                     </Grid.Row>

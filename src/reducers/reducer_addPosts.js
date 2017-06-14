@@ -15,21 +15,32 @@ export default function (posts = initialState.posts, action) {
       return posts.filter(post => post.postKey !== postId);
     }
     case 'DELETE_COMMENT': {
-      const commentId = action.payload;
-      console.log('----------- ', posts);
+      const commKey = action.payload.commentKey;
+      const currPostKey = action.payload.postkey;
 
-      return posts;
-      // const returnVal = posts.forEach()//post => post.comments.filter((comm) => {
-      // //   console.log('------------ ', commentId);
-      // //   return comm.commentKeyInFireBase === commentId;
-      // // }));
-      // console.log('return val is ', returnVal);
-      // return returnVal;
+      const updatedComments = posts.map((post) => {
+        if (currPostKey === post.postKey) {
+          return post.comments.filter(comment => comment.commentKeyInFireBase !== commKey);
+        }
+      });
+
+      // console.log(updatedComments);
+
+
+      const newPosts = [...posts];
+      const specificPost = newPosts[action.payload.postIndex];
+      newPosts[action.payload.postIndex] = {
+        ...specificPost,
+        comments: [
+          ...updatedComments,
+          action.payload,
+        ],
+      };
+      return newPosts;
     }
     case 'ADD_COMMENTS': {
       const newPosts = [...posts];
       const specificPost = newPosts[action.payload.postIndex];
-      console.log('............ ', action.payload);
       newPosts[action.payload.postIndex] = {
         ...specificPost,
         comments: [
