@@ -22,13 +22,9 @@ export const addCommentsToPost = (userData, comment, postKey, postIndex) => {
 };
 
 
-export const deleteComment = (comment, postKey, postIndex) => {
-  firebase.database().ref(`feed/posts/${postKey}/comments/${comment}`).remove();
-  return {
-    commentKey: comment,
-    postkey: postKey,
-    postIndex,
-  };
+export const deleteComment = (commentObj) => {
+  firebase.database().ref(`feed/posts/${commentObj.postKey}/comments/${commentObj.commentKeyInFireBase}`).remove();
+  return commentObj;
 };
 
 // action creators
@@ -37,6 +33,6 @@ export const addComment = (userData, comment, postKey, postIndex) => ({
   payload: addCommentsToPost(userData, comment, postKey, postIndex),
 });
 
-export const editComment = (comment, postKey, postIndex) => ({
-  type: 'DELETE_COMMENT', payload: deleteComment(comment, postKey, postIndex),
+export const editComment = commentObj => ({
+  type: 'DELETE_COMMENT', payload: deleteComment(commentObj),
 });
