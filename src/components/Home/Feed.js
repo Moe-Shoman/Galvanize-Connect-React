@@ -11,8 +11,8 @@ class Feeds extends Component {
     constructor(props) {
         super(props)
     }
-    componentWillMount() {
-        firebase.database().ref('feed/posts').once("value", (snapshot) => {
+    componentDidMount() {
+        firebase.database().ref('feed/posts').on("value", (snapshot) => {
             return this.props.fetchPosts(snapshot.val());
         })
     }
@@ -37,7 +37,7 @@ class Feeds extends Component {
                             </Card>
                             <Button type="submit" onClick={(e) => {
                                 e.preventDefault();
-                                this.props.editComment(comment.commentKeyInFireBase, comment.postKey)
+                                this.props.editComment(comment)
                             }}>Delete</Button>
                         </Grid.Column>
                     </Grid.Row>

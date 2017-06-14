@@ -19,7 +19,9 @@ class Comments extends Component {
      const { userData, addComment, postKey, postIndex } = this.props;
         return (
          <Form id='commentForm'>
-             <label htmlFor="comment">Comment</label>
+             <label htmlFor="comment">
+              <h4>Comment</h4>
+             </label>
              <input  name="comment" onChange={this.updateComment} value={this.state.input} type="text"/>
            <Button type="submit" onClick={(e) => {
             e.preventDefault();

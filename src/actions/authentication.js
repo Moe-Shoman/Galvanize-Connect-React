@@ -4,7 +4,6 @@ import axios from 'axios';
 
 export const addNonExistingUsers = (userObject) => {
   const { displayName, email, photoURL, uid } = userObject;
-  console.log('------------------- ', uid);
   const userInFireBase = firebase.database().ref(`users/${uid}`);
 
   return userInFireBase.once('value').then((snapshot) => {
@@ -49,10 +48,6 @@ export const login = () => ({
 });
 
 export const authenticate = payload => ({ type: 'AUTHENTICATE', payload });
-
-// export const addToReduxStore = (user) => {
-//   return {type: 'ADD_TO_STORE', payload: destructUser(user)}
-// }
 
 export const checkForAuthenticatedUser = () => ({
   type: 'CHECK_FOR_AUTHENTICATED_USER',
