@@ -12,7 +12,7 @@ class Feeds extends Component {
         super(props)
     }
     componentDidMount() {
-        firebase.database().ref('feed/posts').once("value", (snapshot) => {
+        firebase.database().ref('feed/posts').on("value", (snapshot) => {
             return this.props.fetchPosts(snapshot.val());
         })
     }
