@@ -20,11 +20,7 @@ class GoogleAuthentication extends Component {
    this.props.checkForAuthenticatedUser();
   }
  }
-
- // redirect = () => {
- //  this.context.router.history.push('/Home')
- // }
-
+ 
   render() {
     const { userData } = this.props;
     if (userData && userData.name) {

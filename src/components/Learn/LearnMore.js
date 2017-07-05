@@ -11,7 +11,7 @@ const LearnMore = () => (
     <div className="description">
       <p className="welcomeparagraph">
         Welcome to Galvanize-Connect. The best way to maintain communication with your
-        Galvanize friends, share your skills and projects, and event find a job you might like.
+        Galvanize friends, share your skills and projects, and event get some tech news.
        </p>
     </div>
   </div>
