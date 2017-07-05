@@ -24,6 +24,25 @@
   to { transform: rotate(360deg); }
 }
 
+
+/*#{
+     list-style: none;
+     text-align: center;
+     background-color: #01AAAD;
+     width: 150px;margin:0;
+     line-height: 60px;
+     float: left;
+   }
+#edit{
+     list-style: none;
+     text-align: center;
+     background-color: #01AAAD;
+     width: 150px;margin:0;
+     line-height: 60px;
+     float: left;
+   }*/
+
+
 /*.jobCards {
  float:right;
 }*/

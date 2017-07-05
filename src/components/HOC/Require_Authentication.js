@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Login from '../../Views/Login'
-import Home from '../../Views/Home'
+import Login from '../../views/Login'
+import Home from '../../views/Home'
 import { Redirect, Route } from 'react-router';
 
 export default function (ComposedComponent) {
@@ -12,16 +12,6 @@ export default function (ComposedComponent) {
   static contextTypes = {
    router: React.PropTypes.object,
   }
-  // componentWillMount = () => {
-  //   if(!this.props.authentication) {
-  //    this.redirect();
-  //   }
-  // }
-  // componentWillUpdate = () => {
-  //  if(!this.props.authentication) {
-  //   this.redirect();
-  //  }
-  // }
 
   redirect = () => {
    this.context.router.history.push('/Login')

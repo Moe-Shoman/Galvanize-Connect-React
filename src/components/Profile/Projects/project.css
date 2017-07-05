@@ -21,3 +21,25 @@
   align-content: center;
   padding-left: 55px;
 }
+
+.projectDes{
+ text-align: left;
+ text-decoration-color: black;
+}
+
+.updateproject {
+ float: right;
+}
+
+.editproject {
+ float: right;
+}
+
+
+.delete {
+ float: right;
+}
+
+.edit {
+ float left: 
+}

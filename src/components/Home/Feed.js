@@ -1,91 +1,81 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Card, Feed, Grid, Button} from 'semantic-ui-react';
-import {fetchPosts} from '../../actions';
-import {editPost, editComment} from '../../actions';
+import {Card, Feed, Grid, Button, Modal, Header, Comment} from 'semantic-ui-react';
+import {deletePost, editComment, editPost, fetchPosts} from '../../actions';
 import PostsForm from './PostsForm'
 import Comments from './Comments'
+import UpdateComments from './UpdateComments'
+import UpdatePosts from './UpdatePosts'
 import firebase from 'firebase';
+import './home.css'
 
 class Feeds extends Component {
     constructor(props) {
-        super(props)
+        super(props);
     }
+
     componentDidMount() {
         firebase.database().ref('feed/posts').on("value", (snapshot) => {
-            return this.props.fetchPosts(snapshot.val());
+         return this.props.fetchPosts(snapshot.val());
         })
     }
-    renderComments = (commentObject) => {
+    renderComments = (commentObject, userData) => {
         if (commentObject) {
             const comments = Object.values(commentObject);
             return comments.map((comment, i) => {
                 return (
-                    <Grid.Row className='commentRow'>
-                        <Grid.Column width={6} verticalAlign='middle'>
-                            <Card fluid key={i + comment.comment} className='comments'>
-                                <Feed.Event>
-                                    <Feed.Label image={comment.photo}/>
-                                    <Feed.Content>
-                                        <Feed.Date content={comment.time}/>
-                                        <Feed.Summary>
-                                            <Card.Header>{comment.name}</Card.Header>
-                                            {comment.comment}
-                                        </Feed.Summary>
-                                    </Feed.Content>
-                                </Feed.Event>
-                            </Card>
-                            <Button type="submit" onClick={(e) => {
-                                e.preventDefault();
-                                this.props.editComment(comment)
-                            }}>Delete</Button>
-                        </Grid.Column>
-                    </Grid.Row>
+                  <div>
+                      <Comment.Group>
+                       <Comment>
+                          <Comment.Avatar src={comment.photo} />
+                          <Comment.Content>
+                            <Comment.Author>{comment.name} </Comment.Author>
+                            <Comment.Text>{comment.comment}</Comment.Text>
+                            <Comment.Metadata>
+                             {comment.time}
+                            </Comment.Metadata>
+                            <Comment.Actions>
+                              <Comment.Action><UpdateComments comment={comment} user={userData}/></Comment.Action>
+                            </Comment.Actions>
+                          </Comment.Content>
+                      </Comment>
+                      </Comment.Group>
+                  </div>
                 )
             });
         }
     }
+
     render() {
+        const { userData } = this.props;
         const Posts = this.props.posts.map((post, ind) => {
             return (
-                <Feed >
-                    <div key={post.postKey + ind}>
-                        <Grid>
-                            <Grid.Row>
-                                <Grid.Column width={10}>
-                                    <Card fluid className='posts'>
-                                        <Card.Content>
-                                            <Feed.Event>
-                                                <Feed.Label image={post.photo}/>
-                                                <Feed.Content>
-                                                    <Feed.Date content={post.date}/>
-                                                    <Feed.Summary>
-                                                        <Card.Header>{post.name}</Card.Header>
-                                                        {post.post}
-                                                    </Feed.Summary>
-                                                </Feed.Content>
-                                            </Feed.Event>
-                                        </Card.Content>
-                                    </Card>
-                                    <Button type="submit" onClick={(e) => {
-                                        e.preventDefault();
-                                        this.props.editPost(post)
-                                    }}>Delete</Button>
-                                </Grid.Column>
-                            </Grid.Row>
-                            {this.renderComments(post.comments)}
-                            <Comments postKey={post.postKey} postIndex={ind}/> {/* </Segment.Group> */}
-                        </Grid>
-                    </div>
-                </Feed>
+                <div>
+                    <Comment.Group>
+                     <Comment>
+                        <Comment.Avatar src={post.photo} />
+                        <Comment.Content>
+                          <Comment.Author>{post.name} </Comment.Author>
+                          <Comment.Text>{post.post}</Comment.Text>
+                          <Comment.Metadata>
+                           {post.date}
+                          </Comment.Metadata>
+                          <Comment.Actions>
+                            <Comment.Action><UpdatePosts post={post} user={userData}/></Comment.Action>
+                          </Comment.Actions>
+                        </Comment.Content>
+                    {this.renderComments(post.comments, userData)}
+                    <Comments postKey={post.postKey} postIndex={ind}/>
+                   </Comment>
+                    </Comment.Group>
+                </div>
             )
         })
         return (
             <div>
-                <PostsForm/> {Posts}
+                <PostsForm /> {Posts}
             </div>
         )
     }
 }
-//
-export default connect(({posts}) => ({posts}), {fetchPosts, editPost, editComment})(Feeds);
+export default connect(({posts, userData}) => ({posts, userData}), {fetchPosts, deletePost, editPost, editComment})(Feeds);

@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
 import { browserHistory, BrowserRouter as Router, Route } from 'react-router-dom';
-// import { Router, Route } from 'react-router-dom';
-import Home from './Views/Home/';
-import Cohort from './Views/Cohort/';
-import Profile from './Views/Profile/';
-import Login from './Views/Login/';
+import Home from './views/Home/';
+import Cohort from './views/Cohort/';
+import Profile from './views/Profile/';
+import Login from './views/Login/';
+import Logout from './views/Logout';
 import requireAuth from './components/HOC/Require_Authentication';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
@@ -26,6 +26,7 @@ ReactDOM.render(
         <Route path="/Home" component={requireAuth(Home)} />
         <Route path="/Profile" component={requireAuth(Profile)} />
         <Route path="/Cohort" component={requireAuth(Cohort)} />
+        <Route path="/Logout" component={requireAuth(Logout)} />
       </div>
     </Router>
   </Provider>,

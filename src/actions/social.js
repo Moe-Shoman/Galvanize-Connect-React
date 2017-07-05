@@ -5,25 +5,62 @@ import firebase from 'firebase';
 //   return restructuredPosts;
 // }
 
-export const fetchFromFireBase = (userData) => {
-  console.log('inside of fetchFromFireBase');
+export const fetchFromFireBase = (socialObj) => {
+  if (!socialObj) {
+    return [];
+  }
+  return Object.values(socialObj);
 };
 
-export const addSocialLinksToFireBase = (username, SocialInks) => {
-  const userSocialInFireBase = firebase.database();
-  userSocialInFireBase.ref('users').child(`${username}`).update({ GitHub: SocialInks.GitHub, LinkedIn: SocialInks.LinkedIn, Twitter: SocialInks.Twitter });
+export const addSocialLinksToFireBase = (user, socialLinkObj, socialLinkFBKey) => {
+  firebase.database().ref(`social/${user.uid}/${socialLinkFBKey}`).set(socialLinkObj);
 };
 
-export const updateLinksAndSendToBD = (userData, SocialInks) => {
-  const username = userData.name;
-  addSocialLinksToFireBase(username, SocialInks);
-  return SocialInks;
+export const updateLinksinFB = (user, socialLinkObj, socialLinkFBKey) => {
+  firebase.database().ref(`social/${user.uid}/${socialLinkFBKey}`).update(socialLinkObj);
+};
+
+export const updateLinksAndSendToBD = (userData, social, socialLinks) => {
+  // const socialLinkFBKey = firebase.database().ref(`social/${userData.uid}`).push().key;
+  // const socialLinkObj = {
+  //   linkedin: socialLinks.LinkedIn,
+  //   github: socialLinks.GitHub,
+  //   twitter: socialLinks.Twitter,
+  //   uid: userData.uid,
+  //   socialLinkFBKey,
+  // };
+  //
+  // if (social) {
+  //   updateLinksinFB(userData, socialLinkObj, socialLinkFBKey);
+  //   // addSocialLinksToFireBase(userData, socialLinkObj, socialLinkFBKey);
+  //   return socialLinkObj;
+  // }
+  // const socialLinkFBKey = firebase.database().ref(`social/${userData.uid}`).push().key;
+  //
+  // addSocialLinksToFireBase(userData, socialLinkObj, socialLinkFBKey);
+  // updateLinksinFB(userData, socialLinkObj, socialLinkFBKey);
+
+  // if (!socialLinks) {
+  //   const socialLinkFBKey = firebase.database().ref(`social/${userData.uid}`).push().key;
+  //   const socialLinkObj = {
+  //     linkedin: socialLinks.LinkedIn,
+  //     github: socialLinks.GitHub,
+  //     twitter: socialLinks.Twitter,
+  //     uid: userData.uid,
+  //     socialLinkFBKey,
+  //   };
+  //
+  //   addSocialLinksToFireBase(userData, socialLinkObj, socialLinkFBKey);
+  // }
+  // return socialLinkObj;
 };
 
 // ACTION CREATORS
-export const addSocialLinks = (userData, SocialInks) => ({
+export const addSocialLinks = (userData, social, socialLinks) => ({
   type: 'ADD_SOCIAL',
-  payload: updateLinksAndSendToBD(userData, SocialInks),
+  payload: updateLinksAndSendToBD(userData, social, socialLinks),
 });
 
-export const fetchSocial = userData => ({ type: 'FETCH_LINKS', payload: fetchFromFireBase(userData) });
+export const fetchSocial = socialObj => ({
+  type: 'FETCH_LINKS', payload: fetchFromFireBase(socialObj),
+});

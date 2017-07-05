@@ -74,7 +74,7 @@ import { addSocialLinks } from '../../actions';
 }
 
 
-export default connect(({ userData, links}) => ({ userData, links}), { addSocialLinks })(SocialLinks);
+// export default connect(({ userData, links}) => ({ userData, links}), { addSocialLinks })(SocialLinks);
 
 //reference
 // export default connect(({ cohortVal, userData }) => ({ cohortVal, userData }), { fetchCohort })(MemberCards);

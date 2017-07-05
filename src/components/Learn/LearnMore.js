@@ -5,24 +5,16 @@ import { Grid, Button } from 'semantic-ui-react';
 import './learnmore.css';
 import GoogleAuthentication from '../GoogleAuth/GoogleAuth';
 
-const LearnMore = () => {
-  return (
-      <div className="aboutPage">
-        <h1>Galvanize Connect</h1>
-        <div className="description">
-          <p>
-            Welcome to Galvanize-Connect. The best way to maintain communication with your
-            Galvanie friends.
-          </p>
-          <h3>Sing In with Google</h3>
-
-          <div>GOOGLE BUTTON</div>
-          {/* <div>
-            <GoogleAuthentication/>
-          </div> */}
-      </div>
+const LearnMore = () => (
+  <div className="aboutPage">
+    <h1>Galvanize Connect</h1>
+    <div className="description">
+      <p className="welcomeparagraph">
+        Welcome to Galvanize-Connect. The best way to maintain communication with your
+        Galvanize friends, share your skills and projects, and event find a job you might like.
+       </p>
     </div>
+  </div>
     );
-}
 
 export default LearnMore;

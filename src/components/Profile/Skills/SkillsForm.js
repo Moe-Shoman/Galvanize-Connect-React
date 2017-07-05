@@ -31,32 +31,43 @@ class AddSkillsForm extends Component {
   render() {
    const { userData, addSkill } = this.props;
       return (
-        <Modal trigger={<Button onClick={this.handleOpen} >Add Skill</Button>} open={this.state.modalOpen}>
+       <div className='skillsmodal'>
+        <Modal trigger={<Button onClick={this.handleOpen} color='blue' >Add Skill</Button>} open={this.state.modalOpen}>
           <Modal.Content>
             <Header>
               <h3>Enter A Skill</h3>
             </Header>
-            <Form className="theForm ui form">
-                <TextArea className="skillName" name="skill" type="text" onChange={this.updateInput} autoHeight/>
-              <Button
-                 className="ui button" type="submit"
-                 onClick={(e) => {
-                 e.preventDefault();
-                 addSkill(userData, this.state.skill);
-                 this.handleClose();
-                  }}
-                  >
-                Submit
-              </Button>
-                <Button className="ui button" type="cancel" onClick={(e) =>{
+            <Form className="links ui form">
+              <Modal.Content>
+                <TextArea className="skillName" name="skill" type="text" placeholder="Enter a skill ex JavaScript,   React, Node, Express" onChange={this.updateInput} autoHeight/>
+              </Modal.Content>
+
+             <div className='submit'>
+               <Button
+                  type="submit" color='blue'
+                  onClick={(e) => {
+                  e.preventDefault();
+                  addSkill(userData, this.state.skill);
+                  this.handleClose();
+                   }}
+                   >
+                 Submit
+               </Button>
+              </div>
+
+              <div className="cancel">
+               <Button type="cancel" color='red' onClick={(e) =>{
                  e.preventDefault()
                  this.handleClose();
                  }}>
                  Cancel
                </Button>
+             </div>
+
             </Form>
           </Modal.Content>
         </Modal>
+       </div>
       )
     }
   }

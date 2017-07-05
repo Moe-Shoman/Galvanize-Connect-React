@@ -41,3 +41,19 @@
   border: 5px;
   border-color: grey;
 }
+
+.delete {
+ float: left;
+}
+
+.edit {
+ float: left;
+}
+
+.cancel {
+ float: right;
+}
+
+.submit {
+ float: right;
+}

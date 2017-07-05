@@ -31,7 +31,6 @@ class GoogleAuthentication extends Component {
     const { userData } = this.props;
     // if (userData && userData.name) {
       // return (<Redirect to="/Home" />);
-      console.log('>>>>> In the userauthentication');
     // }
     return (
       // <Sidebar.Pusher>

@@ -23,6 +23,9 @@ export const addInfoToPost = (userData, input) => {
 
 
 export const restructureFetchedFireBaseObjects = (object) => {
+  if (!object) {
+    return [];
+  }
   const restructuredPosts = Object.values(object);
   return restructuredPosts;
 };
@@ -38,9 +41,22 @@ export const restructurePostsAndComments = (PostsInFireBase) => {
 };
 
 
-export const deletePost = (posts) => {
+export const deleteFromFB = (posts) => {
   firebase.database().ref(`feed/posts/${posts.postKey}`).remove();
   return posts.postKey;
+};
+
+export const editPostFromFB = (posts, userData, input) => {
+  const postInfo = {
+    uid: posts.uid,
+    post: input,
+    name: userData.name,
+    photo: userData.photo,
+    date: (new Date()).toString(),
+    postKey: posts.postKey,
+  };
+  firebase.database().ref(`feed/posts/${posts.postKey}`).update(postInfo);
+  return postInfo;
 };
 
 
@@ -57,6 +73,10 @@ export const fetchPosts = posts => ({
   payload: restructurePostsAndComments(posts),
 });
 
-export const editPost = posts => ({
-  type: 'DELETE_POST', payload: deletePost(posts),
+export const deletePost = posts => ({
+  type: 'DELETE_POST', payload: deleteFromFB(posts),
+});
+
+export const editPost = (posts, userData, input) => ({
+  type: 'EDIT_POST', payload: editPostFromFB(posts, userData, input),
 });

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { Button, Form, TextArea } from 'semantic-ui-react';
 import { addPost } from '../../actions';
+import './home.css'
 
 class PostForm extends Component {
     constructor(props) {
@@ -18,14 +19,18 @@ class PostForm extends Component {
     render() {
         const { userData, addPost } = this.props;
         return (
-            <Form id='postForm'>
+            <Form id='postForm' >
+                <br></br>
                 <label htmlFor="post">
                     <h3>
-                        Add Post
+                     Welcome To Galvanize Connect
                     </h3>
                 </label>
-                <input  name="post" onChange={this.updateInput} value={this.state.input} type="text"/>
-                <Button type="submit" onClick={(e) => {
+                <br></br>
+
+                <input placeholder="Add Post"  name="post" onChange={this.updateInput} value={this.state.input} type="text"/>
+                <br></br>
+                <br></br><Button color='blue' className="submit" type="submit"  onClick={(e) => {
                     e.preventDefault();
                     addPost(userData, this.state.input)
                     this.state.input = '';

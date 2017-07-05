@@ -13,18 +13,11 @@ export const addNonExistingUsers = (userObject) => {
         email,
         uid,
         photo: photoURL,
-        linkedIn: null,
-        gitHub: null,
-        twitter: null,
-        projects: '',
-        skills: '',
       };
       userInFireBase.set(newUser);
       return newUser;
     }
     const registeredUser = snapshot.val();
-    registeredUser.projects = Object.values(registeredUser.projects);
-    registeredUser.skills = Object.values(registeredUser.skills);
     return registeredUser;
   });
 };
@@ -40,6 +33,8 @@ export const loginRequest = () => {
     return addNonExistingUsers(user);
   }).catch(err => (err));
 };
+
+// export const logUserOut = () => firebase.auth().signOut();
 
 // action creator
 export const login = () => ({
@@ -58,4 +53,13 @@ export const checkForAuthenticatedUser = () => ({
       }
     });
   }),
+});
+
+export const logout = () => ({
+  type: 'LOGOUT',
+  payload: null,
+
+  // new Promise((res, rej) => {
+  //   firebase.auth().signOut();
+  // }),
 });

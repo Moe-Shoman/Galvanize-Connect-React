@@ -1,0 +1,18 @@
+#home {
+ max-width: 80%;
+}
+
+#feed{
+ width: 55%;
+ float: right;
+ margin: auto;
+}
+
+#articles {
+ width: 20%;
+ float: left;
+ text-align: center;
+ position: relative;
+ padding-top: 2em;
+ margin: 40px;
+}

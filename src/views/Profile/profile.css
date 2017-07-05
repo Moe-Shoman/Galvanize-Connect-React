@@ -1,0 +1,38 @@
+#profile {
+ max-width: 95%;
+}
+
+#profileheader {
+ max-width: 30%;
+ min-width: 30%;
+ margin-top: 95px;
+ margin-left: 60px;
+ margin-right: 100px;
+ padding: 1px;
+
+}
+
+#skills_projects_coverflow {
+ max-width: 60%;
+ min-width: 30%;
+ float: right;
+ margin-top: 80px;
+}
+
+
+.skills {
+ margin-bottom: 30px;
+}
+
+.skillslist {
+ margin-bottom: 20px
+}
+
+.addskills {
+ float: right;
+ margin-top: 15px;
+}
+.projects {
+ float: right;
+ margin-top: 15px;
+}

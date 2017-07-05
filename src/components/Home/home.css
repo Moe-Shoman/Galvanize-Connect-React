@@ -1,0 +1,33 @@
+#votes {
+ float: right;
+}
+
+.delete{
+ width: 80px;
+ float: right;
+}
+.edit{
+ width: 80px;
+ float: right;
+}
+
+.update {
+ float: right;
+}
+
+.cancel {
+ float: right;
+}
+
+.submit {
+ width: 80px;
+ vertical-align: center;
+}
+
+.voteup {
+ float: right;
+}
+
+.votedown {
+ float: right;
+}

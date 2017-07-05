@@ -7,7 +7,7 @@ const Cohort = () => (
   <Sidebar.Pusher>
     <div>
       <div>
-        <MemberCards />
+        {/* <MemberCards /> */}
       </div>
     </div>
   </Sidebar.Pusher>

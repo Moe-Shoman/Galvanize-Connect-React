@@ -1,7 +1,10 @@
 export default {
   userData: {},
-  jobs: [],
+  articles: [],
   posts: [],
   comments: [],
   cohortVal: [],
+  projects: [],
+  skills: [],
+  social: [],
 };

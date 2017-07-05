@@ -1,22 +1,18 @@
 import React from 'react';
-import Jobs from '../../components/Home/Jobs';
+import Articles from '../../components/Home/Articles';
 import Feeds from '../../components/Home/Feed';
-import { Segment, Sidebar } from 'semantic-ui-react';
+import './Home.css';
 
 
 const Home = () => (
-  // <Sidebar.Pusher>
-    <Segment basic>
-      <div className="ui grid">
-        <div className="eight wide column">
-          <Feeds />
-        </div>
-        <div className="five wide column">
-          <Jobs />
-        </div>
-      </div>
-    </Segment>
-  // </Sidebar.Pusher>
+  <div id="home">
+    <div id="feed">
+      <Feeds />
+    </div>
+    <div id="articles" >
+      <Articles />
+    </div>
+  </div>
    );
 
 export default Home;
